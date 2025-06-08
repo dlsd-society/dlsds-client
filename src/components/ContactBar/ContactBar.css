@@ -1,0 +1,33 @@
+.contact-bar {
+  background-color: white;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.contact-left {
+  color: #333;
+}
+
+.contact-right {
+  display: flex;
+  gap: 10px;
+}
+
+.cta-button {
+  background-color: #00a76f;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #007b53;
+}
