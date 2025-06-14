@@ -70,7 +70,7 @@ const Navbar = () => {
         </li>
 
         <li><a href="#">RESOURCES</a></li>
-        <li><a href="#">CONTACT US</a></li>
+        <li><a href="/contact">CONTACT US</a></li>
       </ul>
 
       <div className="navbar-icons">
