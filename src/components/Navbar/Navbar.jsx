@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
 
       <ul className="navbar-links">
-        <li><a href="#">HOME</a></li>
+        <li><a href="/">HOME</a></li>
 
         <li
           onMouseEnter={() => handleDropdown("about")}
@@ -65,6 +65,21 @@ const Navbar = () => {
               <a href="#">Corporate</a>
               <a href="#">Government</a>
               <a href="#">NGO Partners</a>
+            </div>
+          )}
+        </li>
+
+        <li
+          onMouseEnter={() => handleDropdown("learning")}
+          onMouseLeave={() => handleDropdown(null)}
+        >
+          <a href="#">LEARNING ▾</a>
+          {openDropdown === "learning" && (
+            <div className="dropdown">
+              <a href="/courses">Online Courses</a>
+              <a href="#">Seminars & Webinars</a>
+              <a href="#">Workshops</a>
+              <a href="#">Internships & Training</a>
             </div>
           )}
         </li>
