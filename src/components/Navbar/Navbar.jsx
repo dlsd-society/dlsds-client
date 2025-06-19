@@ -32,7 +32,7 @@ const Navbar = () => {
           onMouseEnter={() => handleDropdown("about")}
           onMouseLeave={() => handleDropdown(null)}
         >
-          <a href="#">ABOUT US ▾</a>
+          <a href="/about">ABOUT US ▾</a>
           {openDropdown === "about" && (
             <div className="dropdown">
               <a href="/about#mission">Mission and Values</a>
@@ -73,7 +73,7 @@ const Navbar = () => {
           onMouseEnter={() => handleDropdown("learning")}
           onMouseLeave={() => handleDropdown(null)}
         >
-          <a href="#">LEARNING ▾</a>
+          <a href="/courses">LEARNING ▾</a>
           {openDropdown === "learning" && (
             <div className="dropdown">
               <a href="/courses">Online Courses</a>
@@ -84,7 +84,20 @@ const Navbar = () => {
           )}
         </li>
 
-        <li><a href="#">RESOURCES</a></li>
+        <li
+          onMouseEnter={() => handleDropdown("resources")}
+          onMouseLeave={() => handleDropdown(null)}
+        >
+          <a href="#">RESOURCES ▾</a>
+          {openDropdown === "resources" && (
+            <div className="dropdown">
+              <a href="#">Media</a>
+              <a href="#">Newsletters</a>
+              <a href="#">Audit Reports</a>
+              <a href="#">Annual Reports</a>              
+            </div>
+          )}
+        </li>
         <li><a href="/contact">CONTACT US</a></li>
       </ul>
 

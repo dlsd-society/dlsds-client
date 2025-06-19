@@ -31,12 +31,15 @@ const AboutPage = () => {
 
       {/* Mission and Values */}
       <section id="mission" className="about-section">
-        <h2>Mission and Values</h2>
-        <p>
-          Our mission is to bridge the digital divide and empower underserved communities with access to education, skilling, and livelihood opportunities. 
-          <br />
-          We believe in inclusivity, sustainability, and measurable impact.
-        </p>
+        <h2 className="section-title">MISSION & VALUES</h2>
+        <ul className="about-list">
+          <li>Be Customer Centric — Students and Employers — be the preferred choice/</li>
+          <li>Meet any and every commitment that we make — lead by example</li>
+          <li>Leverage Partnerships — be a platform for growth for all including staff</li>
+          <li>Each one to operate from Entrepreneurial mind-set — being innovative in everything we do</li>
+          <li>Each one to recognise risk-taking — celebrate people who stick their necks out — we know that path breakers are treading unknown paths</li>
+          <li>Actively build Alumni Network — it’s not about one time push but being a lifelong friend</li>
+        </ul>
       </section>
 
       {/* Member Body */}
