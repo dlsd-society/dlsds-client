@@ -8,6 +8,8 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 import DonationPage from "./pages/DonationPage/DonationPage";
 import CoursesAndCertifications from "./pages/CoursesAndCertifications/CoursesAndCertifications";
 import ResourcesPage from "./pages/ResourcesPage/ResourcesPage";
+import ProgramsPage from "./pages/ProgramsPage/ProgramsPage";
+import FooterSection from "./components/FooterSection/FooterSection";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
         <Route path="/donation" element={<DonationPage />} />
         <Route path="/courses" element={<CoursesAndCertifications />} />
         <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/programs" element={<ProgramsPage />} />
       </Routes>
+      <FooterSection />
     </>
   );
 }
