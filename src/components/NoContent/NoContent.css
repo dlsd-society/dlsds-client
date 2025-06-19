@@ -1,0 +1,20 @@
+.no-content {
+  text-align: center;
+  padding: 60px 20px;
+  color: #555;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.no-content h2 {
+  font-size: 28px;
+  color: #cc0000;
+  margin-bottom: 12px;
+}
+
+.no-content p {
+  font-size: 18px;
+}

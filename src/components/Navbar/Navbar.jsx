@@ -88,16 +88,16 @@ const Navbar = () => {
           onMouseEnter={() => handleDropdown("resources")}
           onMouseLeave={() => handleDropdown(null)}
         >
-          <a href="#">RESOURCES ▾</a>
+          <a href="/resources#activities">RESOURCES ▾</a>
           {openDropdown === "resources" && (
             <div className="dropdown">
-              <a href="#">Media</a>
-              <a href="#">Newsletters</a>
-              <a href="#">Audit Reports</a>
-              <a href="#">Annual Reports</a>              
+              <a href="/resources#activities">Activities</a>
+              <a href="/resources#audit">Audit Reports</a>
+              <a href="/resources#annual">Annual Reports</a>
             </div>
           )}
         </li>
+
         <li><a href="/contact">CONTACT US</a></li>
       </ul>
 
