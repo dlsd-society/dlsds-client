@@ -1,12 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Navbar.css";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaInstagram,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -19,11 +13,12 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-left">
         <img
-          src="https://niitfoundation.org/images/logo.png"
+          src={logo}
           alt="Logo"
           className="logo"
         />
-      </div>
+        <p>Digital Literacy and Skill Development Society</p>
+      </div>      
 
       <ul className="navbar-links">
         <li><a href="/">HOME</a></li>
@@ -48,9 +43,9 @@ const Navbar = () => {
           <a href="/programs">PROGRAMS ▾</a>
           {openDropdown === "programs" && (
             <div className="dropdown">
-              <a href="#">Skilling</a>
-              <a href="#">Education</a>
-              <a href="#">Digital Literacy</a>
+              <a href="/programs">Skilling</a>
+              <a href="/programs">Education</a>
+              <a href="/programs">Digital Literacy</a>
             </div>
           )}
         </li>
@@ -59,12 +54,12 @@ const Navbar = () => {
           onMouseEnter={() => handleDropdown("partners")}
           onMouseLeave={() => handleDropdown(null)}
         >
-          <a href="#">PARTNERS ▾</a>
+          <a href="/partners">PARTNERSHIPS ▾</a>
           {openDropdown === "partners" && (
             <div className="dropdown">
-              <a href="#">Corporate</a>
-              <a href="#">Government</a>
-              <a href="#">NGO Partners</a>
+              <a href="/partners">Corporate</a>
+              <a href="/partners">Government</a>
+              <a href="/partners">NGO Partners</a>
             </div>
           )}
         </li>
@@ -98,16 +93,9 @@ const Navbar = () => {
           )}
         </li>
 
-        <li><a href="/contact">CONTACT US</a></li>
+        <li><a href="/contact">CONTACT</a></li>
       </ul>
 
-      <div className="navbar-icons">
-        <a href="#"><FaFacebookF /></a>
-        <a href="#"><FaLinkedinIn /></a>
-        <a href="#"><FaInstagram /></a>
-        <a href="#"><FaTwitter /></a>
-        <a href="#"><FaYoutube /></a>
-      </div>
     </nav>
   );
 };

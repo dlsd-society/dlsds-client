@@ -1,8 +1,6 @@
-// src/pages/ProgramsPage/ProgramsPage.jsx
-import React from "react";
 import NoContent from "../../components/NoContent/NoContent";
 
-const ProgramsPage = () => {
+const PartnersPage = () => {
   return (
     <div>
       <NoContent message="This information is currently unavailable. Please check back soon!" />
@@ -10,4 +8,4 @@ const ProgramsPage = () => {
   );
 };
 
-export default ProgramsPage;
+export default PartnersPage;

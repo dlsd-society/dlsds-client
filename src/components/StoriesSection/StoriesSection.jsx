@@ -1,7 +1,7 @@
 import React from "react";
 import "./StoriesSection.css";
-import successStories01 from '../../assets/success-stories-01.png'; // Your uploaded image
-import successStories02 from '../../assets/success-stories-02.png'; // Your uploaded image
+import successStories01 from '../../assets/success-stories-01.png'; 
+import successStories02 from '../../assets/success-stories-02.png'; 
 
 const stories = [
   {

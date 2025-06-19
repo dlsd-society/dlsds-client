@@ -31,3 +31,14 @@
 .cta-button:hover {
   background-color: #007b53;
 }
+
+.social-icons a {
+  margin-left: 10px;
+  color: gray;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f0c040;
+}

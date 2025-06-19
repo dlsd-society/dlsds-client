@@ -10,6 +10,7 @@ import CoursesAndCertifications from "./pages/CoursesAndCertifications/CoursesAn
 import ResourcesPage from "./pages/ResourcesPage/ResourcesPage";
 import ProgramsPage from "./pages/ProgramsPage/ProgramsPage";
 import FooterSection from "./components/FooterSection/FooterSection";
+import PartnersPage from "./pages/PartnersPage/PartnersPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/courses" element={<CoursesAndCertifications />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/programs" element={<ProgramsPage />} />
+        <Route path="/partners" element={<PartnersPage />} />
       </Routes>
       <FooterSection />
     </>
