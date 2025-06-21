@@ -1,6 +1,8 @@
 import React from "react";
 import "./SpotlightSection.css";
-import spotlightImage from '../../assets/spotlight-01.jpg'; // Your uploaded image
+import awarenessPrograms from "../../assets/awareness-programs.jpg";
+import skillDevelopment from "../../assets/skill-development.jpg"; // Replace with the actual image
+import internshipsTraining from "../../assets/internships.png"; // Replace with the actual image
 
 const SpotlightSection = () => {
   return (
@@ -10,63 +12,44 @@ const SpotlightSection = () => {
         A glimpse into NIIT Foundation’s educational programs and other innovative programs, latest recognition and awards
       </p>
 
-      <div className="spotlight-content">
-        <div className="spotlight-left">          
-          <img
-            src={spotlightImage}
-            alt="Financial Literacy"
-          />
+      <div className="spotlight-grid">
+        <div
+          className="spotlight-card"
+          style={{ backgroundImage: `url(${awarenessPrograms})` }}
+        >
+          <div className="spotlight-overlay">
+            <h3>Awareness Programs</h3>
+            <p>
+              Illuminating insights, fostering understanding, and guiding
+              towards informed choices in diverse domains.
+            </p>
+          </div>
         </div>
-        <div className="spotlight-right">
-          <h3>Digital Bus</h3>
-          <p>
-            Digital Bus is a distinctive and impactful solution that tackles the issue of how to deliver digital literacy,
-            financial literacy and upskilling courses to individuals in remote or isolated locations. Individuals who are in
-            a disadvantaged position can welcome the world of information and knowledge at their doorstep. As our fleet expands,
-            we hope to reduce the digital divide between various areas in India and help disseminate Government policies and
-            schemes to citizens.
-          </p>
-          <button className="know-more-btn">Know More</button>
-        </div>
-      </div>
 
-      <div className="spotlight-content">
-        <div className="spotlight-right">
-          <h3>Digital Bus</h3>
-          <p>
-            Digital Bus is a distinctive and impactful solution that tackles the issue of how to deliver digital literacy,
-            financial literacy and upskilling courses to individuals in remote or isolated locations. Individuals who are in
-            a disadvantaged position can welcome the world of information and knowledge at their doorstep. As our fleet expands,
-            we hope to reduce the digital divide between various areas in India and help disseminate Government policies and
-            schemes to citizens.
-          </p>
-          <button className="know-more-btn">Know More</button>
+        <div
+          className="spotlight-card"
+          style={{ backgroundImage: `url(${skillDevelopment})` }}
+        >
+          <div className="spotlight-overlay">
+            <h3>Skill Development</h3>
+            <p>
+              Building connections and creating impactful collaborations for
+              shared progress.
+            </p>
+          </div>
         </div>
-        <div className="spotlight-left">          
-          <img
-            src={spotlightImage}
-            alt="Financial Literacy"
-          />
-        </div>        
-      </div>
 
-      <div className="spotlight-content">
-        <div className="spotlight-left">          
-          <img
-            src={spotlightImage}
-            alt="Financial Literacy"
-          />
-        </div>
-        <div className="spotlight-right">
-          <h3>Digital Bus</h3>
-          <p>
-            Digital Bus is a distinctive and impactful solution that tackles the issue of how to deliver digital literacy,
-            financial literacy and upskilling courses to individuals in remote or isolated locations. Individuals who are in
-            a disadvantaged position can welcome the world of information and knowledge at their doorstep. As our fleet expands,
-            we hope to reduce the digital divide between various areas in India and help disseminate Government policies and
-            schemes to citizens.
-          </p>
-          <button className="know-more-btn">Know More</button>
+        <div
+          className="spotlight-card"
+          style={{ backgroundImage: `url(${internshipsTraining})` }}
+        >
+          <div className="spotlight-overlay">
+            <h3>Internships & Trainings</h3>
+            <p>
+              Developing skills, addressing challenges, fostering growth, and
+              embracing opportunities.
+            </p>
+          </div>
         </div>
       </div>
     </section>
