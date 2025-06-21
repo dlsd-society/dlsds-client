@@ -27,9 +27,10 @@ const Navbar = () => {
           onMouseEnter={() => handleDropdown("about")}
           onMouseLeave={() => handleDropdown(null)}
         >
-          <a href="/about">ABOUT US ▾</a>
+          <a href="/about">ABOUT US ▾</a> 
           {openDropdown === "about" && (
             <div className="dropdown">
+              <a href="/about#about-intro">Who are we</a>
               <a href="/about#mission">Mission and Values</a>
               <a href="/about#members">Member Body</a>
             </div>

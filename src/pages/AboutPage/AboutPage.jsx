@@ -29,6 +29,35 @@ const AboutPage = () => {
         </div>
       </div>
 
+      {/* Introduction About DLSDS */}
+      <section className="about-intro">
+        <div className="intro-container">
+          <h2 className="section-title">Who We Are</h2>
+          <p className="intro-tagline">
+            Digital Literacy and Skill Development Society (DLSDS) is a non-profit organization dedicated to bridging the digital gap in North-East India.
+          </p>
+
+          <div className="intro-pillars">
+            <div className="pillar">
+              <h3>📶 Digital Inclusivity</h3>
+              <p>We aim to bring digital skills to every corner of the region, ensuring no one is left behind in the digital revolution.</p>
+            </div>
+            <div className="pillar">
+              <h3>🤝 Empowering Communities</h3>
+              <p>Through workshops, training, and outreach, we empower individuals to become confident digital citizens.</p>
+            </div>
+            <div className="pillar">
+              <h3>❤️ Non-Profit Commitment</h3>
+              <p>As a mission-driven organization, we reinvest our efforts into building accessible, equitable digital education for all.</p>
+            </div>
+          </div>
+
+          <p className="intro-description">
+            Committed to making digital literacy accessible to all, DLSDS actively works towards empowering individuals with the skills needed to thrive in the digital age. By providing comprehensive training programs, workshops, and awareness initiatives, DLSDS ensures that communities, regardless of their socio-economic background, have the knowledge and tools to navigate the digital landscape.
+          </p>
+        </div>
+      </section>
+
       {/* Mission and Values */}
       <section id="mission" className="about-section">
         <h2 className="section-title">MISSION & VALUES</h2>
