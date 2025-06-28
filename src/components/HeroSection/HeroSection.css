@@ -10,6 +10,17 @@
 .hero-content {
   text-align: center;
   max-width: 800px;
+  color: black;
+}
+
+.hero-overlay {
+  width: 100%;
+  margin: 0 auto 20px auto;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 .hero-buttons {

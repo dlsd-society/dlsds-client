@@ -8,13 +8,14 @@
 }
 
 .story-card {
-  flex: 1 1 300px;
-  max-width: 320px;
+  flex: 1 1 calc(33.33% - 30px); /* Three cards per row with gap adjustment */
+  max-width: calc(33.33% - 90px);
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 20px;
   background: #f9f9f9;
+  box-sizing: border-box;
 }
 
 .story-card img,
@@ -23,7 +24,7 @@
   height: 200px;
   object-fit: cover;
   margin-bottom: 15px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .story-card h3 {
@@ -36,4 +37,19 @@
   font-size: 0.95rem;
   color: #333;
   line-height: 1.5;
+}
+
+/* Tablet View */
+@media (max-width: 1024px) {
+  .story-card {    
+    max-width: 30%;
+  }
+}
+
+/* ✅ Mobile View: Single column layout */
+@media (max-width: 768px) {
+  .story-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

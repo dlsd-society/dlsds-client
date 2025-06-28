@@ -4,8 +4,10 @@ const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="hero-content">
-        <h1>Empowering Through Education</h1>
-        <p>Transforming lives by making quality education accessible to all.</p>
+        <div className="hero-overlay">
+          <h1 style={{ fontSize: '2rem' }}>Digital Literacy and Skill Development Society</h1>
+          <p style={{ fontSize: '1.5rem' }}>Creating Opportunities Through Skills and Digital Empowerment</p>
+        </div>
         <div className="hero-buttons">
           <button>Join Us</button>
           <button>Our Programs</button>

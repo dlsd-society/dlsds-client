@@ -11,9 +11,9 @@ import youthEmployment from "../../assets/youth-employment.png"; // Replace with
 const SpotlightSection = () => {
   return (
     <section className="spotlight-section">
-      <h2 className="spotlight-title">SPOTLIGHT</h2>
+      <h2 className="spotlight-title">Popular Programs</h2>
       <p className="spotlight-subtitle">
-        A glimpse into DLSD Society's programs and other innovative programs, latest recognition and awards
+        Showcasing DLSD Society’s impactful programs, forward-thinking initiatives, and honors received.
       </p>
 
       <div className="spotlight-grid">

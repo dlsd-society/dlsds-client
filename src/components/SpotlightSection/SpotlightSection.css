@@ -26,8 +26,8 @@
 
 .spotlight-card {
   position: relative;
-  width: 100%;
-  max-width: 500px;
+  flex: 1 1 calc(50% - 30px); /* Two per row with gap */
+  max-width: calc(50% - 180px);
   height: 300px;
   background-size: cover;
   background-position: center;
@@ -36,6 +36,11 @@
   display: flex;
   align-items: flex-end;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-5px);
 }
 
 .spotlight-overlay {
@@ -62,9 +67,19 @@
   line-height: 1.5;
 }
 
-/* Optional Responsive Tweak */
-@media (max-width: 768px) {
+/* Tablet View (Still two cards per row) */
+@media (max-width: 1024px) {
   .spotlight-card {
+    flex: 1 1 48%;
+    max-width: 45%;
+  }
+}
+
+/* Mobile View (One card per row) */
+@media (max-width: 600px) {
+  .spotlight-card {
+    flex: 1 1 100%;
+    max-width: 100%;
     height: 240px;
   }
 

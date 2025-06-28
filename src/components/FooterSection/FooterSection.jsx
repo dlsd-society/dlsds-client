@@ -7,12 +7,12 @@ const FooterSection = () => {
       <div className="footer-top">
         <div className="footer-column">
           <h3>Get In Touch</h3>
-          <p>NIIT Foundation</p>
-          <p>8, Balaji Estate</p>
-          <p>Kalkaji</p>
-          <p>New Delhi -110019</p>
-          <p>Contact No: 011-45512650</p>
-          <p>Email: contact@niitfoundation.org</p>
+          <p>DLSD Society</p>
+          <p>Beltola Tiniali</p>
+          <p>Guwahati</p>
+          <p>Assam -781028</p>
+          <p>Contact No: +91-8721909414</p>
+          <p>Email: mail@dlsdsociety.org</p>
         </div>
 
         <div className="footer-column">
@@ -40,15 +40,15 @@ const FooterSection = () => {
         <div className="footer-column">
           <h3>Newsletters & Reports</h3>
           <ul className="newsletter-list">
-            <li>📄 NF Newsletter May 2025</li>
-            <li>📄 NF Newsletter December 2024</li>
-            <li>📄 NF Newsletter September 2024</li>
+            <li>📄 DLSDS Newsletter May 2025</li>
+            <li>📄 DLSDS Newsletter December 2024</li>
+            <li>📄 DLSDS Newsletter September 2024</li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© Copyright 2025 NIIT Foundation.</p>
+        <p>© Copyright 2025 DLSD Society.</p>
       </div>
     </footer>
   );

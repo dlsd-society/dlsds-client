@@ -15,7 +15,7 @@ const ContactBar = () => {
   return (
     <div className="contact-bar">
       <div className="contact-left">
-        📞 +91-8721909414 | 📧 contact@dlsdsociety.org
+        📞 +91-8721909414 | 📧 mail@dlsdsociety.org
       </div>
       <div className="contact-right">
         <button className="cta-button" onClick={() => navigate("/contact")}>
