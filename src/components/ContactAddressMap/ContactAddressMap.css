@@ -2,9 +2,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 40px;
+  max-width: 1000px; /* ✅ Constrain width */
+  margin: 40px auto 0 auto; /* ✅ Center horizontally and add top margin */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
+/* Map styling */
 .map-frame {
   width: 100%;
   height: 300px;
@@ -34,6 +40,7 @@
   }
 }
 
+/* Office details styling */
 .office-details h2 {
   font-size: 28px;
   margin-bottom: 12px;

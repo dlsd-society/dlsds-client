@@ -1,62 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ContactPage.css';
 import PartnershipForm from '../../components/ContactForms/PartnershipForm';
-import NGOPartnershipForm from '../../components/ContactForms/NGOPartnershipForm';
-import AdmissionForm from '../../components/ContactForms/AdmissionForm';
 import VolunteerForm from '../../components/ContactForms/VolunteerForm';
-import ContactAddressMap from '../../components/ContactAddressMap/ContactAddressMap';
-import FooterSection from '../../components/FooterSection/FooterSection';
-
 
 const ContactPage = () => {
-  return (    
-    <div className="contact-page">
-      <section className="contact-cards">
-        <div className="contact-card">
-          <h2><em>Partnerships</em></h2>
-          <p>please write to us at</p>
-          <p className="email">partner@niitfoundation.org</p>
-          <p>to know more about the partnership opportunities.</p>
-        </div>
-        <div className="contact-card">
-          <h2><em>Admission</em></h2>
-          <p>please write to us at</p>
-          <p className="email">enquiry@niitfoundation.org</p>
-          <p>along with your course preference and contact details.</p>
-        </div>
-        <div className="contact-card">
-          <h2><em>Volunteering</em></h2>
-          <p>please write to us at</p>
-          <p className="email">volunteer@niitfoundation.org</p>
-          <p>with your core skills, interest areas and location preference.</p>
-        </div>
-      </section>
+  const [showPartnershipModal, setShowPartnershipModal] = useState(false);
+  const [showVolunteerModal, setShowVolunteerModal] = useState(false);
 
-      <div className="or-text">OR</div>
-      <div className="form-heading">Fill the Form Below</div>
+  return (
+    <div className="contact-page-wrapper">
+      <div className="contact-page-content">
+        {/* Get Involved section (appears on left in larger screens, top on mobile) */}
+        <div className="contact-action-links">
+          <h2>Get Involved</h2>
+          <button onClick={() => setShowPartnershipModal(true)} className="action-btn">
+            Partnerships
+          </button>
+          <button onClick={() => setShowVolunteerModal(true)} className="action-btn">
+            Volunteering
+          </button>
+        </div>
 
-      <div className="form-row-wrapper">
-        <div className="form-half">
-          <PartnershipForm />
+        {/* Our Address section */}
+        <div className="contact-map-address">
+          <div className="address-and-map-container">
+            <div className="address-text">
+              <h2>Our Address</h2>
+              <p>Digital Literacy and Skill Development Society</p>
+              <p>1234 Example Street, Delhi, India</p>
+              <p>Phone: +91-8721909414</p>
+              <p>Email: contact@dlsdsociety.org</p>
+            </div>
+            <div className="map-embed">
+              <iframe
+                title="DLSD Society Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83920875844!2d77.06889921808932!3d28.527582000000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3b6fdf2e44b%3A0xc2d5e9c1a5b5b9d5!2sNIIT%20Foundation!5e0!3m2!1sen!2sin!4v1718107050666!5m2!1sen!2sin"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="map-frame"
+              ></iframe>
+            </div>
+          </div>
         </div>
-        <div className="vertical-divider"></div>
-        <div className="form-half">
-          <NGOPartnershipForm />
-        </div>
+
       </div>
 
-      <div className="form-row-wrapper">
-        <div className="form-half">
-          <AdmissionForm />
+      {/* Modal - Partnerships */}
+      {showPartnershipModal && (
+        <div className="modal-backdrop">
+          <div className="modal-box">
+            <button onClick={() => setShowPartnershipModal(false)} className="close-btn">×</button>
+            <h3>Partnership Form</h3>
+            <PartnershipForm />
+          </div>
         </div>
-        <div className="vertical-divider"></div>
-        <div className="form-half">
-          <VolunteerForm />
-        </div>
-      </div>
+      )}
 
-      <ContactAddressMap />
-    </div>              
+      {/* Modal - Volunteering */}
+      {showVolunteerModal && (
+        <div className="modal-backdrop">
+          <div className="modal-box">
+            <button onClick={() => setShowVolunteerModal(false)} className="close-btn">×</button>
+            <h3>Volunteer Form</h3>
+            <VolunteerForm />
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
