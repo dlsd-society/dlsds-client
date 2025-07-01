@@ -32,19 +32,22 @@
 }
 
 /* Address and Map Container Layout */
+
 .address-and-map-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 20px;
+  align-items: flex-start;
 }
 
 .address-text {
   flex: 1 1 50%;
+  order: 1;
 }
 
 .map-embed {
   flex: 1 1 50%;
+  order: 2;
 }
 
 .map-frame {
@@ -53,6 +56,31 @@
   border: 0;
   border-radius: 8px;
 }
+
+/* Mobile layout (map below address) */
+@media (max-width: 768px) {
+  .address-and-map-container {
+    flex-direction: column;
+  }
+
+  .address-text,
+  .map-embed {
+    flex: 1 1 100%;
+  }
+
+  .address-text {
+    order: 1;
+  }
+
+  .map-embed {
+    order: 2;
+  }
+
+  .map-frame {
+    height: 300px;
+  }
+}
+
 
 /* Buttons */
 .action-btn {
