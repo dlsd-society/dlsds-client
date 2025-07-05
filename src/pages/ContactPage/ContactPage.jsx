@@ -27,7 +27,8 @@ const ContactPage = () => {
             <div className="address-text">
               <h2>Our Address</h2>
               <p>Digital Literacy and Skill Development Society</p>
-              <p>1234 Example Street, Delhi, India</p>
+              <p>Beltola Tiniali, Bishnu Rabha Path</p>
+              <p>Guwahati, Assam, Kamrup(M), India</p>
               <p>Phone: +91-8721909414</p>
               <p>Email: contact@dlsdsociety.org</p>
             </div>

@@ -32,8 +32,8 @@ const FooterSection = () => {
           <h3>Stay Connected</h3>
           <div className="social-icons">
             <a href="#"><i className="fab fa-youtube"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/dlsdsassam/"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/dlsdsassam/"><i className="fab fa-facebook-f"></i></a>
           </div>
         </div>
 
