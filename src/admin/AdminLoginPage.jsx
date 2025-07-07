@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import axios from 'axios';
+import BASE_URL from '../config/config';
 
 const AdminLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const AdminLoginPage = () => {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/admins/login', {
+      const res = await axios.post(`${BASE_URL}/admin/login`, {
         email,
         password,
       });

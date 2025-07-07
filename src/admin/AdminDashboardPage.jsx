@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import BASE_URL from '../config/config';
 
 const AdminDashboardPage = () => {
   const { logout, adminToken } = useAdminAuth();
@@ -12,7 +13,7 @@ const AdminDashboardPage = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admins/dashboard', {
+        const res = await axios.get(`${BASE_URL}/admin/dashboard`, {
           headers: {
             Authorization: `Bearer ${adminToken}`,
           },

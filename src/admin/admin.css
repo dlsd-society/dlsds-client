@@ -1,0 +1,7 @@
+/* src/admin/admin.css */
+.admin-layout-wrapper {
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+  font-family: sans-serif;
+}
