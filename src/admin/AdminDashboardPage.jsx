@@ -1,7 +1,7 @@
 // src/admin/AdminDashboardPage.jsx
 import React, { useEffect, useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BASE_URL from '../config/config';
 
@@ -40,7 +40,9 @@ const AdminDashboardPage = () => {
           <li>Manage Users</li>
           <li>Manage Courses</li>
           <li>Manage Content</li>
-          <li>Reports</li>
+          <Link to="/admin-dashboard/manage-reports" className="admin-link">
+            Manage Reports
+          </Link>
         </ul>
       </div>
     </div>

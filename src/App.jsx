@@ -1,8 +1,11 @@
-// App.jsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AboutPage from "./pages/AboutPage/AboutPage";
+import ContactBar from "./components/ContactBar/ContactBar";
+import Navbar from "./components/Navbar/Navbar";
+import FooterSection from "./components/FooterSection/FooterSection";
+
 import HomePage from "./pages/HomePage/HomePage";
+import AboutPage from "./pages/AboutPage/AboutPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import DonationPage from "./pages/DonationPage/DonationPage";
 import CoursesAndCertifications from "./pages/CoursesAndCertifications/CoursesAndCertifications";
@@ -14,97 +17,77 @@ import { AdminAuthProvider } from "./context/AdminAuthContext";
 import AdminLoginPage from "./admin/AdminLoginPage";
 import RequireAdminAuth from "./admin/adminRoutes";
 import AdminDashboardPage from "./admin/AdminDashboardPage";
-
-import MainLayout from "./layouts/MainLayout";
-import AdminLayout from "./admin/AdminLayout";
+import ManageReportsPage from "./admin/ManageReportsPage";
+import UploadActivityForm from "./admin/UploadActivityForm";
+import UploadAuditReportForm from "./admin/UploadAuditReportForm";
+import UploadAnnualReportForm from "./admin/UploadAnnualReportForm";
 
 function App() {
   return (
     <AdminAuthProvider>
       <Routes>
-        {/* Admin Routes without ContactBar, Navbar, Footer */}
+        {/* Public layout */}
         <Route
-          path="/admin-login"
+          path="/*"
           element={
-            <AdminLayout>
-              <AdminLoginPage />
-            </AdminLayout>
+            <>
+              <ContactBar />
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/donation" element={<DonationPage />} />
+                <Route path="/courses" element={<CoursesAndCertifications />} />
+                <Route path="/resources" element={<ResourcesPage />} />
+                <Route path="/programs" element={<ProgramsPage />} />
+                <Route path="/partners" element={<PartnersPage />} />
+              </Routes>
+              <FooterSection />
+            </>
           }
         />
+
+        {/* Admin-only routes */}
+        <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route
           path="/admin-dashboard"
           element={
             <RequireAdminAuth>
-              <AdminLayout>
-                <AdminDashboardPage />
-              </AdminLayout>
+              <AdminDashboardPage />
             </RequireAdminAuth>
           }
         />
-
-        {/* Public Site Routes with full layout */}
         <Route
-          path="/"
+          path="/admin-dashboard/manage-reports"
           element={
-            <MainLayout>
-              <HomePage />
-            </MainLayout>
+            <RequireAdminAuth>
+              <ManageReportsPage />
+            </RequireAdminAuth>
           }
         />
         <Route
-          path="/about"
+          path="/admin-dashboard/manage-reports/activity"
           element={
-            <MainLayout>
-              <AboutPage />
-            </MainLayout>
+            <RequireAdminAuth>
+              <UploadActivityForm />
+            </RequireAdminAuth>
           }
         />
         <Route
-          path="/contact"
+          path="/admin-dashboard/manage-reports/audit"
           element={
-            <MainLayout>
-              <ContactPage />
-            </MainLayout>
+            <RequireAdminAuth>
+              <UploadAuditReportForm />
+            </RequireAdminAuth>
           }
         />
         <Route
-          path="/donation"
+          path="/admin-dashboard/manage-reports/annual"
           element={
-            <MainLayout>
-              <DonationPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/courses"
-          element={
-            <MainLayout>
-              <CoursesAndCertifications />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/resources"
-          element={
-            <MainLayout>
-              <ResourcesPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/programs"
-          element={
-            <MainLayout>
-              <ProgramsPage />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/partners"
-          element={
-            <MainLayout>
-              <PartnersPage />
-            </MainLayout>
+            <RequireAdminAuth>
+              <UploadAnnualReportForm />
+            </RequireAdminAuth>
           }
         />
       </Routes>
