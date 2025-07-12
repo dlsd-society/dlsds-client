@@ -25,7 +25,7 @@ export default function UploadAnnualReportForm() {
     try {
       const formData = new FormData();
       for (let key in form) formData.append(key, form[key]);
-      formData.append("category", "activity");
+      formData.append("category", "annual");
 
       const token = localStorage.getItem("adminToken");
       const res = await axios.post(`${BASE_URL}/reports/upload`, formData, {
