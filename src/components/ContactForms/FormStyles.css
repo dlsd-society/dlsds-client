@@ -13,7 +13,8 @@
 }
 
 .form-row input,
-.form-row select {
+.form-row select,
+.form-row textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -27,4 +28,8 @@
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.checkbox-row {
+  margin-bottom: 1rem;
 }

@@ -6,6 +6,10 @@ import VolunteerForm from '../../components/ContactForms/VolunteerForm';
 const ContactPage = () => {
   const [showPartnershipModal, setShowPartnershipModal] = useState(false);
   const [showVolunteerModal, setShowVolunteerModal] = useState(false);
+  
+  // Close handlers
+  const closePartnershipModal = () => setShowPartnershipModal(false);
+  const closeVolunteerModal = () => setShowVolunteerModal(false);
 
   return (
     <div className="contact-page-wrapper">
@@ -51,9 +55,8 @@ const ContactPage = () => {
       {showPartnershipModal && (
         <div className="modal-backdrop">
           <div className="modal-box">
-            <button onClick={() => setShowPartnershipModal(false)} className="close-btn">×</button>
-            <h3>Partnership Form</h3>
-            <PartnershipForm />
+            <button onClick={() => setShowPartnershipModal(false)} className="close-btn">×</button>            
+            <PartnershipForm onClose={closePartnershipModal} />
           </div>
         </div>
       )}
@@ -62,9 +65,8 @@ const ContactPage = () => {
       {showVolunteerModal && (
         <div className="modal-backdrop">
           <div className="modal-box">
-            <button onClick={() => setShowVolunteerModal(false)} className="close-btn">×</button>
-            <h3>Volunteer Form</h3>
-            <VolunteerForm />
+            <button onClick={() => setShowVolunteerModal(false)} className="close-btn">×</button>            
+            <VolunteerForm onClose={closeVolunteerModal} />
           </div>
         </div>
       )}
