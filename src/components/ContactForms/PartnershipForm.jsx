@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import './FormStyles.css';
 import axios from 'axios';
 import BASE_URL from '../../config/config';
+import indianStates from '../../data/indianStates.json';
 
 const PartnershipForm = ({ onClose }) => {
+  
   const defaultState = {
     organisation: '',
     contactPerson: '',
     email: '',
     contactNumber: '',
     remarks: '',
+    state: '',
+    city: '',
   };
 
   const [formData, setFormData] = useState(defaultState);
   const [error, setError] = useState('');
+  const [stateList] = useState(indianStates);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +33,10 @@ const PartnershipForm = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { organisation, contactPerson, email, contactNumber, remarks } = formData;
+    const { organisation, contactPerson, email, contactNumber, remarks, state, city } = formData;
 
-    if (!organisation || !contactPerson || !email || !contactNumber || !remarks) {
-      setError('Please fill in all fields.');
+    if (!organisation || !contactPerson || !email || !contactNumber || !state || !city) {
+      setError('Please fill in all required fields.');
       return;
     }
 
@@ -64,6 +69,33 @@ const PartnershipForm = ({ onClose }) => {
         <div className="form-row">
           <input type="email" name="email" placeholder="Email ID" value={formData.email} onChange={handleChange} />
           <input type="text" name="contactNumber" placeholder="Contact Number" value={formData.contactNumber} onChange={handleChange} />
+        </div>
+
+        <div className="form-row">
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            value={formData.city}
+            onChange={handleChange}
+          />
+          <select
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
+            className={!formData.state ? "placeholder-select" : ""}
+          >
+            {!formData.state && (
+              <option value="" disabled hidden>
+                State
+              </option>
+            )}
+            {stateList.map((state) => (
+              <option key={state.state_id} value={state.state_name}>
+                {state.state_name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="form-row">

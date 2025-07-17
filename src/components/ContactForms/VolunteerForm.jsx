@@ -102,10 +102,11 @@
 // export default VolunteerForm;
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './FormStyles.css';
 import axios from 'axios';
 import BASE_URL from '../../config/config';
+import indianStates from '../../data/indianStates.json';
 
 const VolunteerForm = ({ onClose }) => {
   const defaultState = {
@@ -118,9 +119,10 @@ const VolunteerForm = ({ onClose }) => {
     agreed: false,
   };
 
+  const [stateList] = useState(indianStates);
   const [formData, setFormData] = useState(defaultState);
-  const [error, setError] = useState('');
-
+  const [error, setError] = useState(''); 
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -175,23 +177,49 @@ const VolunteerForm = ({ onClose }) => {
 
         <div className="form-row">
           <input type="email" name="email" placeholder="Email ID" style={{ flex: 1 }} value={formData.email} onChange={handleChange} />
-          <select name="qualification" style={{ flex: 1 }} value={formData.qualification} onChange={handleChange}>
+          {/* <select name="qualification" style={{ flex: 1 }} value={formData.qualification} onChange={handleChange}>
             <option value="">Highest Qualification</option>
             <option value="hslc">HSLC Passed</option>
             <option value="hs">HS Passed</option>
             <option value="grad">Graduation</option>
             <option value="masters">Masters</option>
+          </select> */}
+          <select
+            name="qualification"
+            value={formData.qualification}
+            onChange={handleChange}            
+            className={!formData.qualification ? "placeholder-select" : ""}
+          >
+            {!formData.qualification && (
+              <option value="" disabled hidden>
+                Highest Qualification
+              </option>
+            )}
+            <option value="hslc">HSLC Passed</option>
+            <option value="hs">HS Passed</option>
+            <option value="graduate">Graduate</option>
+            <option value="postgraduate">Post Graduate</option>
           </select>
         </div>
 
         <div className="form-row">
           <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} />
-          <select name="state" value={formData.state} onChange={handleChange}>
-            <option value="">State</option>
-            <option value="Assam">Assam</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Karnataka">Karnataka</option>
-            {/* Add more */}
+          <select
+            name="state"
+            value={formData.state}
+            onChange={handleChange}
+            className={!formData.state ? "placeholder-select" : ""}
+          >
+            {!formData.state && (
+              <option value="" disabled hidden>
+                State
+              </option>
+            )}
+            {stateList.map((state) => (
+              <option key={state.state_id} value={state.state_name}>
+                {state.state_name}
+              </option>
+            ))}
           </select>
         </div>
 

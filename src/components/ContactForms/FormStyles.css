@@ -21,6 +21,16 @@
   flex: 1;
 }
 
+/* Apply gray color when the placeholder is visible */
+.placeholder-select {
+  color: #888;
+}
+
+/* Reset color when user has selected a valid option */
+select:not(.placeholder-select) {
+  color: #000;
+}
+
 .submit-btn {
   background-color: #007BFF;
   color: white;
