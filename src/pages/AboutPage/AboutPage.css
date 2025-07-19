@@ -1,7 +1,11 @@
+/* Root Layout */
 .about-page {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  color: #222;
+  line-height: 1.7;
 }
 
+/* Hero Section */
 .about-hero {
   position: relative;
   height: 300px;
@@ -20,46 +24,39 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
-.about-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.about-section h2 {
-  color: #005596;
-  margin-bottom: 20px;
-  font-size: 28px;
-}
-
-.about-section p {
-  font-size: 16px;
-  line-height: 1.7;
-}
-
-.about-intro {
-  padding: 60px 20px;
-  background-color: #f9f9f9;
+  font-size: 42px;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
-.intro-container {
+/* Section Styling */
+.about-section,
+.about-intro {
+  padding: 60px 20px;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto;
 }
 
-.intro-tagline {
-  font-size: 20px;
+.section-title {
+  font-size: 32px;
+  color: #005596;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Intro Content */
+.intro-tagline,
+.intro-description {
+  font-size: 17px;
+  font-weight: 400;
   color: #333;
   margin-bottom: 40px;
-  font-weight: 500;
+  text-align: justify;
 }
 
+/* Pillars */
 .intro-pillars {
   display: flex;
   flex-wrap: wrap;
@@ -69,18 +66,28 @@
 }
 
 .pillar {
-  flex: 1 1 250px;
+  flex: 1 1 280px;
   background-color: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
   text-align: left;
+  transition: transform 0.3s ease;
+  min-width: 260px;
+  max-width: 300px;
+}
+
+.pillar:hover {
+  transform: translateY(-5px);
 }
 
 .pillar h3 {
   font-size: 18px;
   color: #005a9c;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  white-space: nowrap; /* Prevent breaking */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pillar p {
@@ -89,10 +96,38 @@
   line-height: 1.6;
 }
 
-.intro-description {
-  font-size: 16px;
-  color: #444;
+/* Mission & Values List */
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin: auto;
   max-width: 900px;
-  margin: 0 auto;
+}
+
+.about-list li {
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.about-list li span {
+  font-size: 20px;
+  min-width: 26px;
+}
+
+.about-list li strong {
+  white-space: nowrap; /* Prevent breaking */
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Member Body */
+.about-section p {
+  font-size: 16px;
+  color: #333;
   line-height: 1.8;
+  text-align: justify;
 }

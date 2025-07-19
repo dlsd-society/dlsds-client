@@ -34,26 +34,30 @@ const AboutPage = () => {
         <div className="intro-container">
           <h2 className="section-title">Who We Are</h2>
           <p className="intro-tagline">
-            Digital Literacy and Skill Development Society (DLSDS) is a non-profit organization dedicated to bridging the digital gap in North-East India.
+            The <strong>Digital Literacy and Skill Development Society (DLSD Society)</strong> is a registered non-profit organization working to bridge the digital divide and make technology accessible to everyone. Our mission is to create a digitally empowered and inclusive society where every individual, regardless of background, has the opportunity to learn, grow, and thrive in the digital era.
+            <br /><br />
+            We conduct a wide range of training programs—from basic digital literacy (computer fundamentals, internet safety, digital payments) to advanced technical skills (programming, data analytics, cloud computing, cybersecurity, and more). Our programs are tailored for school and college students, job seekers, professionals, and marginalized communities, delivered both online and offline across India.
+            <br /><br />
+            By collaborating with government institutions, local bodies, and educational centers, we deliver hands-on, relevant, and practical digital learning at the grassroots level. Whether it's introducing a child to a computer or helping a young professional explore coding and emerging technologies, we are committed to nurturing lifelong digital skills for personal and professional growth.
           </p>
 
           <div className="intro-pillars">
             <div className="pillar">
               <h3>📶 Digital Inclusivity</h3>
-              <p>We aim to bring digital skills to every corner of the region, ensuring no one is left behind in the digital revolution.</p>
+              <p>We aim to bring digital education to every corner—rural, urban, underserved—so that everyone can participate in the digital revolution.</p>
             </div>
             <div className="pillar">
               <h3>🤝 Empowering Communities</h3>
-              <p>Through workshops, training, and outreach, we empower individuals to become confident digital citizens.</p>
+              <p>Through hands-on training, awareness sessions, and outreach programs, we empower individuals to become confident, responsible digital citizens.</p>
             </div>
             <div className="pillar">
-              <h3>❤️ Non-Profit Commitment</h3>
-              <p>As a mission-driven organization, we reinvest our efforts into building accessible, equitable digital education for all.</p>
+              <h3>❤️ Mission-Driven</h3>
+              <p>As a non-profit, every effort we make is reinvested into building a stronger, more equitable digital future for all.</p>
             </div>
           </div>
 
           <p className="intro-description">
-            Committed to making digital literacy accessible to all, DLSDS actively works towards empowering individuals with the skills needed to thrive in the digital age. By providing comprehensive training programs, workshops, and awareness initiatives, DLSDS ensures that communities, regardless of their socio-economic background, have the knowledge and tools to navigate the digital landscape.
+            DLSD Society is committed to democratizing digital access and building skills that enable employment, innovation, and independence. We strive to create a world where digital literacy is not a privilege—but a right available to all.
           </p>
         </div>
       </section>
@@ -62,22 +66,23 @@ const AboutPage = () => {
       <section id="mission" className="about-section">
         <h2 className="section-title">MISSION & VALUES</h2>
         <ul className="about-list">
-          <li>Be Customer Centric — Students and Employers — be the preferred choice/</li>
-          <li>Meet any and every commitment that we make — lead by example</li>
-          <li>Leverage Partnerships — be a platform for growth for all including staff</li>
-          <li>Each one to operate from Entrepreneurial mind-set — being innovative in everything we do</li>
-          <li>Each one to recognise risk-taking — celebrate people who stick their necks out — we know that path breakers are treading unknown paths</li>
-          <li>Actively build Alumni Network — it’s not about one time push but being a lifelong friend</li>
+          <li>✅ <strong>Empower through Education</strong> — Deliver quality digital literacy and skill development programs to foster growth and independence.</li>
+          <li>✅ <strong>Be Inclusive & Accessible</strong> — Reach remote and underserved communities to ensure equal digital opportunities for all.</li>
+          <li>✅ <strong>Foster Innovation</strong> — Encourage creative problem-solving, digital experimentation, and adaptive learning.</li>
+          <li>✅ <strong>Build Lifelong Connections</strong> — Engage with learners beyond training, building a strong alumni and mentoring network.</li>
+          <li>✅ <strong>Lead with Integrity</strong> — Operate with transparency, purpose, and accountability in every initiative.</li>
+          <li>✅ <strong>Collaborate for Impact</strong> — Partner with institutions, educators, and changemakers to maximize reach and effectiveness.</li>
         </ul>
       </section>
 
       {/* Member Body */}
-      <section id="members" className="about-section">
-        <h2>Member Body</h2>
+      {/* <section id="members" className="about-section">
+        <h2 className="section-title">Member Body</h2>
         <p>
-          Our governing body comprises passionate leaders, educators, and industry experts committed to transforming lives. Each member plays a strategic role in ensuring our mission is fulfilled effectively.
+          Our core team and advisory members include passionate educators, social entrepreneurs, and tech professionals dedicated to transforming lives through digital empowerment. Each member contributes expertise and leadership to ensure that our mission is realized with impact and integrity.
         </p>
-      </section>
+      </section> */}
+
     </div>
   );
 };
