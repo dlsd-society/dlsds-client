@@ -21,6 +21,7 @@ import ManageReportsPage from "./admin/ManageReportsPage";
 import UploadActivityForm from "./admin/UploadActivityForm";
 import UploadAuditReportForm from "./admin/UploadAuditReportForm";
 import UploadAnnualReportForm from "./admin/UploadAnnualReportForm";
+import InternshipPage from "./pages/InternshipPage/InternshipPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="/programs" element={<ProgramsPage />} />
                 <Route path="/partners" element={<PartnersPage />} />
+                <Route path="/internships-and-training" element={<InternshipPage />} />
               </Routes>
               <FooterSection />
             </>

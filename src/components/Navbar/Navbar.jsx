@@ -55,14 +55,14 @@ const Navbar = () => {
           </div>
         </li>
 
-        <li>
+        {/* <li>
           <a href="/programs">PROGRAMS ▾</a>
           <div className="dropdown">
             <a href="/programs#skilling">Skilling</a>
             <a href="/programs#education">Education</a>
             <a href="/programs#digital">Digital Literacy</a>
           </div>
-        </li>
+        </li> */}
 
         <li>
           <a href="/partners">PARTNERSHIPS ▾</a>
@@ -79,18 +79,18 @@ const Navbar = () => {
             <a href="/courses#online">Online Courses</a>
             <a href="#">Seminars & Webinars</a>
             <a href="#">Workshops</a>
-            <a href="#">Internships & Training</a>
+            <a href="/internships-and-training">Internships & Training</a>
           </div>
         </li>
 
-        <li>
+        {/* <li>
           <a href="/resources">RESOURCES ▾</a>
           <div className="dropdown">
             <a href="/resources#activities">Activities</a>
             <a href="/resources#audit">Audit Reports</a>
             <a href="/resources#annual">Annual Reports</a>
           </div>
-        </li>
+        </li> */}
 
         <li><a href="/contact">CONTACT</a></li>
       </ul>
@@ -112,7 +112,7 @@ const Navbar = () => {
               )}
             </li>
 
-            <li onClick={() => toggleDropdown("programs")}>
+            {/* <li onClick={() => toggleDropdown("programs")}>
               <span>PROGRAMS ▾</span>
               {openDropdown === "programs" && (
                 <div className="mobile-dropdown">
@@ -121,7 +121,7 @@ const Navbar = () => {
                   <a href="/programs#digital">Digital Literacy</a>
                 </div>
               )}
-            </li>
+            </li> */}
 
             <li onClick={() => toggleDropdown("partners")}>
               <span>PARTNERSHIPS ▾</span>
@@ -146,7 +146,7 @@ const Navbar = () => {
               )}
             </li>
 
-            <li onClick={() => toggleDropdown("resources")}>
+            {/* <li onClick={() => toggleDropdown("resources")}>
               <span>RESOURCES ▾</span>
               {openDropdown === "resources" && (
                 <div className="mobile-dropdown">
@@ -155,7 +155,7 @@ const Navbar = () => {
                   <a href="/resources#annual">Annual Reports</a>
                 </div>
               )}
-            </li>
+            </li> */}
 
             <li><a href="/contact">CONTACT</a></li>
           </ul>
