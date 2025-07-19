@@ -73,7 +73,7 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
   text-align: left;
   transition: transform 0.3s ease;
-  min-width: 260px;
+  min-width: 320px;
   max-width: 300px;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .pillar h3 {
-  font-size: 18px;
+  font-size: 16px;
   color: #005a9c;
   margin-bottom: 12px;
   white-space: nowrap; /* Prevent breaking */
@@ -91,7 +91,7 @@
 }
 
 .pillar p {
-  font-size: 15px;
+  font-size: 13.9px;
   color: #444;
   line-height: 1.6;
 }
@@ -99,30 +99,30 @@
 /* Mission & Values List */
 .about-list {
   list-style: none;
-  padding-left: 0;
-  margin: auto;
-  max-width: 900px;
+  padding: 0;
+  margin: 0;
 }
 
 .about-list li {
-  font-size: 16px;
-  margin-bottom: 20px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .about-list li span {
-  font-size: 20px;
-  min-width: 26px;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  line-height: 1.6;
 }
 
-.about-list li strong {
-  white-space: nowrap; /* Prevent breaking */
-  font-weight: 600;
-  margin-right: 8px;
+.about-list-text {
+  max-width: 100%;
 }
+
+.about-list-text strong {
+  white-space: nowrap; /* Prevents breaking between bold text and description */
+}
+
 
 /* Member Body */
 .about-section p {

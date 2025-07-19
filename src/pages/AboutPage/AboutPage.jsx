@@ -64,15 +64,47 @@ const AboutPage = () => {
 
       {/* Mission and Values */}
       <section id="mission" className="about-section">
-        <h2 className="section-title">MISSION & VALUES</h2>
+        <h2 className="section-title">MISSION & VALUES</h2>        
+
         <ul className="about-list">
-          <li>✅ <strong>Empower through Education</strong> — Deliver quality digital literacy and skill development programs to foster growth and independence.</li>
-          <li>✅ <strong>Be Inclusive & Accessible</strong> — Reach remote and underserved communities to ensure equal digital opportunities for all.</li>
-          <li>✅ <strong>Foster Innovation</strong> — Encourage creative problem-solving, digital experimentation, and adaptive learning.</li>
-          <li>✅ <strong>Build Lifelong Connections</strong> — Engage with learners beyond training, building a strong alumni and mentoring network.</li>
-          <li>✅ <strong>Lead with Integrity</strong> — Operate with transparency, purpose, and accountability in every initiative.</li>
-          <li>✅ <strong>Collaborate for Impact</strong> — Partner with institutions, educators, and changemakers to maximize reach and effectiveness.</li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Empower through Education</strong> — Deliver quality digital literacy and skill development programs to foster growth and independence.
+            </div>
+          </li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Be Inclusive & Accessible</strong> — Reach remote and underserved communities to ensure equal digital opportunities for all.
+            </div>
+          </li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Foster Innovation</strong> — Encourage creative problem-solving, digital experimentation, and adaptive learning.
+            </div>
+          </li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Build Lifelong Connections</strong> — Engage with learners beyond training, building a strong alumni and mentoring network.
+            </div>
+          </li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Lead with Integrity</strong> — Operate with transparency, purpose, and accountability in every initiative.
+            </div>
+          </li>
+          <li>
+            <span>✅</span>
+            <div className="about-list-text">
+              <strong>Collaborate for Impact</strong> — Partner with institutions, educators, and changemakers to maximize reach and effectiveness.
+            </div>
+          </li>
         </ul>
+
       </section>
 
       {/* Member Body */}
