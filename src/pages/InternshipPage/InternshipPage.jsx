@@ -72,7 +72,14 @@ const ApplyButton = styled.a`
 const InternshipPage = () => {
   return (
     <PageContainer>
-      <Title>Internships & Trainings</Title>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Title>Internships & Trainings</Title>
+        <ApplyButton 
+          style={{ marginTop: '0' }}
+          href="https://forms.gle/NLrnkRVYnZgGgJNN8" target="_blank">
+          Apply Now
+        </ApplyButton>
+      </div>      
 
       <Section>
         <SubTitle>Build Your Future in Software Development — Remotely!</SubTitle>
@@ -86,7 +93,7 @@ const InternshipPage = () => {
 
       <Section>
         <SubTitle>What You'll Learn</SubTitle>
-        <ul>
+        <ul style={{ listStyle: 'none' }}>
           <li>✅ Full-stack web development</li>
           <li>✅ Git and collaborative workflows</li>
           <li>✅ Working with APIs and databases</li>
@@ -95,37 +102,15 @@ const InternshipPage = () => {
       </Section>
 
       <Section>
-        <SubTitle>Past Interns</SubTitle>
-        <Table>
-          <thead>
-            <tr>
-              <th>Intern Name</th>
-              <th>Institution</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Priya R.</td>
-              <td>Assam Engineering College, Guwahati</td>
-            </tr>
-            <tr>
-              <td>Akash B.</td>
-              <td>Jorhat Engineering College</td>
-            </tr>
-            <tr>
-              <td>Simran K.</td>
-              <td>Tezpur University</td>
-            </tr>
-            <tr>
-              <td>Manas J.</td>
-              <td>Don Bosco Institute of Technology</td>
-            </tr>
-            <tr>
-              <td>Rajdeep D.</td>
-              <td>Gauhati University</td>
-            </tr>
-          </tbody>
-        </Table>
+        <SubTitle>Students from Top Institutes take part in our Internships</SubTitle>
+        <ul style={{ listStyle: 'none', color: '#555', lineHeight: '1.8' }}>
+          <li>✅ Cotton University, Guwahati, Assam</li>                    
+          <li>✅ Jorhat Engineering College, Jorhat, Assam</li>
+          <li>✅ NERIM Group of Institutions, Guwahati Assam</li>          
+          <li>✅ Dibrugarh University, Dibrugarh, Assam</li>          
+          <li>✅ Royal Global University, Guwahati, Assam</li>          
+          <p> and many more…</p>
+        </ul>
       </Section>
 
       <Section>
@@ -146,7 +131,7 @@ const InternshipPage = () => {
         <Paragraph>
           Internships are limited and offered on a rolling basis. Early applicants have a better chance of selection.
         </Paragraph>
-        <ApplyButton href="https://your-google-form-link.com" target="_blank">
+        <ApplyButton href="https://forms.gle/NLrnkRVYnZgGgJNN8" target="_blank">
           Apply Now
         </ApplyButton>
       </Section>
