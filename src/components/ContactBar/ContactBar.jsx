@@ -21,11 +21,14 @@ const ContactBar = () => {
         <button className="cta-button" onClick={() => navigate("/contact")}>
           Volunteer
         </button>
+        <button className="cta-button" onClick={() => navigate("/contact")}>
+          Partnership
+        </button>
         <button className="cta-button" onClick={() => navigate("/donation")}>
           Donate
         </button>
-        <button className="cta-button">Learn - LMS</button>
-        <button className="cta-button">Join Us</button>
+        {/* <button className="cta-button">Learn - LMS</button>
+        <button className="cta-button">Join Us</button> */}
       </div>
 
       <div className="social-icons">
