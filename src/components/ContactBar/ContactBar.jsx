@@ -32,9 +32,9 @@ const ContactBar = () => {
       </div>
 
       <div className="social-icons">
-        <a href="https://www.facebook.com/dlsdsassam/"><FaFacebookF /></a>
-        <a href="https://www.linkedin.com/in/dlsdsassam/"><FaLinkedinIn /></a>        
-        <a href="#"><FaYoutube /></a>
+        <a target="_blank" href="https://www.facebook.com/dlsdsassam/"><FaFacebookF /></a>
+        <a target="_blank" href="https://www.linkedin.com/in/dlsdsociety/"><FaLinkedinIn /></a>        
+        <a target="_blank" href="#"><FaYoutube /></a>
       </div>
     </div>
   );

@@ -76,10 +76,17 @@ const Navbar = () => {
         <li>
           <a href="/courses">LEARNING ▾</a>
           <div className="dropdown">
-            <a href="/courses#online">Online Courses</a>
-            <a href="#">Seminars & Webinars</a>
-            <a href="#">Workshops</a>
+            <a href="/courses#online">Online Courses</a>            
             <a href="/internships-and-training">Internships & Training</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="/courses">EVENTS ▾</a>
+          <div className="dropdown">
+            <a href="/courses#online">Hackathons</a>            
+            <a href="#">Workshops</a>            
+            <a href="#">Seminars & Webinars</a>
           </div>
         </li>
 
@@ -145,6 +152,17 @@ const Navbar = () => {
                 </div>
               )}
             </li>
+
+            <li onClick={() => toggleDropdown("events")}>
+              <span>EVENTS ▾</span>
+              {openDropdown === "events" && (
+                <div className="mobile-dropdown">
+                  <a href="/courses#online">Hackathons</a>                  
+                  <a href="#">Workshops</a>
+                  <a href="#">Seminars & Webinars</a>
+                </div>
+              )}
+            </li>            
 
             {/* <li onClick={() => toggleDropdown("resources")}>
               <span>RESOURCES ▾</span>
