@@ -25,6 +25,7 @@ import InternshipPage from './pages/InternshipPage/InternshipPage';
 import FirstHack from './pages/FirstHack/FirstHack';
 import NavbarFirstHack from './components/NavbarFirstHack/NavbarFirstHack';
 import Hackathon from './pages/Hackathon/Hackathon';
+import ContactBarFirstHack from './components/ContactBarFirstHack/ContactBarFirstHack';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/donation" element={<DonationPage />} />
+                <Route path="/courses" element={<CoursesAndCertifications />} />
 
                 <Route path="/resources" element={<ResourcesPage />} />
                 <Route path="/programs" element={<ProgramsPage />} />
@@ -99,6 +101,7 @@ function App() {
           path="/firsthack"
           element={
             <>
+              <ContactBarFirstHack />
               <NavbarFirstHack />
               <FirstHack />
             </>
@@ -108,6 +111,7 @@ function App() {
           path="/firsthack/internships-and-training"
           element={
             <>
+              <ContactBarFirstHack />
               <NavbarFirstHack />
               <InternshipPage />
             </>
@@ -117,6 +121,7 @@ function App() {
           path="/firsthack/hackathons"
           element={
             <>
+              <ContactBarFirstHack />
               <NavbarFirstHack />
               <Hackathon />
             </>
@@ -126,6 +131,7 @@ function App() {
           path="/firsthack/courses"
           element={
             <>
+              <ContactBarFirstHack />
               <NavbarFirstHack />
               <CoursesAndCertifications />
             </>

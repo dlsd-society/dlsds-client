@@ -46,9 +46,7 @@ const HeroButton = styled.a`
 export default function HeroSection() {
   return (
     <HeroContainer>
-      <HeroTitle>
-        FirstHack 2025 <br /> Beginner Hackathon
-      </HeroTitle>
+      <HeroTitle>FirstHack 2025</HeroTitle>
       <HeroSubtitle>
         Join us for a 3 days, beginner-friendly virtual hackathon! <br /> Learn,
         code, connect, and create your first real project—no experience

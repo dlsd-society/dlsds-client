@@ -39,9 +39,9 @@ const NavbarFirstHack = () => {
         <li>
           <a href="/firsthack">Home</a>
         </li>
-        <li>
+        {/* <li>
           <a href="/firsthack/courses">COURSES</a>
-        </li>
+        </li> */}
         <li>
           <a href="#">Events</a>
         </li>
@@ -51,14 +51,14 @@ const NavbarFirstHack = () => {
         <li>
           <a href="/firsthack/hackathons">HACKATHONS</a>
         </li>
-        <li>
+        {/* <li>
           <a href="#">Job Board</a>
         </li>
         <li>
           <a href="#">CodeBuild</a>
-        </li>
+        </li> */}
         <li>
-          <a href="#">Contact</a>
+          <a href="/contact">Contact</a>
         </li>
       </ul>
 
@@ -69,9 +69,9 @@ const NavbarFirstHack = () => {
             <li>
               <a href="/firsthack">Home</a>
             </li>
-            <li>
+            {/* <li>
               <a href="/firsthack/courses">COURSES</a>
-            </li>
+            </li> */}
             <li>
               <a href="#">Events</a>
             </li>
@@ -81,14 +81,14 @@ const NavbarFirstHack = () => {
             <li>
               <a href="/firsthack/hackathons">HACKATHONS</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#">Job Board</a>
             </li>
             <li>
               <a href="#">CodeBuild</a>
-            </li>
+            </li> */}
             <li>
-              <a href="#">Contact</a>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </div>

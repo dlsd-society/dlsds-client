@@ -35,7 +35,8 @@ const Table = styled.table`
   border-collapse: collapse;
   margin-top: 1rem;
 
-  th, td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 0.75rem;
     text-align: left;
@@ -72,22 +73,39 @@ const ApplyButton = styled.a`
 const InternshipPage = () => {
   return (
     <PageContainer>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Title>Internships & Trainings</Title>
-        <ApplyButton 
-          style={{ marginTop: '0' }}
-          href="https://forms.gle/NLrnkRVYnZgGgJNN8" target="_blank">
+        <ApplyButton
+          style={{ marginTop: '0', display: 'none' }}
+          href="https://forms.gle/NLrnkRVYnZgGgJNN8"
+          target="_blank"
+        >
           Apply Now
         </ApplyButton>
-      </div>      
+      </div>
 
       <Section>
-        <SubTitle>Build Your Future in Software Development — Remotely!</SubTitle>
+        <SubTitle>
+          Build Your Future in Software Development — Remotely!
+        </SubTitle>
         <Paragraph>
-          At Digital Literacy and Skill Development Society (DLSDS), we are proud to offer remote internships in Software Development. Remote work is no longer the future — it is the present. It breaks geographical barriers, teaches time management, and prepares you for the global workforce.
+          At Digital Literacy and Skill Development Society (DLSDS), we are
+          proud to offer remote internships in Software Development. Remote work
+          is no longer the future — it is the present. It breaks geographical
+          barriers, teaches time management, and prepares you for the global
+          workforce.
         </Paragraph>
         <Paragraph>
-          This internship is open to students in their final year, recent graduates, and anyone passionate about building a career in software development. All you need is curiosity, consistency, and a willingness to learn.
+          This internship is open to students in their final year, recent
+          graduates, and anyone passionate about building a career in software
+          development. All you need is curiosity, consistency, and a willingness
+          to learn.
         </Paragraph>
       </Section>
 
@@ -102,13 +120,15 @@ const InternshipPage = () => {
       </Section>
 
       <Section>
-        <SubTitle>Students from Top Institutes take part in our Internships</SubTitle>
+        <SubTitle>
+          Students from Top Institutes take part in our Internships
+        </SubTitle>
         <ul style={{ listStyle: 'none', color: '#555', lineHeight: '1.8' }}>
-          <li>✅ Cotton University, Guwahati, Assam</li>                    
+          <li>✅ Cotton University, Guwahati, Assam</li>
           <li>✅ Jorhat Engineering College, Jorhat, Assam</li>
-          <li>✅ NERIM Group of Institutions, Guwahati Assam</li>          
-          <li>✅ Dibrugarh University, Dibrugarh, Assam</li>          
-          <li>✅ Royal Global University, Guwahati, Assam</li>          
+          <li>✅ NERIM Group of Institutions, Guwahati Assam</li>
+          <li>✅ Dibrugarh University, Dibrugarh, Assam</li>
+          <li>✅ Royal Global University, Guwahati, Assam</li>
           <p> and many more…</p>
         </ul>
       </Section>
@@ -116,20 +136,27 @@ const InternshipPage = () => {
       <Section>
         <SubTitle>What Our Interns Say</SubTitle>
         <Testimonial>
-          "This internship gave me real development experience with supportive mentorship. I learned how to work in a team and manage tasks using GitHub." — Simran K., Tezpur University
+          "This internship gave me real development experience with supportive
+          mentorship. I learned how to work in a team and manage tasks using
+          GitHub." — Simran K., Tezpur University
         </Testimonial>
         <Testimonial>
-          "Thanks to DLSDS, I could finally bridge the gap between my college syllabus and industry needs. Remote setup was smooth and very productive." — Akash B., JEC
+          "Thanks to DLSDS, I could finally bridge the gap between my college
+          syllabus and industry needs. Remote setup was smooth and very
+          productive." — Akash B., JEC
         </Testimonial>
         <Testimonial>
-          "The remote internship experience helped me learn on my own schedule and balance academics with learning. Highly recommend!" — Rajdeep D., Gauhati University
+          "The remote internship experience helped me learn on my own schedule
+          and balance academics with learning. Highly recommend!" — Rajdeep D.,
+          Gauhati University
         </Testimonial>
       </Section>
 
       <Section>
         <SubTitle>Ready to Apply?</SubTitle>
         <Paragraph>
-          Internships are limited and offered on a rolling basis. Early applicants have a better chance of selection.
+          Internships are limited and offered on a rolling basis. Early
+          applicants have a better chance of selection.
         </Paragraph>
         <ApplyButton href="https://forms.gle/NLrnkRVYnZgGgJNN8" target="_blank">
           Apply Now

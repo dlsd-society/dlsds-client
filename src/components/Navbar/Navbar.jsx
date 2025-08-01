@@ -76,7 +76,10 @@ const Navbar = () => {
         </li>
 
         <li>
-          <a href="/courses#online">Online Courses ▾</a>
+          <a href="/courses">Learning ▾</a>
+          <div className="dropdown">
+            <a href="/courses#online">Online Courses</a>
+          </div>
         </li>
 
         <li>
@@ -150,9 +153,6 @@ const Navbar = () => {
               {openDropdown === 'learning' && (
                 <div className="mobile-dropdown">
                   <a href="/courses#online">Online Courses</a>
-                  <a href="#">Seminars & Webinars</a>
-                  <a href="#">Workshops</a>
-                  <a href="#">Internships & Training</a>
                 </div>
               )}
             </li>
@@ -178,7 +178,9 @@ const Navbar = () => {
                 </div>
               )}
             </li> */}
-
+            <li>
+              <a href="/firsthack">FirstHack</a>
+            </li>
             <li>
               <a href="/contact">CONTACT</a>
             </li>
