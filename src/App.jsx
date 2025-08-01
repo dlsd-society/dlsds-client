@@ -26,6 +26,7 @@ import FirstHack from './pages/FirstHack/FirstHack';
 import NavbarFirstHack from './components/NavbarFirstHack/NavbarFirstHack';
 import Hackathon from './pages/Hackathon/Hackathon';
 import ContactBarFirstHack from './components/ContactBarFirstHack/ContactBarFirstHack';
+import EventPage from './pages/EventsPage/EventPage';
 
 function App() {
   return (
@@ -134,6 +135,16 @@ function App() {
               <ContactBarFirstHack />
               <NavbarFirstHack />
               <CoursesAndCertifications />
+            </>
+          }
+        />
+        <Route
+          path="/firsthack/event"
+          element={
+            <>
+              <ContactBarFirstHack />
+              <NavbarFirstHack />
+              <EventPage />
             </>
           }
         />

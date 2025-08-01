@@ -1,4 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
+const ComingSoonPage = () => {
+  return (
+    <HeroContainer>
+      <HeroTitle>Coming Soon ...</HeroTitle>
+    </HeroContainer>
+  );
+};
+
+export default ComingSoonPage;
 
 const HeroContainer = styled.section`
   background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
@@ -13,8 +23,8 @@ const HeroContainer = styled.section`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 5rem;
+  font-weight: 600;
   margin-bottom: 16px;
   letter-spacing: -1px;
 `;
@@ -42,17 +52,3 @@ const HeroButton = styled.a`
     color: #6a82fb;
   }
 `;
-
-export default function HeroSection() {
-  return (
-    <HeroContainer>
-      <HeroTitle>FirstHack 2025</HeroTitle>
-      <HeroSubtitle>
-        Join us for a 3 days, beginner-friendly virtual hackathon! <br /> Learn,
-        code, connect, and create your first real project—no experience
-        required.
-      </HeroSubtitle>
-      <HeroButton href="/firsthack/hackathons">Register Now</HeroButton>
-    </HeroContainer>
-  );
-}

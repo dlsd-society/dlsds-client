@@ -43,7 +43,7 @@ const NavbarFirstHack = () => {
           <a href="/firsthack/courses">COURSES</a>
         </li> */}
         <li>
-          <a href="#">Events</a>
+          <a href="/firsthack/event">Events</a>
         </li>
         <li>
           <a href="/firsthack/internships-and-training">INTERNSHIP</a>
