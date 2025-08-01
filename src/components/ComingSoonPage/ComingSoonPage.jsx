@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
+
 const ComingSoonPage = () => {
   return (
     <HeroContainer>
@@ -27,28 +27,4 @@ const HeroTitle = styled.h1`
   font-weight: 600;
   margin-bottom: 16px;
   letter-spacing: -1px;
-`;
-
-const HeroSubtitle = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 32px;
-  max-width: 580px;
-`;
-
-const HeroButton = styled.a`
-  background: #fff;
-  color: #fc5c7d;
-  border: none;
-  padding: 16px 40px;
-  font-size: 1.125rem;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-
-  &:hover {
-    background: #ffe9f5;
-    color: #6a82fb;
-  }
 `;
