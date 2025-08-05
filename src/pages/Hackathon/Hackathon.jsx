@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Hackathon = () => {
   return (
-    <>
+    <Container>
       <PageContainer>
         <div
           style={{
@@ -46,7 +46,6 @@ const Hackathon = () => {
           <Paragraph>
             <ul
               style={{
-                color: '#555',
                 lineHeight: '2.8',
                 marginLeft: '1rem',
               }}
@@ -70,9 +69,7 @@ const Hackathon = () => {
         <Section>
           <SubTitle>What to Expect</SubTitle>
           <Paragraph>
-            <ul
-              style={{ color: '#555', lineHeight: '2.8', marginLeft: '1rem' }}
-            >
+            <ul style={{ lineHeight: '2.8', marginLeft: '1rem' }}>
               <li>
                 Beginner-Friendly Challenges: Tackle accessible but real-world
                 problems—think building something related to a Digital Literacy
@@ -109,7 +106,7 @@ const Hackathon = () => {
         </Section>
         <Section>
           <SubTitle>Judging Criteria</SubTitle>
-          <ul style={{ color: '#555', lineHeight: '2.8', marginLeft: '1rem' }}>
+          <ul style={{ lineHeight: '2.8', marginLeft: '1rem' }}>
             <li>Creativity (30%): Is the idea novel, fun, or helpful?</li>
             <li>
               Functionality and Usability (30%): Does your project work as
@@ -149,12 +146,15 @@ const Hackathon = () => {
           </ApplyButton>
         </Section>
       </PageContainer>
-    </>
+    </Container>
   );
 };
 
 export default Hackathon;
-
+const Container = styled.div`
+  background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+`;
 const PageContainer = styled.div`
   padding: 2rem;
   font-family: 'Poppins', sans-serif;
@@ -165,7 +165,7 @@ const PageContainer = styled.div`
 const Title = styled.h1`
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  ${'' /* color: #2c3e50; */}
 `;
 
 const Section = styled.section`
@@ -174,14 +174,14 @@ const Section = styled.section`
 
 const SubTitle = styled.h2`
   font-size: 1.8rem;
-  color: #34495e;
+  ${'' /* color: #34495e; */}
   margin-bottom: 1rem;
 `;
 
 const Paragraph = styled.p`
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  ${'' /* color: #555; */}
 `;
 
 const Table = styled.table`
@@ -206,7 +206,7 @@ const Testimonial = styled.blockquote`
   border-left: 4px solid #2980b9;
   margin: 1rem 0;
   padding-left: 1rem;
-  color: #333;
+  ${'' /* color: #333; */}
 `;
 
 const ApplyButton = styled.a`

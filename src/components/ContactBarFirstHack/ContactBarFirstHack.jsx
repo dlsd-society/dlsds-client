@@ -1,5 +1,3 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- Add this
 import './ContactBar.css';
 import {
   FaFacebookF,
@@ -10,8 +8,6 @@ import {
 } from 'react-icons/fa';
 import { IoMdArrowBack } from 'react-icons/io';
 const ContactBarFirstHack = () => {
-  const navigate = useNavigate(); // <-- Hook for navigation
-
   return (
     <div className="contact-bar">
       <a href="/" className="back-btn">
