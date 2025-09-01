@@ -57,9 +57,6 @@ const NavbarFirstHack = () => {
         <li>
           <a href="#">CodeBuild</a>
         </li> */}
-        <li>
-          <a href="/contact">Contact</a>
-        </li>
       </ul>
 
       {/* Mobile/Tablet Menu */}
@@ -87,9 +84,6 @@ const NavbarFirstHack = () => {
             <li>
               <a href="#">CodeBuild</a>
             </li> */}
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
           </ul>
         </div>
       )}
