@@ -99,6 +99,8 @@ const Navbar = () => {
           </div>
         </li> */}
 
+        <li><a href="https://www.chingu.io/">CHINGU</a></li>
+
         <li><a href="/contact">CONTACT</a></li>
       </ul>
 
