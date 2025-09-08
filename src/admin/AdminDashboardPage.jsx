@@ -1,4 +1,3 @@
-// src/admin/AdminDashboardPage.jsx
 import React, { useEffect, useState } from 'react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import { Link, useNavigate } from 'react-router-dom';

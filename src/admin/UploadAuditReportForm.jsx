@@ -1,4 +1,3 @@
-// /admin/UploadActivityForm.jsx
 import { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../config/config";
