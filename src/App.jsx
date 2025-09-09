@@ -31,6 +31,9 @@ import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
 import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 import UserDashboardPage from './pages/User/DashboardPage/UserDashboardPage';
 import RequireUserAuth from './user/RequireUserAuth';
+import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
+import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
+import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
 
 
 function App() {
@@ -68,6 +71,31 @@ function App() {
             element={
               <RequireUserAuth>
                 <UserDashboardPage />
+              </RequireUserAuth>
+            }
+          />
+
+          <Route
+            path="/user/profile"
+            element={
+              <RequireUserAuth>
+                <UserProfilePage />
+              </RequireUserAuth>
+            }
+          />
+          <Route
+            path="/user/purchases"
+            element={
+              <RequireUserAuth>
+                <MyPurchasesPage />
+              </RequireUserAuth>
+            }
+          />
+          <Route
+            path="/user/achievements"
+            element={
+              <RequireUserAuth>
+                <MyAchievementsPage />
               </RequireUserAuth>
             }
           />
