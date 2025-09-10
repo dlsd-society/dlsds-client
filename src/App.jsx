@@ -34,6 +34,7 @@ import RequireUserAuth from './user/RequireUserAuth';
 import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
 import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
 import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
+import FisrtHackRegistrationPage from './pages/FirstHackRegistrationPage/FirstHackRegistrationPage';
 
 
 function App() {
@@ -191,6 +192,16 @@ function App() {
                 <ContactBarFirstHack />
                 <NavbarFirstHack />
                 <EventPage />
+              </>
+            }
+          />
+          <Route
+            path="/firsthack/register"
+            element={
+              <>
+                <ContactBarFirstHack />
+                <NavbarFirstHack />
+                <FisrtHackRegistrationPage />
               </>
             }
           />
