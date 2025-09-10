@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Hackathon = () => {
   return (
@@ -22,13 +23,16 @@ const Hackathon = () => {
             August 14 — 16, 2025 <br /> 100% Online
           </Paragraph>
 
-          <ApplyButton
+          {/* <ApplyButton
             style={{ marginTop: '1rem' }}
             href="https://forms.gle/NLrnkRVYnZgGgJNN8"
             target="_blank"
           >
             Register Now
-          </ApplyButton>
+          </ApplyButton> */}
+          <StyledLink to="/firsthack/register">
+            Register Now
+          </StyledLink>
         </div>
 
         <Section>
@@ -138,12 +142,15 @@ const Hackathon = () => {
           <Paragraph>
             We are excited what you are going to build. Happy Hacking.
           </Paragraph>
-          <ApplyButton
+          {/* <ApplyButton
             href="https://forms.gle/NLrnkRVYnZgGgJNN8"
             target="_blank"
           >
             Register Now
-          </ApplyButton>
+          </ApplyButton> */}
+          <StyledLink to="/firsthack/register">
+            Register Now
+          </StyledLink>
         </Section>
       </PageContainer>
     </Container>
@@ -210,6 +217,21 @@ const Testimonial = styled.blockquote`
 `;
 
 const ApplyButton = styled.a`
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2980b9;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #1f6392;
+  }
+`;
+
+const StyledLink = styled(Link)`
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
