@@ -35,6 +35,7 @@ import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
 import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
 import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
 import FisrtHackRegistrationPage from './pages/FirstHackRegistrationPage/FirstHackRegistrationPage';
+import InternshipRegistrationPage from './pages/InternshipRegistrationPage/InternshipRegistrationPage';
 
 
 function App() {
@@ -202,6 +203,16 @@ function App() {
                 <ContactBarFirstHack />
                 <NavbarFirstHack />
                 <FisrtHackRegistrationPage />
+              </>
+            }
+          />
+          <Route
+            path="/firsthack/internship-register"
+            element={
+              <>
+                <ContactBarFirstHack />
+                <NavbarFirstHack />
+                <InternshipRegistrationPage />
               </>
             }
           />

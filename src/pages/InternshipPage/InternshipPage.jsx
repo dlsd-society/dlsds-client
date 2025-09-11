@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
@@ -61,6 +62,21 @@ const Testimonial = styled.blockquote`
 `;
 
 const ApplyButton = styled.a`
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2980b9;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #1f6392;
+  }
+`;
+
+const StyledLink = styled(Link)`
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
@@ -164,12 +180,17 @@ const InternshipPage = () => {
             Internships are limited and offered on a rolling basis. Early
             applicants have a better chance of selection.
           </Paragraph>
-          <ApplyButton
+          {/* <ApplyButton
             href="https://forms.gle/NLrnkRVYnZgGgJNN8"
             target="_blank"
           >
             Apply Now
-          </ApplyButton>
+          </ApplyButton> */}
+
+          <StyledLink to="/firsthack/internship-register">
+            Register Now
+          </StyledLink>
+
         </Section>
       </PageContainer>
     </Container>
