@@ -29,6 +29,9 @@ const UserLoginPage = () => {
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
         <button type="submit">Login</button>
       </form>
+      <a href={`${BASE_URL}/user/auth/google`}>
+        <button>Login with Google</button>
+      </a>
     </div>
   );
 };

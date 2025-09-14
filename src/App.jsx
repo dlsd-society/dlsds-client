@@ -36,6 +36,7 @@ import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
 import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
 import FisrtHackRegistrationPage from './pages/FirstHackRegistrationPage/FirstHackRegistrationPage';
 import InternshipRegistrationPage from './pages/InternshipRegistrationPage/InternshipRegistrationPage';
+import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
 
 
 function App() {
@@ -68,6 +69,9 @@ function App() {
           {/* User routes */}
           <Route path="/user/login" element={<UserLoginPage />} />
           <Route path="/user/signup" element={<UserSignupPage />} />
+
+          <Route path="/user/google-success" element={<GoogleSuccess />} />
+
           <Route
             path="/user/dashboard"
             element={
