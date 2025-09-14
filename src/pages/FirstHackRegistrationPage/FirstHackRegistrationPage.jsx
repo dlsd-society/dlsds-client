@@ -164,7 +164,7 @@ const handleSubmit = async (e) => {
 
           <fieldset style={radioFieldset}>
             <legend style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}>Team Size</legend>
-            {["1", "2", "3"].map((size) => (
+            {["1", "2", "3", "4"].map((size) => (
               <label key={size} style={{ marginRight: "15px" }}>
                 <input
                   type="radio"
