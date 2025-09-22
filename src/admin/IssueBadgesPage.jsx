@@ -4,6 +4,15 @@ import axios from "axios";
 import BASE_URL from "../config/config";
 import { useAdminAuth } from "../context/AdminAuthContext";
 
+const badgeUrls = {
+  PARTICIPANT:
+    "https://res.cloudinary.com/ddrpu3dfs/image/upload/v1758222410/participation-badge-sample-02_fuuv2g.png",
+  WINNER:
+    "https://res.cloudinary.com/ddrpu3dfs/image/upload/v1758222181/winner-badge-sample-01_ypdpvd.avif",
+  RUNNER_UP:
+    "https://res.cloudinary.com/ddrpu3dfs/image/upload/v1758222158/participant-badge-sample-01_thfbfi.avif",
+};
+
 const IssueBadgesPage = () => {
   const { adminToken } = useAdminAuth();
 
@@ -14,9 +23,12 @@ const IssueBadgesPage = () => {
   const [selectedParticipants, setSelectedParticipants] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
-  const [fileUrl, setFileUrl] = useState("");
   const [category, setCategory] = useState("PARTICIPANT");
+  const [fileUrl, setFileUrl] = useState(badgeUrls["PARTICIPANT"]);
   const [message, setMessage] = useState("");
+
+  // number of participants to show initially
+  const [displayCount, setDisplayCount] = useState(15);
 
   // Fetch hackathons when page loads
   useEffect(() => {
@@ -39,6 +51,7 @@ const IssueBadgesPage = () => {
     setParticipants([]);
     setSelectedParticipants([]);
     setSelectAll(false);
+    setDisplayCount(15); // reset load more
 
     try {
       const res = await axios.get(
@@ -72,35 +85,6 @@ const IssueBadgesPage = () => {
       setSelectAll(true);
     }
   };
-
-  // Issue badge(s)
-  // const handleIssue = async () => {
-  //   if (selectedParticipants.length === 0 || !fileUrl) {
-  //     setMessage("⚠️ Please select at least one participant and provide a file URL");
-  //     return;
-  //   }
-
-  //   try {
-  //     const res = await axios.post(
-  //       `${BASE_URL}/admin/issue-badge`,
-  //       {
-  //         participantIds: selectedParticipants,
-  //         hackathonId: selectedHackathon.id,
-  //         category,
-  //         fileUrl,
-  //       },
-  //       { headers: { Authorization: `Bearer ${adminToken}` } }
-  //     );
-
-  //     setMessage(res.data.message || "Badges issued successfully ✅");
-  //     setFileUrl("");
-  //     setSelectedParticipants([]);
-  //     setSelectAll(false);
-  //   } catch (err) {
-  //     console.error("Error issuing badges:", err);
-  //     setMessage("❌ Error issuing badges");
-  //   }
-  // };
 
   // Issue badge(s)
   const handleIssue = async () => {
@@ -146,7 +130,7 @@ const IssueBadgesPage = () => {
       <h2>Issue Badges</h2>
 
       {/* Hackathon List */}
-      <ul>
+      {/* <ul>
         {hackathons.map((h) => (
           <li key={h.id}>
             {h.name} ({h.version}){" "}
@@ -155,7 +139,30 @@ const IssueBadgesPage = () => {
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
+
+      {/* Hackathon Select Dropdown */}
+      <div style={{ marginBottom: 20 }}>
+        <label htmlFor="hackathonSelect">Select Hackathon: </label>
+        <select
+          id="hackathonSelect"
+          value={selectedHackathon?.id || ""}
+          onChange={(e) => {
+            const hackathon = hackathons.find((h) => h.id === parseInt(e.target.value));
+            if (hackathon) handleSelectHackathon(hackathon);
+          }}
+        >
+          <option value="" disabled>
+            -- Select a Hackathon --
+          </option>
+          {hackathons.map((h) => (
+            <option key={h.id} value={h.id}>
+              {h.name} ({h.version})
+            </option>
+          ))}
+        </select>
+      </div>
+
 
       {/* Participants Table */}
       {selectedHackathon && participants.length > 0 && (
@@ -186,7 +193,7 @@ const IssueBadgesPage = () => {
               </tr>
             </thead>
             <tbody>
-              {participants.map((p) => (
+              {participants.slice(0, displayCount).map((p) => (
                 <tr key={p.id}>
                   <td>
                     <input
@@ -202,6 +209,16 @@ const IssueBadgesPage = () => {
               ))}
             </tbody>
           </table>
+
+          {/* Load More Button */}
+          {displayCount < participants.length && (
+            <button
+              style={{ marginTop: 10 }}
+              onClick={() => setDisplayCount((prev) => prev + 15)}
+            >
+              Load More
+            </button>
+          )}
         </div>
       )}
 
@@ -211,18 +228,22 @@ const IssueBadgesPage = () => {
           <h3>Issue Badge</h3>
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => {
+              const newCategory = e.target.value;
+              setCategory(newCategory);
+              setFileUrl(badgeUrls[newCategory]); // auto-assign URL
+            }}
           >
             <option value="PARTICIPANT">Participant</option>
             <option value="WINNER">Winner</option>
             <option value="RUNNER_UP">Runner Up</option>
           </select>
-          <input
-            type="text"
-            placeholder="Enter badge file URL"
-            value={fileUrl}
-            onChange={(e) => setFileUrl(e.target.value)}
-          />
+          
+          {/* Show preview of the hardcoded badge image */}
+          <div style={{ marginTop: 10 }}>
+            <img src={fileUrl} alt="Badge Preview" width="200" />
+          </div>
+
           <button onClick={handleIssue}>Issue Badge(s)</button>
         </div>
       )}
