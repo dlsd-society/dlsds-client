@@ -37,6 +37,9 @@ import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage
 import FisrtHackRegistrationPage from './pages/FirstHackRegistrationPage/FirstHackRegistrationPage';
 import InternshipRegistrationPage from './pages/InternshipRegistrationPage/InternshipRegistrationPage';
 import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
+import IssueBadgesPage from './admin/IssueBadgesPage';
+import IssueCertificatesPage from './admin/IssueCertificatesPage';
+import VerifyPage from './pages/VerifyPage/VerifyPage';
 
 
 function App() {
@@ -148,6 +151,18 @@ function App() {
               </RequireAdminAuth>
             }
           />
+          <Route 
+            path="/admin-dashboard/issue-certificates" 
+            element={
+              <IssueCertificatesPage />
+            } 
+          />          
+          <Route 
+            path="/admin-dashboard/issue-badges" 
+            element={
+              <IssueBadgesPage />
+            } 
+          />
 
           {/* Firsthack */}
           <Route
@@ -220,6 +235,7 @@ function App() {
               </>
             }
           />
+          <Route path="/verify/:code" element={<VerifyPage />} />
         </Routes>
       </UserAuthProvider>
     </AdminAuthProvider>

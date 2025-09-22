@@ -6,7 +6,7 @@ Admin login:
 "email": "jyotirmoydas12@gmail.com",
 "password": "Abc@12345" 
 
-Admin login:
+User login:
 ------------
 "name": "Umesh Sharma",
 "email": "umesh@gmail.com",

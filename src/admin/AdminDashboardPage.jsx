@@ -39,9 +39,21 @@ const AdminDashboardPage = () => {
           <li>Manage Users</li>
           <li>Manage Courses</li>
           <li>Manage Content</li>
-          <Link to="/admin-dashboard/manage-reports" className="admin-link">
-            Manage Reports
-          </Link>
+          <li>
+            <Link to="/admin-dashboard/manage-reports" className="admin-link">
+              Manage Reports
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin-dashboard/issue-certificates">
+              Issue Certificates
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin-dashboard/issue-badges">
+              Issue Badges
+            </Link>
+          </li>          
         </ul>
       </div>
     </div>
