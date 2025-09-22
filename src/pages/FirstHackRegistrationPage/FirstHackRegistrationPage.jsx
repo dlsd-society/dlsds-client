@@ -65,7 +65,37 @@ const FirstHackRegistrationPage = () => {
 //     alert("✅ Registration submitted successfully!");
 //   };
 
-const handleSubmit = async (e) => {
+// const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validate()) return;
+
+//     setLoading(true);
+//     setSuccessMsg("");
+//     setErrorMsg("");
+
+//     try {
+//       const res = await axios.post(`${BASE_URL}/hackathons`, formData);
+//       setSuccessMsg(`✅ Registration successful! Your ID is ${res.data.id}`);
+//       setFormData({
+//         teamName: "",
+//         teamSize: "1",
+//         soloPreference: "",
+//         fullName: "",
+//         email: "",
+//         phone: "",
+//         cityState: "",
+//         experience: "",
+//         agreement: false,
+//       });
+//     } catch (err) {
+//       console.error(err);
+//       setErrorMsg(err.response?.data?.message || "❌ Something went wrong!");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -74,8 +104,15 @@ const handleSubmit = async (e) => {
     setErrorMsg("");
 
     try {
-      const res = await axios.post(`${BASE_URL}/firsthack`, formData);
-      setSuccessMsg(`✅ Registration successful! Your ID is ${res.data.id}`);
+      // hardcode hackathonId for now (e.g., FirstHack = 1)
+      const hackathonId = 1;
+
+      const res = await axios.post(
+        `${BASE_URL}/hackathon-participants/${hackathonId}/register`,
+        formData
+      );
+
+      setSuccessMsg(`✅ Registration successful! Your ID is ${res.data.participant.id}`);
       setFormData({
         teamName: "",
         teamSize: "1",
@@ -94,6 +131,7 @@ const handleSubmit = async (e) => {
       setLoading(false);
     }
   };
+
 
   const fieldWrapper = {
     position: "relative",
@@ -164,7 +202,7 @@ const handleSubmit = async (e) => {
 
           <fieldset style={radioFieldset}>
             <legend style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}>Team Size</legend>
-            {["1", "2", "3"].map((size) => (
+            {["1", "2", "3", "4"].map((size) => (
               <label key={size} style={{ marginRight: "15px" }}>
                 <input
                   type="radio"
