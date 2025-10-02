@@ -44,7 +44,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../../config/config";
 import { useUserAuth } from "../../../context/UserAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 
 // Styled Components
@@ -138,6 +138,22 @@ const Divider = styled.div`
   }
 `;
 
+const FooterText = styled.p`
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+`;
+
+const StyledLink = styled(Link)`
+  color: #4a90e2;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const UserLoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -191,6 +207,11 @@ const UserLoginPage = () => {
             Login with Google
           </Button>
         </a>
+
+        <FooterText>
+          Don’t have an account? <StyledLink to="/user/signup">Sign up here</StyledLink>
+        </FooterText>
+
       </Card>
     </Container>
   );
