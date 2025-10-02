@@ -2,29 +2,39 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../../config/config";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-// Reuse the same styled components from login
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f5f7fa;
-`;
-
-const Card = styled.div`
+const Modal = styled.div`
   background: #fff;
   padding: 40px;
+  width: 400px;
   border-radius: 12px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  width: 350px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
   text-align: center;
+  position: relative;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 28px;   /* medium size */
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+
+  &:hover {
+    color: #222;
+  }
 `;
 
 const Title = styled.h2`
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
   color: #333;
 `;
 
@@ -36,50 +46,34 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 12px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 14px;
-  outline: none;
+  border: 1px solid #ccc;
+  font-size: 15px;
 
   &:focus {
-    border-color: #4a90e2;
-    box-shadow: 0px 0px 5px rgba(74, 144, 226, 0.5);
+    border-color: #4cafef;
+    box-shadow: 0px 0px 5px rgba(74, 202, 239, 0.5);
+    outline: none;
   }
 `;
 
 const Button = styled.button`
-  width: 100%;
   padding: 12px;
-  background: #4a90e2;
-  color: #fff;
-  border: none;
   border-radius: 8px;
-  font-size: 15px;
+  border: none;
+  background: #4cafef;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
+  transition: 0.3s;
   font-weight: 500;
 
   &:hover {
-    background: #357abd;
+    background: #379ad5;
   }
 `;
 
-const FooterText = styled.p`
-  margin-top: 20px;
-  font-size: 14px;
-  color: #555;
-`;
-
-const StyledLink = styled(Link)`
-  color: #4a90e2;
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const UserSignupPage = () => {
+const UserSignupPage = ({ onClose }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -97,56 +91,54 @@ const UserSignupPage = () => {
     try {
       await axios.post(`${BASE_URL}/user/signup`, form);
       alert("Signup successful, please login.");
-      navigate("/user/login");
+      onClose(); // close the modal after signup
+      navigate("/user/dashboard");
     } catch (err) {
       alert(err.response?.data?.message || "Signup failed");
     }
   };
 
   return (
-    <Container>
-      <Card>
-        <Title>User Signup</Title>
-        <Form onSubmit={handleSignup}>
-          <Input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Name"
-            required
-          />
-          <Input
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-          />
-          <Input
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Password"
-            required
-          />
-          <Input
-            name="confirmPassword"
-            type="password"
-            value={form.confirmPassword}
-            onChange={handleChange}
-            placeholder="Confirm Password"
-            required
-          />
-          <Button type="submit">Signup</Button>
-        </Form>
+    <Modal>
+      <CloseButton onClick={onClose}>&times;</CloseButton>
 
-        <FooterText>
-          Already have an account? <StyledLink to="/user/login">Login here</StyledLink>
-        </FooterText>
-      </Card>
-    </Container>
+      <Title>User Signup</Title>
+      <Form onSubmit={handleSignup}>
+        <Input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Name"
+          required
+        />
+        <Input
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        <Input
+          name="password"
+          type="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="Password"
+          required
+        />
+        <Input
+          name="confirmPassword"
+          type="password"
+          value={form.confirmPassword}
+          onChange={handleChange}
+          placeholder="Confirm Password"
+          required
+        />
+        <Button type="submit">Signup</Button>
+      </Form>
+      
+    </Modal>
   );
 };
 

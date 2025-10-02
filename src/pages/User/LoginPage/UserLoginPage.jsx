@@ -1,72 +1,41 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import BASE_URL from "../../../config/config";
-// import { useUserAuth } from "../../../context/UserAuthContext";
-// import { useNavigate } from "react-router-dom";
-
-// const UserLoginPage = () => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const { login } = useUserAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const res = await axios.post(`${BASE_URL}/user/login`, { email, password });
-//       login(res.data.token, res.data.user);
-//       navigate("/user/dashboard");
-//     } catch (err) {
-//       alert(err.response?.data?.message || "Login failed");
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>User Login</h2>
-//       <form onSubmit={handleLogin}>
-//         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-//         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-//         <button type="submit">Login</button>
-//       </form>
-//       <a href={`${BASE_URL}/user/auth/google`}>
-//         <button>Login with Google</button>
-//       </a>
-//     </div>
-//   );
-// };
-
-// export default UserLoginPage;
-
-
-// pages/user/login/UserLoginPage.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../../config/config";
 import { useUserAuth } from "../../../context/UserAuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import ModalWrapper from "../../../components/ModalWrapper/ModalWrapper"; // adjust import path
 
-// Styled Components
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f5f7fa;
-`;
-
-const Card = styled.div`
+const Modal = styled.div`
   background: #fff;
   padding: 40px;
+  width: 400px;
   border-radius: 12px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  width: 350px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
   text-align: center;
+  position: relative;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 28px;   /* medium size */
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+
+  &:hover {
+    color: #222;
+  }
 `;
 
 const Title = styled.h2`
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
   color: #333;
 `;
 
@@ -78,34 +47,44 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 12px;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-
-  &:focus {
-    border-color: #4a90e2;
-    box-shadow: 0px 0px 5px rgba(74, 144, 226, 0.5);
-  }
+  border: 1px solid #ccc;
+  font-size: 15px;
 `;
 
 const Button = styled.button`
-  width: 100%;
   padding: 12px;
-  background: ${(props) => (props.google ? "#fff" : "#4a90e2")};
-  color: ${(props) => (props.google ? "#444" : "#fff")};
-  border: ${(props) => (props.google ? "1px solid #ddd" : "none")};
   border-radius: 8px;
-  font-size: 15px;
+  border: none;
+  background: #4cafef;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: 500;
+  transition: 0.3s;
+
+  &:hover {
+    background: #379ad5;
+  }
+`;
+
+const GoogleButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
 
   &:hover {
-    background: ${(props) => (props.google ? "#f8f8f8" : "#357abd")};
+    background: #f0f0f0;
   }
 `;
 
@@ -114,47 +93,7 @@ const GoogleLogo = styled.img`
   height: 20px;
 `;
 
-const Divider = styled.div`
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-  color: #888;
-  font-size: 14px;
-
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #ddd;
-  }
-
-  &:not(:empty)::before {
-    margin-right: 10px;
-  }
-
-  &:not(:empty)::after {
-    margin-left: 10px;
-  }
-`;
-
-const FooterText = styled.p`
-  margin-top: 20px;
-  font-size: 14px;
-  color: #555;
-`;
-
-const StyledLink = styled(Link)`
-  color: #4a90e2;
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const UserLoginPage = () => {
+const UserLoginPage = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useUserAuth();
@@ -163,10 +102,7 @@ const UserLoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${BASE_URL}/user/login`, {
-        email,
-        password,
-      });
+      const res = await axios.post(`${BASE_URL}/user/login`, { email, password });
       login(res.data.token, res.data.user);
       navigate("/user/dashboard");
     } catch (err) {
@@ -175,8 +111,10 @@ const UserLoginPage = () => {
   };
 
   return (
-    <Container>
-      <Card>
+    <ModalWrapper>
+      <Modal>
+        <CloseButton onClick={onClose}>&times;</CloseButton>
+
         <Title>User Login</Title>
         <Form onSubmit={handleLogin}>
           <Input
@@ -196,24 +134,12 @@ const UserLoginPage = () => {
           <Button type="submit">Login</Button>
         </Form>
 
-        <Divider>OR</Divider>
-
-        <a href={`${BASE_URL}/user/auth/google`} style={{ textDecoration: "none", width: "100%", display: "block" }}>
-          <Button google>
-            <GoogleLogo
-              src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-              alt="Google"
-            />
-            Login with Google
-          </Button>
-        </a>
-
-        <FooterText>
-          Don’t have an account? <StyledLink to="/user/signup">Sign up here</StyledLink>
-        </FooterText>
-
-      </Card>
-    </Container>
+        <GoogleButton href={`${BASE_URL}/user/auth/google`}>
+          <GoogleLogo src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
+          Login with Google
+        </GoogleButton>
+      </Modal>
+    </ModalWrapper>
   );
 };
 

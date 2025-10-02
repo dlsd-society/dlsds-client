@@ -9,7 +9,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-const ContactBar = () => {
+const ContactBar = ({ onLoginClick, onSignupClick }) => {
   const navigate = useNavigate(); // <-- Hook for navigation
 
   return (
@@ -29,6 +29,9 @@ const ContactBar = () => {
         </button>
         {/* <button className="cta-button">Learn - LMS</button>
         <button className="cta-button">Join Us</button> */}
+
+        <button className="cta-button" onClick={onLoginClick}>Sign In</button>
+        <button className="cta-button" onClick={onSignupClick}>Sign Up</button>
       </div>
 
       <div className="social-icons">
