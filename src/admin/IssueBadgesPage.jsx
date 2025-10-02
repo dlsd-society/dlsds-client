@@ -193,20 +193,25 @@ const IssueBadgesPage = () => {
               </tr>
             </thead>
             <tbody>
-              {participants.slice(0, displayCount).map((p) => (
-                <tr key={p.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={selectedParticipants.includes(p.id)}
-                      onChange={() => toggleParticipant(p.id)}
-                    />
-                  </td>
-                  <td>{p.fullName}</td>
-                  <td>{p.email}</td>
-                  <td>{p.teamName || "-"}</td>
-                </tr>
-              ))}
+              {participants.slice(0, displayCount).map((p) => {
+                const alreadyIssued = p.credentials.some(c => c.type === "BADGE"); 
+
+                return (
+                  <tr key={p.id}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        disabled={alreadyIssued}
+                        checked={selectedParticipants.includes(p.id)}
+                        onChange={() => toggleParticipant(p.id)}
+                      />
+                    </td>
+                    <td>{p.fullName}</td>
+                    <td>{p.email}</td>
+                    <td>{p.teamName || "-"}</td>
+                  </tr>
+                )                
+              })}
             </tbody>
           </table>
 

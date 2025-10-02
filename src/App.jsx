@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ContactBar from './components/ContactBar/ContactBar';
 import Navbar from './components/Navbar/Navbar';
@@ -27,8 +27,8 @@ import NavbarFirstHack from './components/NavbarFirstHack/NavbarFirstHack';
 import Hackathon from './pages/Hackathon/Hackathon';
 import ContactBarFirstHack from './components/ContactBarFirstHack/ContactBarFirstHack';
 import EventPage from './pages/EventsPage/EventPage';
-import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
-import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
+// import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
+// import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 import UserDashboardPage from './pages/User/DashboardPage/UserDashboardPage';
 import RequireUserAuth from './user/RequireUserAuth';
 import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
@@ -40,9 +40,16 @@ import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
 import IssueBadgesPage from './admin/IssueBadgesPage';
 import IssueCertificatesPage from './admin/IssueCertificatesPage';
 import VerifyPage from './pages/VerifyPage/VerifyPage';
+import ModalWrapper from './components/ModalWrapper/ModalWrapper';
+import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
+import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 
 
 function App() {
+
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
+
   return (
     <AdminAuthProvider>
       <UserAuthProvider>
@@ -52,7 +59,10 @@ function App() {
             path="/*"
             element={
               <>
-                <ContactBar />
+                <ContactBar 
+                  onLoginClick={() => setLoginOpen(true)} 
+                  onSignupClick={() => setSignupOpen(true)}
+                />
                 <Navbar />
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -70,8 +80,8 @@ function App() {
           />
 
           {/* User routes */}
-          <Route path="/user/login" element={<UserLoginPage />} />
-          <Route path="/user/signup" element={<UserSignupPage />} />
+          {/* <Route path="/user/login" element={<UserLoginPage />} />
+          <Route path="/user/signup" element={<UserSignupPage />} /> */}         
 
           <Route path="/user/google-success" element={<GoogleSuccess />} />
 
@@ -237,6 +247,21 @@ function App() {
           />
           <Route path="/verify/:code" element={<VerifyPage />} />
         </Routes>
+
+        {/* Login Modal */}
+        {loginOpen && (
+          <ModalWrapper>
+            <UserLoginPage onClose={() => setLoginOpen(false)} />
+          </ModalWrapper>
+        )}
+
+        {/* Signup Modal */}
+        {signupOpen && (
+          <ModalWrapper>
+            <UserSignupPage onClose={() => setSignupOpen(false)} />
+          </ModalWrapper>
+        )}
+
       </UserAuthProvider>
     </AdminAuthProvider>
   );
