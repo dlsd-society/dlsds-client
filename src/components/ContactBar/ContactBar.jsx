@@ -1,22 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // <-- Add this
+import { useNavigate } from "react-router-dom";
 import "./ContactBar.css";
 import {
   FaFacebookF,
   FaLinkedinIn,
-  FaInstagram,
-  FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 
 const ContactBar = ({ onLoginClick, onSignupClick }) => {
-  const navigate = useNavigate(); // <-- Hook for navigation
+  const navigate = useNavigate();
 
   return (
     <div className="contact-bar">
       <div className="contact-left">
         📞 +91-8721909414 | 📧 mail@dlsdsociety.org
       </div>
+
       <div className="contact-right">
         <button className="cta-button" onClick={() => navigate("/contact")}>
           Volunteer
@@ -27,18 +26,27 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
         <button className="cta-button" onClick={() => navigate("/donation")}>
           Donate
         </button>
-        {/* <button className="cta-button">Learn - LMS</button>
-        <button className="cta-button">Join Us</button> */}
 
-        <button className="cta-button" onClick={onLoginClick}>Sign In</button>
-        <button className="cta-button" onClick={onSignupClick}>Sign Up</button>
-      </div>
+        {/* 🔹 Sign In / Sign Up first */}
+        <button className="auth-button" onClick={onLoginClick}>
+          Sign In
+        </button>
+        <button className="auth-button" onClick={onSignupClick}>
+          Sign Up
+        </button>
 
-      <div className="social-icons">
-        <a target="_blank" href="https://www.facebook.com/dlsdsassam/"><FaFacebookF /></a>
-        {/* <a target="_blank" href="https://www.linkedin.com/in/dlsdsociety/"><FaLinkedinIn /></a> */}
-        <a target="_blank" href="https://www.linkedin.com/company/dlsdsassam/"><FaLinkedinIn /></a>        
-        <a target="_blank" href="#"><FaYoutube /></a>
+        {/* 🔹 Then social icons */}
+        <div className="social-icons">
+          <a target="_blank" href="https://www.facebook.com/dlsdsassam/">
+            <FaFacebookF />
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/company/dlsdsassam/">
+            <FaLinkedinIn />
+          </a>
+          <a target="_blank" href="#">
+            <FaYoutube />
+          </a>
+        </div>
       </div>
     </div>
   );
