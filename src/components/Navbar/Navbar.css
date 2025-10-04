@@ -198,11 +198,23 @@
   }
 }
 
-
 /* Mobile styles */
 .hamburger {
+  display: none;
   cursor: pointer;
-  color: white;
+  margin-left: 15px;
+}
+
+/* Hide desktop nav and show hamburger on tablet + mobile */
+@media (max-width: 1369px) {
+  .navbar-links {
+    display: none !important;  /* Force override */
+  }
+  .hamburger {
+    display: block !important;
+    font-size: 32px;
+    color: white;
+  }
 }
 
 .mobile-menu {
@@ -294,4 +306,24 @@
   .navbar-links {
     display: none;
   }
+}
+
+/* Mobile dropdown container */
+.mobile-dropdown {
+  padding-left: 15px;
+  margin-top: 6px;
+}
+
+/* Mobile dropdown links */
+.mobile-dropdown a {
+  display: block;
+  padding: 6px 0;
+  color: white;              /* ✅ White text for visibility */
+  font-weight: 400;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.mobile-dropdown a:hover {
+  color: #ffd700;            /* ✅ Highlight on hover (gold/yellow) */
 }
