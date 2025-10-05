@@ -1,50 +1,3 @@
-/* .contact-bar {
-  background-color: white;
-  padding: 8px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  border-bottom: 1px solid #ddd;
-}
-
-.contact-left {
-  color: #333;
-}
-
-.contact-right {
-  display: flex;
-  gap: 10px;
-}
-
-.cta-button {
-  background-color: #00a76f;
-  color: white;
-  padding: 6px 14px;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #007b53;
-}
-
-.social-icons a {
-  margin-left: 10px;
-  color: gray;
-  font-size: 18px;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #f0c040;
-} */
-
-
-
 .contact-bar {
   background-color: white;
   padding: 8px 20px;
@@ -63,10 +16,11 @@
 /* Right side CTA buttons */
 .contact-right {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-/* CTA button styling */
+/* Green CTA button styling */
 .cta-button {
   background-color: #00a76f;
   color: white;
@@ -82,9 +36,30 @@
   background-color: #007b53;
 }
 
+/* 🔹 Blue Auth buttons (Sign In / Sign Up) */
+.auth-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
 /* Social icons */
-.social-icons a {
+.social-icons {
+  display: flex;
+  gap: 10px;
   margin-left: 10px;
+}
+
+.social-icons a {
   color: gray;
   font-size: 18px;
   transition: color 0.3s ease;
@@ -101,7 +76,8 @@
     padding: 6px 15px;
   }
 
-  .cta-button {
+  .cta-button,
+  .auth-button {
     padding: 5px 10px;
     font-size: 13px;
   }

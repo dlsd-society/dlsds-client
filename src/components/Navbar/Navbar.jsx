@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.png';
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
 
       {/* Hamburger Icon for Mobile/Tablet */}
       <div className="hamburger" onClick={toggleMobileMenu}>
-        ☰
+        {isMobileMenuOpen ? <FiX size={32} color="white" /> : <FiMenu size={32} color="white" />}
       </div>
 
       {/* Desktop Navbar */}
@@ -116,7 +117,7 @@ const Navbar = () => {
             </li>
 
             <li onClick={() => toggleDropdown('about')}>
-              <span>ABOUT US ▾</span>
+              <span style={{ color: '#333' }}>ABOUT US ▾</span>
               {openDropdown === 'about' && (
                 <div className="mobile-dropdown">
                   <a href="/about#about-intro">Who are we</a>
@@ -138,7 +139,7 @@ const Navbar = () => {
             </li> */}
 
             <li onClick={() => toggleDropdown('partners')}>
-              <span>PARTNERSHIPS ▾</span>
+              <span style={{ color: '#333' }}>PARTNERSHIPS ▾</span>
               {openDropdown === 'partners' && (
                 <div className="mobile-dropdown">
                   <a href="/partners#corporate">Corporate</a>
@@ -149,7 +150,7 @@ const Navbar = () => {
             </li>
 
             <li onClick={() => toggleDropdown('learning')}>
-              <span>LEARNING ▾</span>
+              <span style={{ color: '#333' }}>LEARNING ▾</span>
               {openDropdown === 'learning' && (
                 <div className="mobile-dropdown">
                   <a href="/courses#online">Online Courses</a>
@@ -158,7 +159,7 @@ const Navbar = () => {
             </li>
 
             <li onClick={() => toggleDropdown('events')}>
-              <span>EVENTS ▾</span>
+              <span style={{ color: '#333' }}>EVENTS ▾</span>
               {openDropdown === 'events' && (
                 <div className="mobile-dropdown">
                   <a href="/courses#online">Hackathons</a>
@@ -179,7 +180,7 @@ const Navbar = () => {
               )}
             </li> */}
             <li>
-              <a href="/firsthack">FirstHack</a>
+              <a href="/firsthack">FIRSTHACK</a>
             </li>
             <li>
               <a href="/contact">CONTACT</a>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./FooterSection.css";
+import { Link } from "react-router-dom";
 
 const FooterSection = () => {
   return (
@@ -7,34 +8,27 @@ const FooterSection = () => {
       <div className="footer-top">
         <div className="footer-column">
           <h3>Get In Touch</h3>
-          <p>DLSD Society</p>
-          <p>Beltola Tiniali</p>
-          <p>Guwahati</p>
-          <p>Assam -781028</p>
-          <p>Contact No: +91-8721909414</p>
+          <p>DLSD Society</p>          
+          <p>Guwahati, Assam -781028</p>                    
           <p>Email: mail@dlsdsociety.org</p>
         </div>
 
         <div className="footer-column">
-          <h3>Get Involved</h3>
+          <h3>Quick Links</h3>
           <ul>
-            <li>Donate</li>
-            <li>Volunteer</li>
-            <li>Partnerships</li>
-            <li>Careers</li>
-            <li>Privacy & Cookie Policy</li>
-            <li>Refund & Cancellation</li>
-            <li>Terms of Use</li>
+            <li><Link to="/firsthack">EmergeVibe</Link></li>
+            <li><Link to="/courses">Courses</Link></li>
+            <li><Link to="/courses">Events</Link></li>                                    
           </ul>
         </div>
 
         <div className="footer-column">
-          <h3>Stay Connected</h3>
-          <div className="social-icons">
-            <a href="#"><i className="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/dlsdsassam/"><i className="fab fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/dlsdsassam/"><i className="fab fa-facebook-f"></i></a>
-          </div>
+          <h3>Important Links</h3>
+          <ul>                        
+            <li><Link to="/contact">Partners & Volunteers</Link></li>            
+            <li><Link to="#">Career</Link></li>
+            <li><Link to="/donation">Donation</Link></li>           
+          </ul>
         </div>
 
         <div className="footer-column">

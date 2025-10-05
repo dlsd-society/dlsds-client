@@ -27,8 +27,6 @@ import NavbarFirstHack from './components/NavbarFirstHack/NavbarFirstHack';
 import Hackathon from './pages/Hackathon/Hackathon';
 import ContactBarFirstHack from './components/ContactBarFirstHack/ContactBarFirstHack';
 import EventPage from './pages/EventsPage/EventPage';
-// import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
-// import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 import UserDashboardPage from './pages/User/DashboardPage/UserDashboardPage';
 import RequireUserAuth from './user/RequireUserAuth';
 import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
@@ -43,6 +41,7 @@ import VerifyPage from './pages/VerifyPage/VerifyPage';
 import ModalWrapper from './components/ModalWrapper/ModalWrapper';
 import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
 import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 function App() {
@@ -53,6 +52,7 @@ function App() {
   return (
     <AdminAuthProvider>
       <UserAuthProvider>
+        <ScrollToTop />
         <Routes>
           {/* Public layout */}
           <Route

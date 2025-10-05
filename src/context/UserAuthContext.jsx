@@ -49,7 +49,7 @@ export const UserAuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUserToken(null);
     setUser(null);
-    setIsUserLoggedIn(false);
+    setIsUserLoggedIn(false);    
   };
 
   return (
