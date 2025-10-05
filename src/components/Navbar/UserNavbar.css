@@ -7,13 +7,13 @@
   border-bottom: 1px solid #ddd;
 }
 
-.nav-logo {    
+.nav-logo {
   display: flex;
   align-items: center;
-  font-size: 1rem;  
-  text-decoration: none; /* ✅ remove underline */
-  cursor: pointer;       /* optional: show pointer on hover */
-  color: inherit;        /* keep default text color */
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
 }
 
 .nav-links {
@@ -27,10 +27,18 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
+/* ✅ Active link is bold instead of blue */
+.active-link {
+  font-weight: 700 !important;
+  color: #666 !important;
+}
+
+/* Hover still slightly blue for feedback */
 .nav-links a:hover {
-  color: #007bff;
+  color: #666;
 }
 
 .avatar-container {
@@ -95,6 +103,7 @@
   border-top: 1px solid #ddd;
   padding: 20px;
   gap: 15px;
+  z-index: 999;
 }
 
 .mobile-menu a,
@@ -108,12 +117,18 @@
   cursor: pointer;
 }
 
+/* ✅ Make active mobile links bold too */
+.mobile-menu .active-link {
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
 .mobile-menu button {
   color: red;
 }
 
 .accounts {
-   font-size: 0.85rem;
+  font-size: 0.85rem;
 }
 
 /* Responsive */

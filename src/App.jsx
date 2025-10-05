@@ -43,6 +43,7 @@ import VerifyPage from './pages/VerifyPage/VerifyPage';
 import ModalWrapper from './components/ModalWrapper/ModalWrapper';
 import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
 import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
   return (
     <AdminAuthProvider>
       <UserAuthProvider>
+        <ScrollToTop />
         <Routes>
           {/* Public layout */}
           <Route

@@ -3,6 +3,7 @@ import axios from "axios";
 import BASE_URL from "../../../config/config";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import UserNavbar from "../../../components/Navbar/UserNavbar";
+import FooterSection from "../../../components/FooterSection/FooterSection";
 
 const MyAchievementsPage = () => {
   const { userToken } = useUserAuth();
@@ -58,6 +59,8 @@ const MyAchievementsPage = () => {
           </div>
         )}
       </div>
+
+      <FooterSection />
     </div>
   );
 };

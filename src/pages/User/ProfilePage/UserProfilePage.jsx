@@ -91,6 +91,7 @@ import UserNavbar from "../../../components/Navbar/UserNavbar";
 import styled from "styled-components";
 import { FaPen } from "react-icons/fa";
 import avatar from '../../../assets/user_avatar.jpg';
+import FooterSection from "../../../components/FooterSection/FooterSection";
 
 const Container = styled.div`
   padding: 20px;
@@ -295,6 +296,8 @@ const UserProfilePage = () => {
           <Button type="submit">Save</Button>
         </Form>
       </Container>
+
+      <FooterSection />
     </div>
   );
 };
