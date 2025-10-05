@@ -7,7 +7,7 @@ import avatar from "../../assets/user_avatar.jpg";
 import "./UserNavbar.css";
 
 const UserNavbar = () => {
-  const { user, logout } = useUserAuth();
+  const { user, logout } = useUserAuth();  
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

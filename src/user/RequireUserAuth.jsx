@@ -10,7 +10,7 @@ const RequireUserAuth = ({ children }) => {
     return <div>Loading...</div>; // 👈 or a spinner
   }
 
-  return isUserLoggedIn ? children : <Navigate to="/user/login" />;
+  return isUserLoggedIn ? children : <Navigate to="/" />;
 };
 
 export default RequireUserAuth;
