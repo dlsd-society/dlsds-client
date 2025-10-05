@@ -24,6 +24,9 @@ const UserNavbar = () => {
       {/* Desktop Nav Links */}
       <ul className="nav-links">
         <li>
+          <Link to="/user/dashboard">Dashboard</Link>
+        </li>
+        <li>
           <Link to="/user/achievements">Achievements</Link>
         </li>
         <li>
