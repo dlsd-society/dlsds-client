@@ -32,7 +32,7 @@ import RequireUserAuth from './user/RequireUserAuth';
 import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
 import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
 import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
-import FisrtHackRegistrationPage from './pages/FirstHackRegistrationPage/FirstHackRegistrationPage';
+import FisrtHackRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
 import InternshipRegistrationPage from './pages/InternshipRegistrationPage/InternshipRegistrationPage';
 import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
 import IssueBadgesPage from './admin/IssueBadgesPage';
@@ -42,6 +42,8 @@ import ModalWrapper from './components/ModalWrapper/ModalWrapper';
 import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
 import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import HackathonPage from './pages/HackathonPage/HackathonPage';
+import HackathonRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
 
 
 function App() {
@@ -73,15 +75,15 @@ function App() {
                   <Route path="/resources" element={<ResourcesPage />} />
                   <Route path="/programs" element={<ProgramsPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
+                  <Route path="/hackathon" element={<HackathonPage />} /> 
+                  <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />                   
+                  <Route path="/internship" element={<InternshipPage />} /> 
+                  <Route path="/internship-registration" element={<InternshipRegistrationPage />} />                   
                 </Routes>
                 <FooterSection />
               </>
             }
           />
-
-          {/* User routes */}
-          {/* <Route path="/user/login" element={<UserLoginPage />} />
-          <Route path="/user/signup" element={<UserSignupPage />} /> */}         
 
           <Route path="/user/google-success" element={<GoogleSuccess />} />
 
@@ -179,8 +181,8 @@ function App() {
             path="/firsthack"
             element={
               <>
-                <ContactBarFirstHack />
-                <NavbarFirstHack />
+                {/* <ContactBarFirstHack /> */}
+                {/* <NavbarFirstHack /> */}
                 <FirstHack />
               </>
             }

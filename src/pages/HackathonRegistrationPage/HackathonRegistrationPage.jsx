@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../config/config";
 
-const FirstHackRegistrationPage = () => {
+const HackathonRegistrationPage = () => {
   const [formData, setFormData] = useState({
     teamName: "",
     teamSize: "1",
@@ -381,4 +381,4 @@ const FirstHackRegistrationPage = () => {
   );
 };
 
-export default FirstHackRegistrationPage;
+export default HackathonRegistrationPage;
