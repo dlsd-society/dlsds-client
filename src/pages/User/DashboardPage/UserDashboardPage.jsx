@@ -249,7 +249,10 @@ const UserDashboardPage = () => {
           <div className="user-info">
             <div className="info-header">
               <h3>User Profile</h3>
-              <button className="edit-icon-btn" onClick={toggleEdit}>
+              <button
+                className={`edit-icon-btn ${isEditing ? "save-mode" : ""}`}
+                onClick={toggleEdit}
+              >
                 {isEditing ? "Save" : <FiEdit2 />}
               </button>
             </div>
@@ -300,7 +303,9 @@ const UserDashboardPage = () => {
           <section className="dashboard-section">
             <div className="section-header">
               <h3>Recent Achievements</h3>
-              <button className="more-btn">More..</button>
+              <button className="more-btn">
+                <a href="/user/achievements">More..</a>
+              </button>
             </div>
 
             {loading ? (
@@ -350,7 +355,9 @@ const UserDashboardPage = () => {
           <section className="dashboard-section">
             <div className="section-header">
               <h3>Recent Purchases</h3>
-              <button className="more-btn">More..</button>
+              <button className="more-btn">
+                <a href="/user/purchases">More..</a>
+              </button>
             </div>
             <div className="card-row">
               <div className="card">Purchase 1</div>
@@ -363,7 +370,9 @@ const UserDashboardPage = () => {
           <section className="dashboard-section">
             <div className="section-header">
               <h3>Courses / Events You Would Like</h3>
-              <button className="more-btn">More..</button>
+              <button className="more-btn">
+                <a href="/courses">More..</a>
+              </button>
             </div>
             <div className="card-row">
               <div className="card">Course 1</div>

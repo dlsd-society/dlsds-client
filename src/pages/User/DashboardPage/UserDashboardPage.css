@@ -44,7 +44,7 @@
   position: absolute;
   bottom: 5px;
   right: 5px;
-  background: #007bff;
+  background: #666;
   color: white;
   border: none;
   border-radius: 50%;
@@ -92,22 +92,35 @@
   border: 1px solid #ccc;
 }
 
-/* Only for edit icon in user-info */
+/* Match edit icon style with profile image pencil */
 .info-header .edit-icon-btn {
-  position: static; /* remove absolute positioning */
-  background: #007bff;
+  position: static;
+  background: #666;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 4px 8px;
+  border-radius: 50%;
+  padding: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 16px;
+  transition: background 0.2s ease;
 }
 
 .info-header .edit-icon-btn:hover {
+  background: #0056b3;
+}
+
+/* When it's showing the Save button */
+.info-header .edit-icon-btn.save-mode {
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+}
+.info-header .edit-icon-btn.save-mode:hover {
   background: #0056b3;
 }
 
@@ -194,7 +207,7 @@
 } */
 
 /* === Fix for achievement images inside cards === */
-.achievement-img {
+/* .achievement-img {
   width: 100%;
   height: auto;
   max-height: 180px;
@@ -203,6 +216,17 @@
   margin-top: 10px;
   background-color: #f9f9f9;
   padding: 6px;
+  box-sizing: border-box;
+} */
+
+.achievement-img {
+  width: 100%;
+  height: 140px; /* ✅ fixed height for uniformity */
+  object-fit: cover; /* fills space neatly */
+  border-radius: 8px;
+  /* margin-top: 10px; */
+  background-color: #f9f9f9;
+  /* padding: 4px; */
   box-sizing: border-box;
 }
 
