@@ -92,6 +92,25 @@
   border: 1px solid #ccc;
 }
 
+/* Only for edit icon in user-info */
+.info-header .edit-icon-btn {
+  position: static; /* remove absolute positioning */
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.info-header .edit-icon-btn:hover {
+  background: #0056b3;
+}
+
 /* ===== Right Content ===== */
 .user-main-content {
   flex: 1;
@@ -134,26 +153,34 @@
 
 .card-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .card {
-  flex: 1;
-  min-width: 200px;
-  height: 100px;
-  background-color: #f0f8ff;
-  border: 1px solid #007bff;
-  border-radius: 8px;
+  width: 280px; /* fixed card width */
+  min-height: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  text-align: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  color: #007bff;
-  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .dashboard-content {
     flex-direction: column;
   }
@@ -163,5 +190,77 @@
   }
   .card-row {
     flex-direction: column;
+  }
+} */
+
+/* === Fix for achievement images inside cards === */
+.achievement-img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* Optional tweak: make cards consistent in height */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Keep images responsive and prevent overflow */
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+/* For tablets (width ≤ 992px) → stack sidebar but keep cards horizontal */
+@media (max-width: 992px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .user-sidebar {
+    flex: none;
+    width: 100%;
+  }
+
+  .card {
+    /* make it responsive */
+    max-width: 250px;
+  }
+
+  .card-row {
+    /* justify-content: center; */ /* keep cards nicely centered */
+    flex-wrap: wrap;
+    flex-direction: row; /* ✅ keep cards horizontal for tablets */
+  }
+}
+
+/* For mobile (width ≤ 768px) → cards become vertical */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center; /* center single column cards */
+  }
+
+  .card {
+    width: 90%; /* make it responsive */
+    max-width: 320px;
   }
 }
