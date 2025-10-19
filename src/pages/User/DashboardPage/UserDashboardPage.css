@@ -1,138 +1,290 @@
 .dashboard-container {
-  width: 100%;
-  min-height: 100vh;
   background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 🔹 Navbar */
-.dashboard-navbar {
-  background: white;
-  border-bottom: 1px solid #ddd;
-  padding: 12px 20px;
+/* Layout */
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  padding: 30px;
+  gap: 30px;
+}
+
+/* ===== Left Sidebar ===== */
+.user-sidebar {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  flex: 0 0 280px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-image-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.user-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  object-fit: cover;
+}
+
+/* Pencil edit icon */
+.edit-icon-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-icon-btn:hover {
+  background: #0056b3;
+}
+
+.user-info {
+  text-align: left;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.info-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-/* Logo */
-.nav-logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* Links */
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #333;
+.info-fields label {
+  font-size: 14px;
   font-weight: 500;
+  color: #555;
+  display: block;
+  margin-top: 10px;
 }
 
-.nav-links li a:hover {
-  color: #007bff;
+.info-fields p {
+  color: #333;
+  margin-top: 4px;
 }
 
-/* Avatar */
-.avatar-container {
-  position: relative;
+.info-fields input {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
+/* Match edit icon style with profile image pencil */
+.info-header .edit-icon-btn {
+  position: static;
+  background: #666;
+  color: white;
+  border: none;
   border-radius: 50%;
+  padding: 6px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background 0.2s ease;
 }
 
-/* Dropdown */
-.dropdown-menu {
-  position: absolute;
-  top: 50px;
-  right: 0;
+.info-header .edit-icon-btn:hover {
+  background: #0056b3;
+}
+
+/* When it's showing the Save button */
+.info-header .edit-icon-btn.save-mode {
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+}
+.info-header .edit-icon-btn.save-mode:hover {
+  background: #0056b3;
+}
+
+/* ===== Right Content ===== */
+.user-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.dashboard-section {
   background: white;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  min-width: 160px;
-  padding: 10px 0;
-  z-index: 10;
-}
-
-.dropdown-menu a,
-.dropdown-menu button {
-  padding: 10px 15px;
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-}
-
-.dropdown-menu a:hover,
-.dropdown-menu button:hover {
-  background: #f0f0f0;
-  color: #007bff;
-}
-
-/* Hamburger */
-.hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  color: #333; /* ✅ ensure visibility */
-}
-
-.hamburger:hover {
-  color: #007bff; /* hover effect */
-}
-
-/* Mobile menu */
-.mobile-menu {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-top: 1px solid #ddd;
-  padding: 15px;
-}
-
-.mobile-menu a,
-.mobile-menu button {
-  margin: 8px 0;
-  text-decoration: none;
-  color: #333;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.mobile-menu a:hover,
-.mobile-menu button:hover {
-  color: #007bff;
-}
-
-/* 🔽 Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* hide desktop links */
-  }
-
-  .hamburger {
-    display: block; /* show hamburger */
-  }
-}
-
-.dashboard-body {
+  border-radius: 10px;
   padding: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h3 {
+  color: #007bff;
+  margin: 0;
+}
+
+.more-btn {
+  background: none;
+  border: 1px solid #007bff;
+  border-radius: 20px;
+  padding: 4px 10px;
+  color: #007bff;
+  cursor: pointer;
+}
+.more-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+.card-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 280px; /* fixed card width */
+  min-height: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Responsive ===== */
+/* @media (max-width: 992px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+  .user-sidebar {
+    flex: none;
+    width: 100%;
+  }
+  .card-row {
+    flex-direction: column;
+  }
+} */
+
+/* === Fix for achievement images inside cards === */
+/* .achievement-img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  padding: 6px;
+  box-sizing: border-box;
+} */
+
+.achievement-img {
+  width: 100%;
+  height: 140px; /* ✅ fixed height for uniformity */
+  object-fit: cover; /* fills space neatly */
+  border-radius: 8px;
+  /* margin-top: 10px; */
+  background-color: #f9f9f9;
+  /* padding: 4px; */
+  box-sizing: border-box;
+}
+
+/* Optional tweak: make cards consistent in height */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Keep images responsive and prevent overflow */
+.card img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+/* For tablets (width ≤ 992px) → stack sidebar but keep cards horizontal */
+@media (max-width: 992px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .user-sidebar {
+    flex: none;
+    width: 100%;
+  }
+
+  .card {
+    /* make it responsive */
+    max-width: 250px;
+  }
+
+  .card-row {
+    /* justify-content: center; */ /* keep cards nicely centered */
+    flex-wrap: wrap;
+    flex-direction: row; /* ✅ keep cards horizontal for tablets */
+  }
+}
+
+/* For mobile (width ≤ 768px) → cards become vertical */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center; /* center single column cards */
+  }
+
+  .card {
+    width: 90%; /* make it responsive */
+    max-width: 320px;
+  }
 }

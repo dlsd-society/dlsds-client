@@ -103,13 +103,16 @@ const InternshipPage = () => {
           }}
         >
           <Title>Internships & Trainings</Title>
-          <ApplyButton
+          {/* <ApplyButton
             style={{ marginTop: '0', display: 'none' }}
             href="https://forms.gle/NLrnkRVYnZgGgJNN8"
             target="_blank"
           >
             Apply Now
-          </ApplyButton>
+          </ApplyButton> */}
+          <StyledLink to="/internship-registration">
+            Register Now
+          </StyledLink>
         </div>
 
         <Section>
@@ -187,7 +190,7 @@ const InternshipPage = () => {
             Apply Now
           </ApplyButton> */}
 
-          <StyledLink to="/firsthack/internship-register">
+          <StyledLink to="/internship-registration">
             Register Now
           </StyledLink>
 
