@@ -164,7 +164,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FiEdit2 } from "react-icons/fi";
+import { FiCamera, FiEdit2 } from "react-icons/fi";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import UserNavbar from "../../../components/Navbar/UserNavbar";
 import FooterSection from "../../../components/FooterSection/FooterSection";
@@ -231,32 +231,33 @@ const UserDashboardPage = () => {
       <div className="dashboard-content">
         {/* ===== Left Sidebar ===== */}
         <div className="user-sidebar">
+          {/* === Edit Icon at Top Right === */}
+          <button className="edit-icon-top" onClick={toggleEdit}>
+            <FiEdit2 />
+          </button>
+
+          {/* === Profile Picture Section === */}
           <div className="user-image-container">
             <img src={profile.image} alt="User Avatar" className="user-image" />
-
-            <label htmlFor="imageUpload" className="edit-icon-btn">
-              <FiEdit2 />
-            </label>
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
+            {isEditing && (
+              <div className="upload-btn-wrapper">
+                <label htmlFor="imageUpload" className="upload-btn">
+                  <FiCamera />
+                </label>
+                <input
+                  type="file"
+                  id="imageUpload"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
+              </div>
+            )}
           </div>
 
+          {/* === User Info Section === */}
           <div className="user-info">
-            <div className="info-header">
-              <h3>User Profile</h3>
-              <button
-                className={`edit-icon-btn ${isEditing ? "save-mode" : ""}`}
-                onClick={toggleEdit}
-              >
-                {isEditing ? "Save" : <FiEdit2 />}
-              </button>
-            </div>
-
+            <h3>User Profile</h3>
             <div className="info-fields">
               <label>Name:</label>
               {isEditing ? (
@@ -294,6 +295,36 @@ const UserDashboardPage = () => {
                 <p>{profile.role}</p>
               )}
             </div>
+
+            {/* === Save & Cancel Buttons === */}
+            {isEditing && (
+              <div className="action-btns">
+                <button
+                  className="save-btn"
+                  onClick={() => {
+                    // TODO: Add your API save logic here
+                    setIsEditing(false);
+                  }}
+                >
+                  Save
+                </button>
+                <button
+                  className="cancel-btn"
+                  onClick={() => {
+                    // revert unsaved changes
+                    setProfile({
+                      name: user?.name || "User Name",
+                      email: user?.email || "user@example.com",
+                      role: user?.role || "Learner",
+                      image: user?.photoURL || defaultAvatar,
+                    });
+                    setIsEditing(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </div>
 

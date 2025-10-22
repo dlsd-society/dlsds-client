@@ -15,6 +15,7 @@
 
 /* ===== Left Sidebar ===== */
 .user-sidebar {
+  position: relative;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -287,4 +288,89 @@
     width: 90%; /* make it responsive */
     max-width: 320px;
   }
+}
+
+/* === Top-right edit icon === */
+.edit-icon-top {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #666;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.edit-icon-top:hover {
+  background: #0056b3;
+}
+
+/* make sidebar relative for positioning the edit icon */
+
+
+/* === Upload Button === */
+.upload-btn-wrapper {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.upload-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* icon size */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* === Save & Cancel Buttons === */
+.action-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.save-btn {
+  background-color: #007bff;
+  color: white;
+}
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.cancel-btn:hover {
+  background-color: #c2c2c2;
 }
