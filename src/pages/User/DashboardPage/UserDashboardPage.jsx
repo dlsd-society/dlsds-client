@@ -164,27 +164,28 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FiEdit2 } from "react-icons/fi";
+import { FiCamera, FiEdit2 } from "react-icons/fi";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import UserNavbar from "../../../components/Navbar/UserNavbar";
 import FooterSection from "../../../components/FooterSection/FooterSection";
 import BASE_URL from "../../../config/config";
 import "./UserDashboardPage.css";
 import defaultAvatar from "../../../assets/user_avatar.jpg";
+import Swal from 'sweetalert2';
 
 const UserDashboardPage = () => {
   const { user, userToken } = useUserAuth();
-
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
     name: user?.name || "User Name",
     email: user?.email || "user@example.com",
     role: user?.role || "Learner",
-    image: user?.photoURL || defaultAvatar,
+    image: user?.profilePic || defaultAvatar,
   });
 
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   // === Fetch Achievements (latest 3) ===
   useEffect(() => {
@@ -213,16 +214,68 @@ const UserDashboardPage = () => {
     setProfile({ ...profile, [name]: value });
   };
 
-  // === Handle image upload ===
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setProfile({ ...profile, image: imageUrl });
+      setProfile({
+        ...profile,
+        image: imageUrl,
+        imageFile: file, // store the actual File for uploading
+      });
     }
-  };
+  }; 
 
   const toggleEdit = () => setIsEditing(!isEditing);
+
+  const handleSave = async () => {
+    setIsUpdating(true); // start loader
+    try {
+      const formData = new FormData();
+      formData.append("name", profile.name);
+      formData.append("email", profile.email);
+      formData.append("role", profile.role);
+
+      if (profile.imageFile) {
+        formData.append("profilePic", profile.imageFile);
+      }
+
+      const res = await axios.put(`${BASE_URL}/user/profile`, formData, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Update local user info
+      setProfile({
+        name: res.data.user.name,
+        email: res.data.user.email,
+        image: res.data.user.profilePic || defaultAvatar,
+      });
+
+      setIsEditing(false);
+
+      Swal.fire({
+        icon: "success",
+        title: "Profile Updated",
+        text: "Your profile has been successfully updated!",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+    } catch (err) {
+      console.error("Profile update error:", err);
+
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: err.response?.data?.message || "Something went wrong!",
+      });
+    } finally {
+      setIsUpdating(false); // stop loader
+    }
+  };  
 
   return (
     <div className="dashboard-container">
@@ -231,32 +284,33 @@ const UserDashboardPage = () => {
       <div className="dashboard-content">
         {/* ===== Left Sidebar ===== */}
         <div className="user-sidebar">
+          {/* === Edit Icon at Top Right === */}
+          <button className="edit-icon-top" onClick={toggleEdit}>
+            <FiEdit2 />
+          </button>
+
+          {/* === Profile Picture Section === */}
           <div className="user-image-container">
             <img src={profile.image} alt="User Avatar" className="user-image" />
-
-            <label htmlFor="imageUpload" className="edit-icon-btn">
-              <FiEdit2 />
-            </label>
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-            />
+            {isEditing && (
+              <div className="upload-btn-wrapper">
+                <label htmlFor="imageUpload" className="upload-btn">
+                  <FiCamera />
+                </label>
+                <input
+                  type="file"
+                  id="imageUpload"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
+              </div>
+            )}
           </div>
 
+          {/* === User Info Section === */}
           <div className="user-info">
-            <div className="info-header">
-              <h3>User Profile</h3>
-              <button
-                className={`edit-icon-btn ${isEditing ? "save-mode" : ""}`}
-                onClick={toggleEdit}
-              >
-                {isEditing ? "Save" : <FiEdit2 />}
-              </button>
-            </div>
-
+            <h3>User Profile</h3>
             <div className="info-fields">
               <label>Name:</label>
               {isEditing ? (
@@ -280,20 +334,36 @@ const UserDashboardPage = () => {
                 />
               ) : (
                 <p>{profile.email}</p>
-              )}
-
-              <label>Role:</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="role"
-                  value={profile.role}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.role}</p>
-              )}
+              )}              
             </div>
+
+            {/* === Save & Cancel Buttons === */}
+            {isEditing && (
+              <div className="action-btns">
+                <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
+                  {isUpdating ? (
+                    <span className="spinner"></span> // We'll style this below
+                  ) : (
+                    "Save"
+                  )}
+                </button>
+                <button
+                  className="cancel-btn"
+                  onClick={() => {
+                    setProfile({
+                      name: user?.name || "User Name",
+                      email: user?.email || "user@example.com",
+                      role: user?.role || "Learner",
+                      image: user?.photoURL || defaultAvatar,
+                      imageFile: null,
+                    });
+                    setIsEditing(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
