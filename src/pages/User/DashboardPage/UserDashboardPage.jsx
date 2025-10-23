@@ -171,20 +171,21 @@ import FooterSection from "../../../components/FooterSection/FooterSection";
 import BASE_URL from "../../../config/config";
 import "./UserDashboardPage.css";
 import defaultAvatar from "../../../assets/user_avatar.jpg";
+import Swal from 'sweetalert2';
 
 const UserDashboardPage = () => {
   const { user, userToken } = useUserAuth();
-
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfile] = useState({
     name: user?.name || "User Name",
     email: user?.email || "user@example.com",
     role: user?.role || "Learner",
-    image: user?.photoURL || defaultAvatar,
+    image: user?.profilePic || defaultAvatar,
   });
 
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   // === Fetch Achievements (latest 3) ===
   useEffect(() => {
@@ -213,16 +214,68 @@ const UserDashboardPage = () => {
     setProfile({ ...profile, [name]: value });
   };
 
-  // === Handle image upload ===
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setProfile({ ...profile, image: imageUrl });
+      setProfile({
+        ...profile,
+        image: imageUrl,
+        imageFile: file, // store the actual File for uploading
+      });
     }
-  };
+  }; 
 
   const toggleEdit = () => setIsEditing(!isEditing);
+
+  const handleSave = async () => {
+    setIsUpdating(true); // start loader
+    try {
+      const formData = new FormData();
+      formData.append("name", profile.name);
+      formData.append("email", profile.email);
+      formData.append("role", profile.role);
+
+      if (profile.imageFile) {
+        formData.append("profilePic", profile.imageFile);
+      }
+
+      const res = await axios.put(`${BASE_URL}/user/profile`, formData, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Update local user info
+      setProfile({
+        name: res.data.user.name,
+        email: res.data.user.email,
+        image: res.data.user.profilePic || defaultAvatar,
+      });
+
+      setIsEditing(false);
+
+      Swal.fire({
+        icon: "success",
+        title: "Profile Updated",
+        text: "Your profile has been successfully updated!",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+    } catch (err) {
+      console.error("Profile update error:", err);
+
+      Swal.fire({
+        icon: "error",
+        title: "Update Failed",
+        text: err.response?.data?.message || "Something went wrong!",
+      });
+    } finally {
+      setIsUpdating(false); // stop loader
+    }
+  };  
 
   return (
     <div className="dashboard-container">
@@ -281,42 +334,28 @@ const UserDashboardPage = () => {
                 />
               ) : (
                 <p>{profile.email}</p>
-              )}
-
-              <label>Role:</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="role"
-                  value={profile.role}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.role}</p>
-              )}
+              )}              
             </div>
 
             {/* === Save & Cancel Buttons === */}
             {isEditing && (
               <div className="action-btns">
-                <button
-                  className="save-btn"
-                  onClick={() => {
-                    // TODO: Add your API save logic here
-                    setIsEditing(false);
-                  }}
-                >
-                  Save
+                <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
+                  {isUpdating ? (
+                    <span className="spinner"></span> // We'll style this below
+                  ) : (
+                    "Save"
+                  )}
                 </button>
                 <button
                   className="cancel-btn"
                   onClick={() => {
-                    // revert unsaved changes
                     setProfile({
                       name: user?.name || "User Name",
                       email: user?.email || "user@example.com",
                       role: user?.role || "Learner",
                       image: user?.photoURL || defaultAvatar,
+                      imageFile: null,
                     });
                     setIsEditing(false);
                   }}
