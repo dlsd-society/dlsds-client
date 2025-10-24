@@ -105,7 +105,7 @@ const HackathonRegistrationPage = () => {
 
     try {
       // hardcode hackathonId for now (e.g., FirstHack = 1)
-      const hackathonId = 1;
+      const hackathonId = 2; 
 
       const res = await axios.post(
         `${BASE_URL}/hackathon-participants/${hackathonId}/register`,
