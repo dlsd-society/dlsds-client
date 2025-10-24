@@ -182,7 +182,7 @@ const UserDashboardPage = () => {
     role: user?.role || "Learner",
     image: user?.profilePic || defaultAvatar,
   });
-
+  const [originalProfile, setOriginalProfile] = useState(profile);
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -229,16 +229,13 @@ const UserDashboardPage = () => {
   const toggleEdit = () => setIsEditing(!isEditing);
 
   const handleSave = async () => {
-    setIsUpdating(true); // start loader
+    setIsUpdating(true);
     try {
       const formData = new FormData();
       formData.append("name", profile.name);
       formData.append("email", profile.email);
       formData.append("role", profile.role);
-
-      if (profile.imageFile) {
-        formData.append("profilePic", profile.imageFile);
-      }
+      if (profile.imageFile) formData.append("profilePic", profile.imageFile);
 
       const res = await axios.put(`${BASE_URL}/user/profile`, formData, {
         headers: {
@@ -247,13 +244,15 @@ const UserDashboardPage = () => {
         },
       });
 
-      // Update local user info
-      setProfile({
+      const updated = {
         name: res.data.user.name,
         email: res.data.user.email,
+        role: res.data.user.role,
         image: res.data.user.profilePic || defaultAvatar,
-      });
+      };
 
+      setProfile(updated);
+      setOriginalProfile(updated); // ✅ Update the stored original profile
       setIsEditing(false);
 
       Swal.fire({
@@ -263,17 +262,15 @@ const UserDashboardPage = () => {
         timer: 2000,
         showConfirmButton: false,
       });
-
     } catch (err) {
       console.error("Profile update error:", err);
-
       Swal.fire({
         icon: "error",
         title: "Update Failed",
         text: err.response?.data?.message || "Something went wrong!",
       });
     } finally {
-      setIsUpdating(false); // stop loader
+      setIsUpdating(false);
     }
   };  
 
@@ -350,13 +347,7 @@ const UserDashboardPage = () => {
                 <button
                   className="cancel-btn"
                   onClick={() => {
-                    setProfile({
-                      name: user?.name || "User Name",
-                      email: user?.email || "user@example.com",
-                      role: user?.role || "Learner",
-                      image: user?.photoURL || defaultAvatar,
-                      imageFile: null,
-                    });
+                    setProfile(originalProfile); // ✅ revert to original values
                     setIsEditing(false);
                   }}
                 >
@@ -386,21 +377,6 @@ const UserDashboardPage = () => {
               <div className="card-row">
                 {achievements.map((a) => (
                   <div key={a.id} className="card">
-                    <h4>{a.category || a.type}</h4>
-                    {a.participant?.hackathon && (
-                      <p>
-                        Hackathon: {a.participant.hackathon.name} (
-                        {a.participant.hackathon.version})
-                      </p>
-                    )}
-                    {a.internship && (
-                      <p>
-                        Internship: {a.internship.projectPreference || "N/A"}
-                      </p>
-                    )}
-                    <p>
-                      Issued: {new Date(a.issuedAt).toLocaleDateString()}
-                    </p>
                     {a.fileUrl && (
                       <img
                         src={a.fileUrl}
@@ -408,13 +384,28 @@ const UserDashboardPage = () => {
                         className="achievement-img"
                       />
                     )}
-                    <a
-                      href={`/verify/${a.code}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Verify Credential
-                    </a>
+                    <div className="card-content">
+                      <h4>{a.category || a.type}</h4>
+                      {a.participant?.hackathon && (
+                        <p>
+                          {a.participant.hackathon.name} (
+                          {a.participant.hackathon.version})
+                        </p>
+                      )}
+                      {a.internship && (
+                        <p>
+                          Internship: {a.internship.projectPreference || "N/A"}
+                        </p>
+                      )}
+                      <p>Issued: {new Date(a.issuedAt).toLocaleDateString()}</p>
+                      <a
+                        href={`/verify/${a.code}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Verify Credential
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -439,7 +430,7 @@ const UserDashboardPage = () => {
           {/* === Courses/Events === */}
           <section className="dashboard-section">
             <div className="section-header">
-              <h3>Courses / Events You Would Like</h3>
+              <h3>Courses / Events You Might Be Interested In</h3>
               <button className="more-btn">
                 <a href="/courses">More..</a>
               </button>

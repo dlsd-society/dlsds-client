@@ -3,6 +3,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* Layout */
@@ -11,6 +13,8 @@
   flex: 1;
   padding: 30px;
   gap: 30px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* ===== Left Sidebar ===== */
@@ -165,15 +169,31 @@
   color: white;
 }
 
-.card-row {
+/* .card-row {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: flex-start;
+} */
+
+/* .card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+} */
+
+/* === Outer container: horizontal scroll of cards === */
+.card-row {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
 }
 
-.card {
-  width: 280px; /* fixed card width */
+/* .card {
+  width: 280px; 
   min-height: 250px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -186,10 +206,33 @@
   justify-content: flex-start;
   align-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+} */
+
+/* === Each card: image left, text right === */
+.card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px; /* ⬅️ reduced width */
+  height: 130px; /* ⬅️ slightly smaller height */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  padding: 10px;
 }
 
-.card:hover {
+/* .card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+} */
+
+.card:hover {
+  transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
@@ -220,19 +263,87 @@
   box-sizing: border-box;
 } */
 
-.achievement-img {
+/* .achievement-img {
   width: 100%;
-  height: 140px; /* ✅ fixed height for uniformity */
-  object-fit: cover; /* fills space neatly */
-  border-radius: 8px;
-  /* margin-top: 10px; */
-  background-color: #f9f9f9;
-  /* padding: 4px; */
+  height: 140px; 
+  object-fit: cover; 
+  border-radius: 8px;  
+  background-color: #f9f9f9;  
   box-sizing: border-box;
+} */
+
+/* === Image section (left side) === */
+.achievement-img {
+  flex: 0 0 85px; /* ⬅️ smaller image */
+  height: 85px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+/* === Text content (right side) === */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-content h4 {
+  font-size: 0.95rem;
+  margin: 0 0 3px;
+}
+
+.card-content p {
+  margin: 1px 0;
+  font-size: 0.85rem;
+}
+
+.card-content a {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card-content a:hover {
+  text-decoration: underline;
+}
+
+/* === Hide scroll bar (optional) === */
+.card-row::-webkit-scrollbar {
+  display: none;
+}
+.card-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* === Mobile responsive: stack image and text === */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    height: auto;
+  }
+
+  .achievement-img {
+    width: 100%;
+    height: 140px;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .card-content {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 /* Optional tweak: make cards consistent in height */
-.card {
+/* .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -244,15 +355,15 @@
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   overflow: hidden;
-}
+} */
 
 /* Keep images responsive and prevent overflow */
-.card img {
+/* .card img {
   width: 100%;
   height: auto;
   max-height: 180px;
   object-fit: contain;
-}
+} */
 
 /* For tablets (width ≤ 992px) → stack sidebar but keep cards horizontal */
 @media (max-width: 992px) {
