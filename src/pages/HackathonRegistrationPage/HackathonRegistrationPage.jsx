@@ -1,6 +1,6 @@
-// pages/FisrtHackRegistrationPage/FirstHackRegistrationPage.jsx
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import BASE_URL from "../../config/config";
 
 const HackathonRegistrationPage = () => {
@@ -18,8 +18,6 @@ const HackathonRegistrationPage = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -58,61 +56,29 @@ const HackathonRegistrationPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (!validate()) return;
-//     console.log("Form submitted:", formData);
-//     alert("✅ Registration submitted successfully!");
-//   };
-
-// const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!validate()) return;
-
-//     setLoading(true);
-//     setSuccessMsg("");
-//     setErrorMsg("");
-
-//     try {
-//       const res = await axios.post(`${BASE_URL}/hackathons`, formData);
-//       setSuccessMsg(`✅ Registration successful! Your ID is ${res.data.id}`);
-//       setFormData({
-//         teamName: "",
-//         teamSize: "1",
-//         soloPreference: "",
-//         fullName: "",
-//         email: "",
-//         phone: "",
-//         cityState: "",
-//         experience: "",
-//         agreement: false,
-//       });
-//     } catch (err) {
-//       console.error(err);
-//       setErrorMsg(err.response?.data?.message || "❌ Something went wrong!");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setLoading(true);
-    setSuccessMsg("");
-    setErrorMsg("");
 
     try {
-      // hardcode hackathonId for now (e.g., FirstHack = 1)
-      const hackathonId = 2; 
+      const hackathonId = 2; // Hardcoded for now
 
       const res = await axios.post(
         `${BASE_URL}/hackathon-participants/${hackathonId}/register`,
         formData
       );
 
-      setSuccessMsg(`✅ Registration successful! Your ID is ${res.data.participant.id}`);
+      // ✅ Success Alert using SweetAlert2
+      await Swal.fire({
+        icon: "success",
+        title: "Successfully saved!",
+        text: `Registration successful! Your ID is ${res.data.participant.id}`,
+        confirmButtonColor: "#1976d2",
+      });
+
+      // Reset form
       setFormData({
         teamName: "",
         teamSize: "1",
@@ -126,18 +92,19 @@ const HackathonRegistrationPage = () => {
       });
     } catch (err) {
       console.error(err);
-      setErrorMsg(err.response?.data?.message || "❌ Something went wrong!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops!",
+        text: err.response?.data?.message || "Something went wrong!",
+        confirmButtonColor: "#d33",
+      });
     } finally {
       setLoading(false);
     }
   };
 
-
-  const fieldWrapper = {
-    position: "relative",
-    marginBottom: "20px",
-  };
-
+  // Styles
+  const fieldWrapper = { position: "relative", marginBottom: "20px" };
   const floatingLabel = {
     position: "absolute",
     top: "-10px",
@@ -148,7 +115,6 @@ const HackathonRegistrationPage = () => {
     fontWeight: "bold",
     color: "#444",
   };
-
   const inputStyle = {
     width: "100%",
     padding: "10px",
@@ -156,28 +122,28 @@ const HackathonRegistrationPage = () => {
     borderRadius: "6px",
     fontSize: "15px",
   };
-
   const radioFieldset = {
     border: "1px solid #ccc",
     borderRadius: "8px",
-    // padding: "15px",
     padding: "30px 15px",
     marginBottom: "20px",
   };
-
-  const errorStyle = {
-    color: "red",
-    fontSize: "13px",
-  };
+  const errorStyle = { color: "red", fontSize: "13px" };
 
   return (
-    <div style={{ padding: "30px", maxWidth: "700px", margin: "0 auto" }}>
+    <div
+      style={{
+        position: "relative",
+        padding: "30px",
+        maxWidth: "700px",
+        margin: "0 auto",
+        opacity: loading ? 0.5 : 1,
+        pointerEvents: loading ? "none" : "auto", // disables clicks when loading
+      }}
+    >
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Hackathon Registration
       </h1>
-
-      {successMsg && <p style={{ color: "green", fontWeight: "bold" }}>{successMsg}</p>}
-      {errorMsg && <p style={{ color: "red", fontWeight: "bold" }}>{errorMsg}</p>}
 
       <form onSubmit={handleSubmit}>
         {/* Section 1: Team Info */}
@@ -201,7 +167,11 @@ const HackathonRegistrationPage = () => {
           </div>
 
           <fieldset style={radioFieldset}>
-            <legend style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}>Team Size</legend>
+            <legend
+              style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}
+            >
+              Team Size
+            </legend>
             {["1", "2", "3", "4"].map((size) => (
               <label key={size} style={{ marginRight: "15px" }}>
                 <input
@@ -218,7 +188,11 @@ const HackathonRegistrationPage = () => {
 
           {formData.teamSize === "1" && (
             <fieldset style={radioFieldset}>
-              <legend style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}>Solo / Team Preference</legend>
+              <legend
+                style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}
+              >
+                Solo / Team Preference
+              </legend>
               <label style={{ display: "block" }}>
                 <input
                   type="radio"
@@ -275,9 +249,7 @@ const HackathonRegistrationPage = () => {
               onChange={handleChange}
               style={inputStyle}
             />
-            {errors.email && (
-              <span style={errorStyle}>{errors.email}</span>
-            )}
+            {errors.email && <span style={errorStyle}>{errors.email}</span>}
           </div>
 
           <div style={fieldWrapper}>
@@ -289,9 +261,7 @@ const HackathonRegistrationPage = () => {
               onChange={handleChange}
               style={inputStyle}
             />
-            {errors.phone && (
-              <span style={errorStyle}>{errors.phone}</span>
-            )}
+            {errors.phone && <span style={errorStyle}>{errors.phone}</span>}
           </div>
 
           <div style={fieldWrapper}>
@@ -309,7 +279,11 @@ const HackathonRegistrationPage = () => {
           </div>
 
           <fieldset style={radioFieldset}>
-            <legend style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}>Experience Level</legend>
+            <legend
+              style={{ fontSize: "14px", fontWeight: "bold", color: "#444" }}
+            >
+              Experience Level
+            </legend>
             {["Beginner", "Intermediate", "Advanced"].map((level) => (
               <label key={level} style={{ display: "block" }}>
                 <input
@@ -333,14 +307,23 @@ const HackathonRegistrationPage = () => {
           <legend>
             <strong>Agreement</strong>
           </legend>
-          <div style={{ fontSize: "14px", lineHeight: "1.6", marginLeft: '1rem' }}>            
+          <div
+            style={{
+              fontSize: "14px",
+              lineHeight: "1.6",
+              marginLeft: "1rem",
+            }}
+          >
             <ul>
               <li>I will adhere to the hackathon code of conduct.</li>
-              <li>All projects submitted will be original work.</li>              
+              <li>All projects submitted will be original work.</li>
               <li>I will respect all participants.</li>
-              <li>Organizers hold the final right to decisions.</li>              
+              <li>Organizers hold the final right to decisions.</li>
               <li>I will join the Discord server for updates.</li>
-              <li>I consent to being contacted by the organisers via their channels.</li>
+              <li>
+                I consent to being contacted by the organisers via their
+                channels.
+              </li>
             </ul>
           </div>
 
@@ -364,19 +347,36 @@ const HackathonRegistrationPage = () => {
           style={{
             padding: "12px 20px",
             fontSize: "16px",
-            cursor: "pointer",
+            cursor: loading ? "not-allowed" : "pointer",
             backgroundColor: "#1976d2",
             color: "white",
             border: "none",
             borderRadius: "6px",
           }}
         >
-          Submit Registration
+          {loading ? "Saving..." : "Submit Registration"}
         </button>
-
-        {loading && "Submitting..."}
-
       </form>
+
+      {/* Overlay Loader */}
+      {loading && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(255,255,255,0.6)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "22px",
+            fontWeight: "bold",
+            color: "#1976d2",
+            zIndex: 9999,
+          }}
+        >
+          Saving...
+        </div>
+      )}
     </div>
   );
 };
