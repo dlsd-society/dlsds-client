@@ -1,6 +1,7 @@
 // pages/InternshipRegistrationPage/InternshipRegistrationPage.jsx
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import BASE_URL from "../../config/config";
 
 const InternshipRegistrationPage = () => {
@@ -15,15 +16,13 @@ const InternshipRegistrationPage = () => {
     groupDetails: "",
     domains: [],
     tools: "",
-    previousProjects: "",
-    certificateOption: "No",
+    previousProjects: "", 
+    certificateOption: "Yes",
     agreement: false,
   });
 
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [loading, setLoading] = useState(false);  
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
@@ -85,8 +84,14 @@ const InternshipRegistrationPage = () => {
     setLoading(true);
     try {
       const res = await axios.post(`${BASE_URL}/internships`, formData);
-      setSuccessMsg("✅ Internship registration successful!");
-      setErrorMsg("");
+      
+      Swal.fire({
+        title: "✅ Registration Successful!",
+        text: "Your internship registration has been submitted successfully.",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+      });
+
       setFormData({
         joinPreference: "",
         fullName: "",
@@ -103,9 +108,13 @@ const InternshipRegistrationPage = () => {
         agreement: false,
       });
     } catch (err) {
-      console.error(err);
-      setErrorMsg("❌ Something went wrong");
-      setSuccessMsg("");
+      console.error(err);     
+      Swal.fire({
+        title: "❌ Something went wrong!",
+        text: "Unable to submit your registration. Please try again later.",
+        icon: "error",
+        confirmButtonColor: "#d33",
+      }); 
     } finally {
       setLoading(false);
     }
@@ -151,14 +160,7 @@ const InternshipRegistrationPage = () => {
     <div style={{ padding: "30px", maxWidth: "700px", margin: "0 auto" }}>
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Internship Registration
-      </h1>
-
-      {successMsg && (
-        <p style={{ color: "green", fontWeight: "bold" }}>{successMsg}</p>
-      )}
-      {errorMsg && (
-        <p style={{ color: "red", fontWeight: "bold" }}>{errorMsg}</p>
-      )}
+      </h1>     
 
       <form onSubmit={handleSubmit}>
         {/* Section 1: Joining Preference */}
