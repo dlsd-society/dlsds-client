@@ -92,7 +92,7 @@
   color: #333;
 }
 
-.mobile-menu {
+/* .mobile-menu {
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -104,6 +104,56 @@
   padding: 20px;
   gap: 15px;
   z-index: 999;
+} */
+
+/* Ensure menu slides in from the right side */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  border-left: 1px solid #ddd;
+  padding: 60px 20px 20px 20px; /* leave space for close button */
+  gap: 15px;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+  overflow-y: auto;
+}
+
+/* ✅ Add a close button inside the menu */
+.close-menu-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.close-menu-btn:hover {
+  color: #000;
+}
+
+/* ✅ For mobile (≤768px): full width */
+@media (max-width: 768px) {
+  .mobile-menu {
+    width: 100%;
+  }
+}
+
+/* ✅ For tablets/larger screens (>768px): half width and fixed to right */
+@media (min-width: 769px) {
+  .mobile-menu {
+    width: 50%;
+    right: 0; /* ✅ ensures menu opens from the right */
+    left: auto;
+  }
 }
 
 .mobile-menu a,
@@ -138,5 +188,30 @@
   }
   .hamburger {
     display: block;
+  }
+}
+
+/* ✅ Make fonts smaller on tablet screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-navbar {
+    padding: 10px 16px;
+  }
+
+  .nav-logo p {
+    font-size: 0.85rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+
+  .mobile-menu a,
+  .mobile-menu button {
+    font-size: 0.95rem;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
   }
 }

@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/logo.png";
-import avatar from "../../assets/user_avatar.jpg";
+import defaultAvatar from "../../assets/user_avatar.jpg";
 import "./UserNavbar.css";
 
 const UserNavbar = () => {
-  const { user, logout } = useUserAuth();  
+  const { user, logout } = useUserAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState(defaultAvatar);
+
+  useEffect(() => {
+    // ✅ Set profile picture from user data if available
+    if (user?.profilePic) {
+      setProfileImage(user.profilePic);
+    } else {
+      setProfileImage(defaultAvatar);
+    }
+  }, [user]);
 
   return (
     <nav className="dashboard-navbar">
@@ -54,17 +64,17 @@ const UserNavbar = () => {
           </NavLink>
         </li>
 
-        {/* Avatar + Dropdown */}
+        {/* ✅ Avatar + Dropdown */}
         <li className="avatar-container">
           <img
-            src={avatar}
+            src={profileImage}
             alt="User Avatar"
             className="avatar"
             onClick={() => setDropdownOpen(!dropdownOpen)}
           />
           {dropdownOpen && (
             <div className="dropdown-menu">
-              <NavLink to="#" className="accounts">
+              <NavLink to="/user/profile" className="accounts">
                 Account Settings
               </NavLink>
               <button onClick={logout} className="accounts">
@@ -83,6 +93,18 @@ const UserNavbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="mobile-menu">
+          <button className="close-menu-btn" onClick={() => setMenuOpen(false)}>
+            <FiX size={26} />
+          </button>
+
+          <NavLink
+            to="/user/dashboard"
+            onClick={() => setMenuOpen(false)}
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            Dashboard
+          </NavLink>
+
           <NavLink
             to="/user/achievements"
             onClick={() => setMenuOpen(false)}
