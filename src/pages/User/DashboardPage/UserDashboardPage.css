@@ -28,7 +28,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 320px;
+  max-width: 320px;
 }
+
+/* .user-sidebar {
+  flex: 0 0 280px;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px; 
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+} */
 
 .user-image-container {
   position: relative;
@@ -87,6 +99,10 @@
 .info-fields p {
   color: #333;
   margin-top: 4px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .info-fields input {
@@ -95,6 +111,25 @@
   margin-top: 4px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.info-fields textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+/* Ensure text doesn't overflow */
+.info-fields p,
+.info-fields input,
+.info-fields textarea {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* Match edit icon style with profile image pencil */
@@ -526,4 +561,24 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Match input and textarea font size with display text */
+.info-fields input,
+.info-fields textarea {
+  font-size: 14px; /* ⬅️ smaller font */
+  color: #333;
+  font-family: inherit;
+}
+
+/* Optional: make p tags and inputs visually consistent */
+.info-fields p {
+  font-size: 14px;
+  color: #333;
+}
+
+
+.info-fields input,
+.info-fields textarea {
+  font-size: 13px;
 }

@@ -17,6 +17,9 @@ const UserDashboardPage = () => {
     email: user?.email || "user@example.com",
     role: user?.role || "Learner",
     image: user?.profilePic || defaultAvatar,
+    linkedIn: user?.linkedIn || "",
+    website: user?.website || "",
+    about: user?.about || "",
   });
   const [originalProfile, setOriginalProfile] = useState(profile);
   const [achievements, setAchievements] = useState([]);
@@ -71,6 +74,9 @@ const UserDashboardPage = () => {
       formData.append("name", profile.name);
       formData.append("email", profile.email);
       formData.append("role", profile.role);
+      formData.append("linkedIn", profile.linkedIn);
+      formData.append("website", profile.website);
+      formData.append("about", profile.about);
       if (profile.imageFile) formData.append("profilePic", profile.imageFile);
 
       const res = await axios.put(`${BASE_URL}/user/profile`, formData, {
@@ -85,6 +91,9 @@ const UserDashboardPage = () => {
         email: res.data.user.email,
         role: res.data.user.role,
         image: res.data.user.profilePic || defaultAvatar,
+        linkedIn: res.data.user.linkedIn || "",
+        website: res.data.user.website || "",
+        about: res.data.user.about || "",
       };
 
       setProfile(updated);
@@ -143,9 +152,9 @@ const UserDashboardPage = () => {
 
           {/* === User Info Section === */}
           <div className="user-info">
-            <h3>User Profile</h3>
+            {/* <h3>User Profile</h3> */}
             <div className="info-fields">
-              <label>Name:</label>
+              <label>Name</label>
               {isEditing ? (
                 <input
                   type="text"
@@ -157,7 +166,19 @@ const UserDashboardPage = () => {
                 <p>{profile.name}</p>
               )}
 
-              <label>Email:</label>
+              <label>Bio</label>
+              {isEditing ? (
+                <textarea
+                  name="about"
+                  value={profile.about}
+                  onChange={handleChange}
+                  placeholder="Tell us something about yourself"
+                ></textarea>
+              ) : (
+                <p>{profile.about || "No bio yet"}</p>
+              )}     
+
+              <label>Email</label>
               {isEditing ? (
                 <input
                   type="email"
@@ -167,19 +188,38 @@ const UserDashboardPage = () => {
                 />
               ) : (
                 <p>{profile.email}</p>
-              )}              
+              )}  
+
+              <label>LinkedIn</label>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="linkedIn"
+                  value={profile.linkedIn}
+                  onChange={handleChange}
+                  placeholder="Paste your LinkedIn profile URL"
+                />
+              ) : (
+                <p>{profile.linkedIn || "Not provided"}</p>
+              )}
+
+              <label>Website / Other Profile</label>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="website"
+                  value={profile.website}
+                  onChange={handleChange}
+                  placeholder="Your website or any portfolio URL"
+                />
+              ) : (
+                <p>{profile.website || "Not provided"}</p>
+              )}                     
             </div>
 
             {/* === Save & Cancel Buttons === */}
             {isEditing && (
-              <div className="action-btns">
-                <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
-                  {isUpdating ? (
-                    <span className="spinner"></span> // We'll style this below
-                  ) : (
-                    "Save"
-                  )}
-                </button>
+              <div className="action-btns">                
                 <button
                   className="cancel-btn"
                   onClick={() => {
@@ -188,6 +228,14 @@ const UserDashboardPage = () => {
                   }}
                 >
                   Cancel
+                </button>
+
+                <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
+                  {isUpdating ? (
+                    <span className="spinner"></span> // We'll style this below
+                  ) : (
+                    "Save"
+                  )}
                 </button>
               </div>
             )}
