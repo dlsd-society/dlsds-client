@@ -154,67 +154,30 @@ const UserDashboardPage = () => {
           <div className="user-info">
             {/* <h3>User Profile</h3> */}
             <div className="info-fields">
-              <label>Name</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="name"
-                  value={profile.name}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.name}</p>
-              )}
+              <div className="info-field">
+  <label>Name</label>
+  <p>{profile.name}</p>
+</div>
 
-              <label>Bio</label>
-              {isEditing ? (
-                <textarea
-                  name="about"
-                  value={profile.about}
-                  onChange={handleChange}
-                  placeholder="Tell us something about yourself"
-                ></textarea>
-              ) : (
-                <p>{profile.about || "No bio yet"}</p>
-              )}     
+<div className="info-field">
+  <label>Email</label>
+  <p>{profile.email}</p>
+</div>
 
-              <label>Email</label>
-              {isEditing ? (
-                <input
-                  type="email"
-                  name="email"
-                  value={profile.email}
-                  onChange={handleChange}
-                />
-              ) : (
-                <p>{profile.email}</p>
-              )}  
+<div className="info-field">
+  <label>LinkedIn</label>
+  <p>{profile.linkedIn || "Not provided"}</p>
+</div>
 
-              <label>LinkedIn</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="linkedIn"
-                  value={profile.linkedIn}
-                  onChange={handleChange}
-                  placeholder="Paste your LinkedIn profile URL"
-                />
-              ) : (
-                <p>{profile.linkedIn || "Not provided"}</p>
-              )}
+<div className="info-field">
+  <label>Website / Other Profile</label>
+  <p>{profile.website || "Not provided"}</p>
+</div>
 
-              <label>Website / Other Profile</label>
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="website"
-                  value={profile.website}
-                  onChange={handleChange}
-                  placeholder="Your website or any portfolio URL"
-                />
-              ) : (
-                <p>{profile.website || "Not provided"}</p>
-              )}                     
+<div className="info-field">
+  <label>About Me</label>
+  <p>{profile.about || "No bio yet"}</p>
+</div>                     
             </div>
 
             {/* === Save & Cancel Buttons === */}
