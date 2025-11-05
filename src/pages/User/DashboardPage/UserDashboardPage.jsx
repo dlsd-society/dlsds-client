@@ -65,7 +65,7 @@ const UserDashboardPage = () => {
     }
   }; 
 
-  const toggleEdit = () => setIsEditing(!isEditing);
+  const toggleEdit = () => setIsEditing(!isEditing);  
 
   const handleSave = async () => {
     setIsUpdating(true);
@@ -155,29 +155,29 @@ const UserDashboardPage = () => {
             {/* <h3>User Profile</h3> */}
             <div className="info-fields">
               <div className="info-field">
-  <label>Name</label>
-  <p>{profile.name}</p>
-</div>
+              <label>Name</label>
+              <p>{profile.name}</p>
+            </div>
 
-<div className="info-field">
-  <label>Email</label>
-  <p>{profile.email}</p>
-</div>
+            <div className="info-field">
+              <label>Email</label>
+              <p>{profile.email}</p>
+            </div>
 
-<div className="info-field">
-  <label>LinkedIn</label>
-  <p>{profile.linkedIn || "Not provided"}</p>
-</div>
+            <div className="info-field">
+              <label>LinkedIn</label>
+              <p>{profile.linkedIn || "Not provided"}</p>
+            </div>
 
-<div className="info-field">
-  <label>Website / Other Profile</label>
-  <p>{profile.website || "Not provided"}</p>
-</div>
+            <div className="info-field">
+              <label>Website / Other Profile</label>
+              <p>{profile.website || "Not provided"}</p>
+            </div>
 
-<div className="info-field">
-  <label>About Me</label>
-  <p>{profile.about || "No bio yet"}</p>
-</div>                     
+            <div className="info-field">
+              <label>About Me</label>
+              <p>{profile.about || "No bio yet"}</p>
+            </div>                     
             </div>
 
             {/* === Save & Cancel Buttons === */}
@@ -207,6 +207,144 @@ const UserDashboardPage = () => {
 
         {/* ===== Right Main Content ===== */}
         <div className="user-main-content">
+
+          <section className="my-profile-section">
+  <h2 className="section-title">My Profile</h2>
+
+  <div className="my-profile-container">
+    {/* Profile Image */}
+    <div className="profile-image-box">
+  <img
+    src={profile.image || "/default-profile.png"}
+    alt="Profile"
+    className="profile-img"
+  />
+
+  {/* Show camera icon only when editing */}
+  {isEditing && (
+    <>
+      <label htmlFor="profilePicUpload" className="profile-edit-icon">
+        <FiCamera />
+      </label>
+      <input
+        type="file"
+        id="profilePicUpload"
+        accept="image/*"
+        onChange={handleImageChange}
+        style={{ display: "none" }}
+      />
+    </>
+  )}
+</div>
+
+
+    {/* Profile Details */}
+    <div className="profile-info-box">
+      <div className="profile-row">
+        <div className="profile-field">
+          <label>Name</label>
+          {isEditing ? (
+            <input
+              type="text"
+              value={profile.name}
+              onChange={handleChange}
+            />
+          ) : (
+            <div className="readonly-box">{profile.name}</div>
+          )}
+        </div>
+
+        <div className="profile-field">
+          <label>Email</label>
+          {isEditing ? (
+  <input
+    type="email"
+    name="email"
+    value={profile.email}
+    onChange={handleChange}
+  />
+) : (
+  <div className="readonly-box">{profile.email || "Not provided"}</div>
+)}
+        </div>
+      </div>
+
+      <div className="profile-row">
+        <div className="profile-field">
+          <label>LinkedIn</label>
+          {isEditing ? (
+  <input
+    type="text"
+    name="linkedIn"
+    value={profile.linkedIn}
+    onChange={handleChange}
+  />
+) : (
+  <div className="readonly-box">{profile.linkedIn || "Not provided"}</div>
+)}
+        </div>
+
+        <div className="profile-field">
+          <label>Website</label>
+          {isEditing ? (
+  <input
+    type="text"
+    name="website"
+    value={profile.website}
+    onChange={handleChange}
+  />
+) : (
+  <div className="readonly-box">{profile.website || "Not provided"}</div>
+)}
+        </div>
+      </div>
+
+      <div className="profile-row">
+        <div className="profile-field full-width">
+          <label>Bio</label>
+          {isEditing ? (
+            <textarea
+              rows="3"
+              value={profile.about || "No bio yet"}
+              onChange={handleChange}
+            />
+          ) : (
+            <div className="readonly-box">{profile.about || "No bio yet"}</div>
+          )}
+        </div>
+      </div>
+
+      <div className="profile-buttons">
+        {isEditing ? (
+          <>
+            <button
+              className="cancel-btn"
+              onClick={() => {
+                setProfile(originalProfile); // ✅ revert to original values
+                setIsEditing(false);
+              }}
+            >
+              Cancel
+            </button>
+
+            <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
+              {isUpdating ? (
+                <span className="spinner"></span> // We'll style this below
+              ) : (
+                "Save"
+              )}
+            </button>            
+          </>
+        ) : (
+          <button className="edit-btn" onClick={toggleEdit}>
+            <FiEdit2 /> Edit Profile
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
           {/* === Recent Achievements === */}
           <section className="dashboard-section">
             <div className="section-header">

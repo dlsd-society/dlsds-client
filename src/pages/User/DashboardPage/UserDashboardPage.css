@@ -645,3 +645,216 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
+/* === Hide user profile sidebar on mobile and tablets === */
+@media (max-width: 1024px) {
+  .user-sidebar {
+    display: none;
+  }
+
+  .dashboard-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .user-main-content {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+.my-profile-section {
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.my-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers image horizontally */
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* Centered circular image */
+.profile-image-box {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  object-fit: cover;
+  display: block;
+}
+
+/* Camera icon – visible only when editing */
+.profile-edit-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.profile-edit-icon:hover {
+  background-color: #0056b3;
+}
+
+/* Hidden by default unless editing */
+.profile-edit-icon.hidden {
+  display: none;
+}
+
+/* Profile info layout */
+/* === Uniform Profile Field Styling === */
+.profile-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.profile-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Fix consistent width for all inputs and readonly boxes */
+.profile-field input,
+.profile-field .readonly-box {
+  width: 100%;
+  max-width: 320px;
+  min-width: 320px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.profile-field .readonly-box {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  color: #333;
+  cursor: default;
+}
+
+/* Uniform style for textareas */
+.profile-field textarea {
+  width: 100%;
+  max-width: 660px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Label styling for better alignment */
+.profile-field label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Keep "full-width" field (like Bio) spanning both columns */
+.profile-field.full-width {
+  flex: 1 1 100%;
+}
+
+/* Optional — make sure rows wrap neatly on smaller screens */
+@media (max-width: 768px) {
+  .profile-row {
+    flex-direction: column;
+  }
+
+  .profile-field input,
+  .profile-field .readonly-box {
+    max-width: 100%;
+  }
+
+  .profile-field textarea {
+    max-width: 100%;
+  }
+}
+
+/* Edit buttons */
+.profile-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.edit-btn,
+.save-btn,
+.cancel-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+.save-btn:hover {
+  background-color: #218838;
+}
+.cancel-btn:hover {
+  background-color: #c82333;
+}
