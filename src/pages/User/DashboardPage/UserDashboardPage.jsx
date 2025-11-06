@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FiCamera, FiEdit2 } from "react-icons/fi";
+import { FiCamera, FiChevronDown, FiEdit2 } from "react-icons/fi";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import UserNavbar from "../../../components/Navbar/UserNavbar";
 import FooterSection from "../../../components/FooterSection/FooterSection";
@@ -25,6 +25,7 @@ const UserDashboardPage = () => {
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false); // default closed
 
   // === Fetch Achievements (latest 3) ===
   useEffect(() => {
@@ -119,6 +120,12 @@ const UserDashboardPage = () => {
     }
   };  
 
+  const truncateText = (text, maxLength = 35) => {
+    if (!text) return "Not provided";
+    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+  };
+
+
   return (
     <div className="dashboard-container">
       <UserNavbar />
@@ -209,63 +216,88 @@ const UserDashboardPage = () => {
         <div className="user-main-content">
 
           <section className="my-profile-section">
-  <h2 className="section-title">My Profile</h2>
+            <div
+    className="section-header"
+    onClick={() => setIsProfileOpen((prev) => !prev)}
+    style={{ cursor: "pointer" }}
+  >
+<h3>My Profile</h3>
+<FiChevronDown className={`arrow ${isProfileOpen ? "open" : ""}`} />
 
-  <div className="my-profile-container">
-    {/* Profile Image */}
-    <div className="profile-image-box">
-  <img
-    src={profile.image || "/default-profile.png"}
-    alt="Profile"
-    className="profile-img"
-  />
+  </div>
+  
 
-  {/* Show camera icon only when editing */}
-  {isEditing && (
-    <>
-      <label htmlFor="profilePicUpload" className="profile-edit-icon">
-        <FiCamera />
-      </label>
-      <input
-        type="file"
-        id="profilePicUpload"
-        accept="image/*"
-        onChange={handleImageChange}
-        style={{ display: "none" }}
-      />
-    </>
-  )}
-</div>
+  <div
+    className={`collapsible-content ${
+      isProfileOpen ? "open" : ""
+    }`}
+  >
 
+    <div className="profile-layout">
+    {/* ===== Left: Profile Image ===== */}
+    <div className="profile-left">
+      <div className="profile-image-box">
+        <img
+          src={profile.image || "/default-profile.png"}
+          alt="Profile"
+          className="profile-img"
+        />
 
-    {/* Profile Details */}
-    <div className="profile-info-box">
+        {/* Show camera icon only when editing */}
+        {isEditing && (
+          <>
+            <label htmlFor="profilePicUpload" className="profile-edit-icon">
+              <FiCamera />
+            </label>
+            <input
+              type="file"
+              id="profilePicUpload"
+              accept="image/*"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
+            />
+          </>
+        )}
+      </div>
+    </div>
+
+    {/* ===== Right: Profile Info ===== */}
+    <div className="profile-right">
       <div className="profile-row">
         <div className="profile-field">
           <label>Name</label>
           {isEditing ? (
             <input
               type="text"
+              name="name"
               value={profile.name}
               onChange={handleChange}
             />
           ) : (
-            <div className="readonly-box">{profile.name}</div>
+            <div className="readonly-box" title={profile.name}>
+              {profile.name.length > 11
+                ? `${profile.name.substring(0, 11)}...`
+                : profile.name}
+            </div>
           )}
         </div>
 
         <div className="profile-field">
           <label>Email</label>
           {isEditing ? (
-  <input
-    type="email"
-    name="email"
-    value={profile.email}
-    onChange={handleChange}
-  />
-) : (
-  <div className="readonly-box">{profile.email || "Not provided"}</div>
-)}
+            <input
+              type="email"
+              name="email"
+              value={profile.email}
+              onChange={handleChange}
+            />
+          ) : (
+            <div className="readonly-box" title={profile.email}>
+              {profile.email.length > 11
+                ? `${profile.email.substring(0, 11)}...`
+                : profile.email}
+            </div>
+          )}
         </div>
       </div>
 
@@ -273,29 +305,37 @@ const UserDashboardPage = () => {
         <div className="profile-field">
           <label>LinkedIn</label>
           {isEditing ? (
-  <input
-    type="text"
-    name="linkedIn"
-    value={profile.linkedIn}
-    onChange={handleChange}
-  />
-) : (
-  <div className="readonly-box">{profile.linkedIn || "Not provided"}</div>
-)}
+            <input
+              type="text"
+              name="linkedIn"
+              value={profile.linkedIn}
+              onChange={handleChange}
+            />
+          ) : (
+            <div className="readonly-box" title={profile.linkedIn}>
+              {profile.linkedIn.length > 11
+                ? `${profile.linkedIn.substring(0, 11)}...`
+                : profile.linkedIn || "Not provided"}
+            </div>
+          )}
         </div>
 
         <div className="profile-field">
           <label>Website</label>
           {isEditing ? (
-  <input
-    type="text"
-    name="website"
-    value={profile.website}
-    onChange={handleChange}
-  />
-) : (
-  <div className="readonly-box">{profile.website || "Not provided"}</div>
-)}
+            <input
+              type="text"
+              name="website"
+              value={profile.website}
+              onChange={handleChange}
+            />
+          ) : (
+            <div className="readonly-box" title={profile.website}>
+              {profile.website.length > 11
+                ? `${profile.website.substring(0, 11)}...`
+                : profile.website || "Not provided"}
+            </div>
+          )}
         </div>
       </div>
 
@@ -305,11 +345,17 @@ const UserDashboardPage = () => {
           {isEditing ? (
             <textarea
               rows="3"
-              value={profile.about || "No bio yet"}
+              name="about"
+              value={profile.about}
               onChange={handleChange}
             />
-          ) : (
-            <div className="readonly-box">{profile.about || "No bio yet"}</div>
+          ) : (            
+              <textarea
+                rows="3"
+                name="about"
+                value={profile.about}                
+              />
+            
           )}
         </div>
       </div>
@@ -320,20 +366,19 @@ const UserDashboardPage = () => {
             <button
               className="cancel-btn"
               onClick={() => {
-                setProfile(originalProfile); // ✅ revert to original values
+                setProfile(originalProfile);
                 setIsEditing(false);
               }}
             >
               Cancel
             </button>
-
-            <button className="save-btn" onClick={handleSave} disabled={isUpdating}>
-              {isUpdating ? (
-                <span className="spinner"></span> // We'll style this below
-              ) : (
-                "Save"
-              )}
-            </button>            
+            <button
+              className="save-btn"
+              onClick={handleSave}
+              disabled={isUpdating}
+            >
+              {isUpdating ? <span className="spinner"></span> : "Save"}
+            </button>
           </>
         ) : (
           <button className="edit-btn" onClick={toggleEdit}>
@@ -343,7 +388,12 @@ const UserDashboardPage = () => {
       </div>
     </div>
   </div>
+
+  </div>
+
+  
 </section>
+
 
           {/* === Recent Achievements === */}
           <section className="dashboard-section">
