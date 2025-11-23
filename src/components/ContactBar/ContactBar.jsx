@@ -16,11 +16,8 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
 
       <div className="contact-right">
         <button className="cta-button" onClick={() => navigate("/contact")}>
-          Volunteer
-        </button>
-        <button className="cta-button" onClick={() => navigate("/contact")}>
-          Partnership
-        </button>
+          Become a Volunteer
+        </button>        
         <button className="cta-button" onClick={() => navigate("/donation")}>
           Donate
         </button>
@@ -42,20 +39,12 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
           >
             User Dashboard
           </button>
-        )}
+        )}   
 
-        {/* 🔹 Social icons */}
-        <div className="social-icons">
-          <a target="_blank" href="https://www.facebook.com/dlsdsassam/">
-            <FaFacebookF />
-          </a>
-          <a target="_blank" href="https://www.linkedin.com/company/dlsdsassam/">
-            <FaLinkedinIn />
-          </a>
-          <a target="_blank" href="#">
-            <FaYoutube />
-          </a>
-        </div>
+        <button className="cta-button" onClick={() => navigate("/book-session")}>
+          Book A Free Session
+        </button>    
+
       </div>
     </div>
   );

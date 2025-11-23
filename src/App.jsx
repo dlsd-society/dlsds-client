@@ -44,6 +44,7 @@ import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import HackathonPage from './pages/HackathonPage/HackathonPage';
 import HackathonRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
+import BookSessionPage from './pages/BookSessionPage/BookSessionPage';
 
 
 function App() {
@@ -78,7 +79,8 @@ function App() {
                   <Route path="/hackathon" element={<HackathonPage />} /> 
                   <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />                   
                   <Route path="/internship" element={<InternshipPage />} /> 
-                  <Route path="/internship-registration" element={<InternshipRegistrationPage />} />                   
+                  <Route path="/internship-registration" element={<InternshipRegistrationPage />} />   
+                  <Route path="/book-session" element={<BookSessionPage />} />                
                 </Routes>
                 <FooterSection />
               </>

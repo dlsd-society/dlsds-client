@@ -65,3 +65,20 @@
   border-top: 1px solid #333;
   padding-top: 15px;
 }
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-left: -14px;  
+}
+
+.social-icons a {
+  color: gray;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f0c040;
+}
