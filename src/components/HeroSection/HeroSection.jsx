@@ -16,17 +16,15 @@ const HeroSection = () => {
             Creating Opportunities Through Skills and Digital Empowerment
           </p>
         </div>
-        <div className="hero-buttons">
-          <button>Join Us</button>
-          <button>Our Programs</button>
-          <button>Contact</button>
+        <div className="hero-buttons">          
+          <button>Our Programs</button>          
           <div>
-      <button onClick={() => setShowModal(true)}>Book Session</button>
-      <BookSessionModal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-      />
-    </div>
+            <button onClick={() => setShowModal(true)}>Book A Free Session</button>
+            <BookSessionModal
+              isOpen={showModal}
+              onClose={() => setShowModal(false)}
+            />
+          </div>
         </div>
 
         {showModal && <BookSessionModal onClose={() => setShowModal(false)} />}
