@@ -84,7 +84,7 @@ const Navbar = () => {
         </li>
 
         <li>
-          <a href="/courses">EVENTS ▾</a>
+          <a href="/hackathon">EVENTS ▾</a>
           <div className="dropdown">                                    
             <a href="/hackathon">Hackathons</a>
             <a href="/internship">Internships</a>

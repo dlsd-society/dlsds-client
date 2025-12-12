@@ -43,15 +43,24 @@
 }
 
 .donate-button {
-  background-color: #fff700;
-  color: #000;
-  padding: 12px 32px;
-  font-weight: bold;
-  border: 1px solid #000;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.donate-button button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #004aad;
+  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.donate-button:hover {
-  background-color: #ffe600;
+.donate-button button:hover {
+  background-color: #003080;
 }

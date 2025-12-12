@@ -11,7 +11,7 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
   return (
     <div className="contact-bar">
       <div className="contact-left">
-        📞 +91-8721909414 | 📧 mail@dlsdsociety.org
+        📧 contact@dlsdsociety.org
       </div>
 
       <div className="contact-right">

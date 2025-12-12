@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./AboutPage.css";
 import { useLocation } from "react-router-dom";
-import aboutImage from '../../assets/about.jpg'; // Your uploaded image
+import aboutImage from '../../assets/about.png'; // Your uploaded image
 
 const AboutPage = () => {
   const location = useLocation();
