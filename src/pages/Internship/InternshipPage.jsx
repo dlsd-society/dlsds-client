@@ -149,11 +149,11 @@ const InternshipPage = () => {
             Students from Top Institutes take part in our Internships
           </SubTitle>
           <ul style={{ listStyle: 'none', lineHeight: '1.8' }}>
-            <li>✅ Cotton University, Guwahati, Assam</li>
-            <li>✅ Jorhat Engineering College, Jorhat, Assam</li>
-            <li>✅ NERIM Group of Institutions, Guwahati Assam</li>
-            <li>✅ Dibrugarh University, Dibrugarh, Assam</li>
-            <li>✅ Royal Global University, Guwahati, Assam</li>
+            <li>✅ Cotton University, Guwahati</li>
+            <li>✅ Dibrugarh University, Dibrugarh</li>
+            <li>✅ Jorhat Engineering College, Jorhat</li>
+            <li>✅ Royal Global University, Guwahati</li>
+            <li>✅ NERIM Group of Institutions, Guwahati</li>                        
             <p> and many more…</p>
           </ul>
         </Section>

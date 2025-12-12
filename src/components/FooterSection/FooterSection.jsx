@@ -41,7 +41,7 @@ const FooterSection = () => {
           <h3>Get In Touch</h3>
           <p>DLSD Society</p>          
           <p>Guwahati, Assam -781028</p>                    
-          <p>Email: mail@dlsdsociety.org</p>
+          <p>Email: contact@dlsdsociety.org</p>
 
           {/* 🔹 Social icons */}
           <div className="social-icons">

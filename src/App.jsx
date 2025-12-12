@@ -21,7 +21,6 @@ import ManageReportsPage from './admin/ManageReportsPage';
 import UploadActivityForm from './admin/UploadActivityForm';
 import UploadAuditReportForm from './admin/UploadAuditReportForm';
 import UploadAnnualReportForm from './admin/UploadAnnualReportForm';
-import InternshipPage from './pages/InternshipPage/InternshipPage';
 import FirstHack from './pages/FirstHack/FirstHack';
 import NavbarFirstHack from './components/NavbarFirstHack/NavbarFirstHack';
 import Hackathon from './pages/Hackathon/Hackathon';
@@ -33,7 +32,6 @@ import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
 import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
 import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
 import FisrtHackRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
-import InternshipRegistrationPage from './pages/InternshipRegistrationPage/InternshipRegistrationPage';
 import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
 import IssueBadgesPage from './admin/IssueBadgesPage';
 import IssueCertificatesPage from './admin/IssueCertificatesPage';
@@ -45,7 +43,10 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import HackathonPage from './pages/HackathonPage/HackathonPage';
 import HackathonRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
 import BookSessionPage from './pages/BookSessionPage/BookSessionPage';
-
+import InternshipRegistrationPage from './pages/Internship/InternshipRegistrationPage';
+import InternshipPage from './pages/Internship/InternshipPage';
+import InternshipLanding from './pages/Internship/InternshipLanding';
+import OtherInternshipRegistrationPage from './pages/Internship/OtherInternshipRegistrationPage';
 
 function App() {
 
@@ -77,9 +78,11 @@ function App() {
                   <Route path="/programs" element={<ProgramsPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
                   <Route path="/hackathon" element={<HackathonPage />} /> 
-                  <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />                   
-                  <Route path="/internship" element={<InternshipPage />} /> 
+                  <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />  
+                  <Route path="/internship" element={<InternshipLanding />} />                 
+                  <Route path="/internship/software-development" element={<InternshipPage />} /> 
                   <Route path="/internship-registration" element={<InternshipRegistrationPage />} />   
+                  <Route path="/internship-registration-others" element={<OtherInternshipRegistrationPage />} />
                   <Route path="/book-session" element={<BookSessionPage />} />                
                 </Routes>
                 <FooterSection />
