@@ -16,7 +16,7 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
 
       <div className="contact-right">
         <button className="cta-button" onClick={() => navigate("/contact")}>
-          Become a Volunteer
+          Join Us
         </button>        
         <button className="cta-button" onClick={() => navigate("/donation")}>
           Donate

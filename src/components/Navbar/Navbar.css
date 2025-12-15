@@ -88,8 +88,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #005596;
-  padding: 10px 20px;
+  background-color: #005596;  
+  padding: 10px 10px;
   color: white;
   position: relative;
   z-index: 1000;
@@ -102,8 +102,15 @@
 }
 
 .logo {
-  height: 50px;
-  margin-right: 10px;
+  height: 100px;
+  width: auto;
+  margin-right: 10px;    
+}
+
+.logo-text {
+  font-size: 0.98rem;  
+  font-weight: 600;  
+  letter-spacing: 1.5px;
 }
 
 .org-title {
