@@ -35,7 +35,10 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-left">
         <img src={logo} alt="Logo" className="logo" />
-        <p>Digital Literacy and Skill Development Society</p>
+        <div className="logo-text">
+          <p>DIGITAL LITERACY AND</p> 
+          <p> SKILL DEVELOPMENT SOCIETY</p>
+        </div>        
       </div>
 
       {/* Hamburger Icon for Mobile/Tablet */}
@@ -76,19 +79,19 @@ const Navbar = () => {
           </div>
         </li>
 
-        <li>
+        {/* <li>
           <a href="/courses">Learning ▾</a>
           <div className="dropdown">
             <a href="/courses#online">Online Courses</a>
           </div>
-        </li>
+        </li> */}
 
         <li>
           <a href="/hackathon">EVENTS ▾</a>
           <div className="dropdown">                                    
             <a href="/hackathon">Hackathons</a>
             <a href="/internship">Internships</a>
-            <a href="#">Seminars & Webinars</a>
+            {/* <a href="#">Community Live</a> */}
           </div>
         </li>
 

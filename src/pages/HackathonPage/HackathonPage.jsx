@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const HackathonPage = () => {
+
+  const [showPopover, setShowPopover] = useState(false);
+
   return (
     <Container>
       <PageContainer>
@@ -20,19 +24,30 @@ const HackathonPage = () => {
           </Paragraph>
           <Paragraph>
             {' '}
-            August 14 — 16, 2025 <br /> 100% Online
+            Next hackathon to be held in February, 2026 <br /> 100% Online
           </Paragraph>
+          
+          {/* Uncomment the Register link when registration date is near  */}
 
-          {/* <ApplyButton
-            style={{ marginTop: '1rem' }}
-            href="https://forms.gle/NLrnkRVYnZgGgJNN8"
-            target="_blank"
-          >
+          {/* <StyledLink to="/hackathon-registration">
             Register Now
-          </ApplyButton> */}
-          <StyledLink to="/hackathon-registration">
-            Register Now
-          </StyledLink>
+          </StyledLink> */}
+
+          <PopoverWrapper>
+            <StyledLink
+              as="button"
+              type="button"
+              onClick={() => setShowPopover((prev) => !prev)}
+            >
+              Register Now
+            </StyledLink>
+
+            {showPopover && (
+              <Popover>
+                Registration opens from January 2026
+              </Popover>
+            )}
+          </PopoverWrapper>
         </div>
 
         <Section>
@@ -142,15 +157,27 @@ const HackathonPage = () => {
           <Paragraph>
             We are excited what you are going to build. Happy Hacking.
           </Paragraph>
-          {/* <ApplyButton
-            href="https://forms.gle/NLrnkRVYnZgGgJNN8"
-            target="_blank"
-          >
+
+          {/* <StyledLink to="/hackathon-registration">
             Register Now
-          </ApplyButton> */}
-          <StyledLink to="/hackathon-registration">
-            Register Now
-          </StyledLink>
+          </StyledLink> */}
+
+          <PopoverWrapper>
+            <StyledLink
+              as="button"
+              type="button"
+              onClick={() => setShowPopover((prev) => !prev)}
+            >
+              Register Now
+            </StyledLink>
+
+            {showPopover && (
+              <Popover>
+                Registration opens from January 2026
+              </Popover>
+            )}
+          </PopoverWrapper>
+
         </Section>
       </PageContainer>
     </Container>
@@ -244,5 +271,36 @@ const StyledLink = styled(Link)`
 
   &:hover {
     background-color: #1f6392;
+  }
+`;
+
+const PopoverWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const Popover = styled.div`
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
   }
 `;

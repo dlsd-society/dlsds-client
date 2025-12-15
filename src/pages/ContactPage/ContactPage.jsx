@@ -16,13 +16,15 @@ const ContactPage = () => {
       <div className="contact-page-content">
         {/* Get Involved section (appears on left in larger screens, top on mobile) */}
         <div className="contact-action-links">
-          <h2>Get Involved</h2>
-          <button onClick={() => setShowPartnershipModal(true)} className="action-btn">
-            Partnerships
-          </button>
-          <button onClick={() => setShowVolunteerModal(true)} className="action-btn">
-            Volunteering
-          </button>
+          <h2>Join Us</h2>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button onClick={() => setShowPartnershipModal(true)} className="action-btn">
+              Partner with us (Organisations)
+            </button>
+            <button onClick={() => setShowVolunteerModal(true)} className="action-btn">
+              Become a Volunteer (Individuals)
+            </button>
+          </div>          
         </div>
 
         {/* Our Address section */}
