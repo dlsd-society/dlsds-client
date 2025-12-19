@@ -240,7 +240,8 @@ const Navbar = () => {
         <li><Link to="/">HOME</Link></li>
         <li><Link to="/about">ABOUT US</Link></li>
         <li><Link to="/partners">PARTNERSHIPS</Link></li>
-        <li><Link to="/hackathon">EVENTS</Link></li>
+        <li><Link to="/internship">INTERNSHIPS</Link></li>
+        <li><Link to="/hackathon">HACKATHONS</Link></li>
         <li><Link to="/contact">CONTACT</Link></li>
       </ul>
 
@@ -250,7 +251,8 @@ const Navbar = () => {
             <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>HOME</Link></li>
             <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>ABOUT</Link></li>
             <li><Link to="/partners" onClick={() => setIsMobileMenuOpen(false)}>PARTNERS</Link></li>
-            <li><Link to="/hackathon" onClick={() => setIsMobileMenuOpen(false)}>EVENTS</Link></li>
+            <li><Link to="/internship" onClick={() => setIsMobileMenuOpen(false)}>INTERNSHIPS</Link></li>
+            <li><Link to="/hackathon" onClick={() => setIsMobileMenuOpen(false)}>HACKATHONS</Link></li>
             <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>CONTACT</Link></li>
           </ul>
         </div>
