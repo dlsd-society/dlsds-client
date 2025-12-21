@@ -19,6 +19,8 @@ const OtherInternshipRegistrationPage = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -71,7 +73,7 @@ const OtherInternshipRegistrationPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) return;    
 
     const submissionData = {
       ...formData,
@@ -81,10 +83,12 @@ const OtherInternshipRegistrationPage = () => {
           : formData.areaOfInternship,
     };
 
-    setLoading(true);
-
+    // setLoading(true);
+    setIsSubmitting(true);
     try {      
       await axios.post(`${BASE_URL}/other-internships`, submissionData);
+
+      setIsSubmitting(false);
 
       Swal.fire({
         title: "Registration Successful",
@@ -104,6 +108,7 @@ const OtherInternshipRegistrationPage = () => {
         agreement: false,
       });
     } catch (err) {
+      setIsSubmitting(false);
       console.error(err);
       Swal.fire({
         title: "Submission Failed",
@@ -111,6 +116,7 @@ const OtherInternshipRegistrationPage = () => {
         icon: "error",
       });
     } finally {
+      setIsSubmitting(false);
       setLoading(false);
     }
   };
@@ -150,6 +156,20 @@ const OtherInternshipRegistrationPage = () => {
 
   return (
     <div style={{ maxWidth: "700px", margin: "0 auto", padding: "30px" }}>
+
+      {isSubmitting && (
+        <div className="loading-overlay">
+          <div className="loading-modal">
+            <h3>Registering your details</h3>
+            <p>Please wait…</p>
+
+            <div className="progress-bar">
+              <div className="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Internship Registration
       </h1>
@@ -302,7 +322,7 @@ const OtherInternshipRegistrationPage = () => {
         {/* Submit */}
         <button
           type="submit"
-          disabled={loading}
+          disabled={isSubmitting}
           style={{
             width: "100%",
             padding: "12px",
@@ -315,7 +335,7 @@ const OtherInternshipRegistrationPage = () => {
             cursor: "pointer",
           }}
         >
-          {loading ? "Submitting..." : "Submit Registration"}
+          {isSubmitting ? "Submitting..." : "Submit Registration"}
         </button>
       </form>
     </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./BookSessionForm.css";
+import "../../common-styles/form-progress-modal.css";
 
 const BookSessionForm = ({ onSuccess, onClose }) => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,8 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
   const [statesList, setStatesList] = useState([]);
   const [statesLoading, setStatesLoading] = useState(true);
   const [statesError, setStatesError] = useState(null);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Fetch states on mount
   useEffect(() => {
@@ -106,9 +109,12 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setLoading(true);
+    // setLoading(true);
+    setIsSubmitting(true);
     try {
       await axios.post("https://example.com/api/book-session", formData);
+
+      setIsSubmitting(false);
 
       await Swal.fire({
         icon: "success",
@@ -136,6 +142,7 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
       if (onSuccess) onSuccess();
       if (onClose) onClose();
     } catch (err) {
+      setIsSubmitting(false);
       console.error(err);
       Swal.fire({
         icon: "error",
@@ -144,12 +151,27 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
         confirmButtonColor: "#d33",
       });
     } finally {
+      setIsSubmitting(false);
       setLoading(false);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+
+      {isSubmitting && (
+        <div className="loading-overlay">
+          <div className="loading-modal">
+            <h3>Booking your session..</h3>
+            <p>Please wait…</p>
+
+            <div className="progress-bar">
+              <div className="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Full Name */}
       <div className="field-wrapper">
         <label className="floating-label">Full Name</label>
@@ -287,8 +309,8 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
       </fieldset>
 
       {/* Submit */}
-      <button type="submit" disabled={loading} className="submit-btn">
-        {loading ? "Submitting..." : "Book Session"}
+      <button type="submit" disabled={isSubmitting} className="submit-btn">
+        {isSubmitting ? "Submitting..." : "Book Session"}
       </button>
     </form>
   );

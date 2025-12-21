@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import BASE_URL from "../../config/config";
+import "../../common-styles/form-progress-modal.css";
 
 const HackathonRegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,8 @@ const HackathonRegistrationPage = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -60,8 +63,8 @@ const HackathonRegistrationPage = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    setLoading(true);
-
+    // setLoading(true);
+    setIsSubmitting(true);
     try {
       const hackathonId = 2; // Hardcoded for now
 
@@ -69,6 +72,8 @@ const HackathonRegistrationPage = () => {
         `${BASE_URL}/hackathon-participants/${hackathonId}/register`,
         formData
       );
+
+      setIsSubmitting(false);
 
       // ✅ Success Alert using SweetAlert2
       await Swal.fire({
@@ -91,6 +96,7 @@ const HackathonRegistrationPage = () => {
         agreement: false,
       });
     } catch (err) {
+      setIsSubmitting(false);
       console.error(err);
       Swal.fire({
         icon: "error",
@@ -99,6 +105,7 @@ const HackathonRegistrationPage = () => {
         confirmButtonColor: "#d33",
       });
     } finally {
+      setIsSubmitting(false);
       setLoading(false);
     }
   };
@@ -141,6 +148,20 @@ const HackathonRegistrationPage = () => {
         pointerEvents: loading ? "none" : "auto", // disables clicks when loading
       }}
     >
+
+      {isSubmitting && (
+        <div className="loading-overlay">
+          <div className="loading-modal">
+            <h3>Registering your details</h3>
+            <p>Please wait…</p>
+
+            <div className="progress-bar">
+              <div className="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Hackathon Registration
       </h1>
@@ -343,7 +364,7 @@ const HackathonRegistrationPage = () => {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={isSubmitting}
           style={{
             padding: "12px 20px",
             fontSize: "16px",
@@ -354,7 +375,7 @@ const HackathonRegistrationPage = () => {
             borderRadius: "6px",
           }}
         >
-          {loading ? "Saving..." : "Submit Registration"}
+          {isSubmitting ? "Saving..." : "Submit Registration"}
         </button>
       </form>
 

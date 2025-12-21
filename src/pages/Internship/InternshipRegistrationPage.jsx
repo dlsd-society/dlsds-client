@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import BASE_URL from "../../config/config";
-import "./Internship.css";
+import "../../common-styles/form-progress-modal.css";
 
 const InternshipRegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -123,6 +123,7 @@ const InternshipRegistrationPage = () => {
         confirmButtonColor: "#d33",
       }); 
     } finally {
+      setIsSubmitting(false);
       setLoading(false);
     }
   };
@@ -307,24 +308,24 @@ const InternshipRegistrationPage = () => {
         </fieldset>
 
         {formData.projectPreference === "Group" && (
-            <>
-                <div style={{ height: '12vh', fontSize: '0.85rem' }}>               
-                    <p>Include their Full Name, Email ID, and Contact Number.</p>
-                    <p><span style={{ fontWeight: '600' }}>NOTE: </span>If you don’t have any group members in mind but still want to work in a team, just mention: “I don’t have group members yet. Please assign me to a team.”</p>
-                </div>
-                <div style={fieldWrapper}>            
-                    <label style={floatingLabel}>Group Details</label>            
-                    <textarea
-                    name="groupDetails"
-                    value={formData.groupDetails}
-                    onChange={handleChange}
-                    style={{ ...inputStyle, minHeight: "80px" }}
-                    />
-                    {errors.groupDetails && (
-                    <span style={errorStyle}>{errors.groupDetails}</span>
-                    )}
-                </div>
-            </>            
+          <>
+            <div style={{ height: '12vh', fontSize: '0.85rem' }}>               
+                <p>Include their Full Name, Email ID, and Contact Number.</p>
+                <p><span style={{ fontWeight: '600' }}>NOTE: </span>If you don’t have any group members in mind but still want to work in a team, just mention: “I don’t have group members yet. Please assign me to a team.”</p>
+            </div>
+            <div style={fieldWrapper}>            
+                <label style={floatingLabel}>Group Details</label>            
+                <textarea
+                name="groupDetails"
+                value={formData.groupDetails}
+                onChange={handleChange}
+                style={{ ...inputStyle, minHeight: "80px" }}
+                />
+                {errors.groupDetails && (
+                <span style={errorStyle}>{errors.groupDetails}</span>
+                )}
+            </div>
+          </>            
         )}
 
         {/* Section 4: Domains */}
@@ -451,7 +452,7 @@ const InternshipRegistrationPage = () => {
             borderRadius: "6px",
           }}
         >
-          {loading ? "Submitting..." : "Submit Registration"}
+          {isSubmitting ? "Submitting..." : "Submit Registration"}
         </button>
       </form>
     </div>
