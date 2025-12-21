@@ -213,7 +213,7 @@
 }
 
 /* Hide desktop nav and show hamburger on tablet + mobile */
-@media (max-width: 1369px) {
+@media (max-width: 1200px) {
   .navbar-links {
     display: none !important;  /* Force override */
   }
@@ -285,7 +285,7 @@
 }
 
 
-@media screen and (max-width: 1369px) {
+@media screen and (max-width: 1200px) {
   .desktop-only {
     display: none;
   }
@@ -296,16 +296,16 @@
 }
 
 /* Hide hamburger on large screens */
-.hamburger {
+/* .hamburger {
   display: none;
   font-size: 28px;
   cursor: pointer;
   color: white;
   margin-right: 20px;
-}
+} */
 
 /* Show hamburger only on tablet and smaller */
-@media (max-width: 1369px) {
+/* @media (max-width: 1200px) {
   .hamburger {
     display: block;
   }
@@ -313,7 +313,7 @@
   .navbar-links {
     display: none;
   }
-}
+} */
 
 /* Mobile dropdown container */
 .mobile-dropdown {

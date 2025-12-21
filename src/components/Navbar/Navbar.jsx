@@ -211,16 +211,16 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1369) {
-        setIsMobileMenuOpen(false);
-        setOpenDropdown(null);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth >= 1369) {
+  //       setIsMobileMenuOpen(false);
+  //       setOpenDropdown(null);
+  //     }
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <nav className="navbar">
