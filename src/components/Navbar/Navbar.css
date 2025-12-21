@@ -224,6 +224,18 @@
   }
 }
 
+/* Explicit desktop behavior */
+@media (min-width: 1201px) {
+  .navbar-links {
+    display: flex !important;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
+
+
 .mobile-menu {
   position: absolute;
   top: 60px;
