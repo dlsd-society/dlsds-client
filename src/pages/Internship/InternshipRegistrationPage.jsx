@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import BASE_URL from "../../config/config";
+import "./Internship.css";
 
 const InternshipRegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,8 @@ const InternshipRegistrationPage = () => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);  
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
@@ -81,10 +84,13 @@ const InternshipRegistrationPage = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    setLoading(true);
+    // setLoading(true);
+    setIsSubmitting(true);
     try {
       const res = await axios.post(`${BASE_URL}/internships`, formData);
       
+      setIsSubmitting(false);
+
       Swal.fire({
         title: "✅ Registration Successful!",
         text: "Your internship registration has been submitted successfully.",
@@ -108,6 +114,7 @@ const InternshipRegistrationPage = () => {
         agreement: false,
       });
     } catch (err) {
+      setIsSubmitting(false);
       console.error(err);     
       Swal.fire({
         title: "❌ Something went wrong!",
@@ -158,6 +165,20 @@ const InternshipRegistrationPage = () => {
 
   return (
     <div style={{ padding: "30px", maxWidth: "700px", margin: "0 auto" }}>
+
+      {isSubmitting && (
+        <div className="loading-overlay">
+          <div className="loading-modal">
+            <h3>Registering your details</h3>
+            <p>Please wait…</p>
+
+            <div className="progress-bar">
+              <div className="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
         Internship Registration
       </h1>     
@@ -419,7 +440,7 @@ const InternshipRegistrationPage = () => {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={isSubmitting}
           style={{
             padding: "12px 20px",
             fontSize: "16px",
