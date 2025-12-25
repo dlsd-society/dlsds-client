@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import BASE_URL from '../config/config';
 
 const AdminSignupPage = () => {
   const [form, setForm] = useState({
