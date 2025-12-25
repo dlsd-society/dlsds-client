@@ -225,11 +225,13 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <img src={logo} alt="Logo" className="logo" />
-        <div className="logo-text">
-          <p>DIGITAL LITERACY AND</p>
-          <p>SKILL DEVELOPMENT SOCIETY</p>
-        </div>
+        <Link to="/" className="logo-link">
+          <img src={logo} alt="Logo" className="logo" />
+          <div className="logo-text">
+            <p>DIGITAL LITERACY AND</p>
+            <p>SKILL DEVELOPMENT SOCIETY</p>
+          </div>
+        </Link>
       </div>
 
       <div className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>

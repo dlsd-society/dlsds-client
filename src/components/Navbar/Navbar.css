@@ -113,6 +113,14 @@
   letter-spacing: 1.5px;
 }
 
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .org-title {
   font-size: 0.75rem;
   font-weight: 600;
