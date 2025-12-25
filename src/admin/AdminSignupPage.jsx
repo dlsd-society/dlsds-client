@@ -18,7 +18,7 @@ const AdminSignupPage = () => {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/api/admin/register`,
+        `${BASE_URL}/admin/register`,
         form
       );
       setMessage(res.data.message);
