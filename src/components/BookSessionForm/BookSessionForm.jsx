@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "./BookSessionForm.css";
 import "../../common-styles/form-progress-modal.css";
+import BASE_URL from "../../config/config";
 
 const BookSessionForm = ({ onSuccess, onClose }) => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
       webDesigning: false,
       tally: false,
       cyberSecurity: false,
+      other: false,
     },
     agreement: false,
   });
@@ -98,31 +100,112 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
     const anyTopic = Object.values(formData.topics).some((t) => t);
     if (!anyTopic) newErrors.topics = "Please select at least one topic";
 
-    if (!formData.agreement)
-      newErrors.agreement = "You must agree before submitting";
+    // if (!formData.agreement)
+    //   newErrors.agreement = "You must agree before submitting";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validate()) return;
+
+  //   // setLoading(true);
+  //   setIsSubmitting(true);
+  //   try {
+  //     await axios.post(`${BASE_URL}/book-session`, formData);
+
+  //     setIsSubmitting(false);
+
+  //     await Swal.fire({
+  //       icon: "success",
+  //       title: "Successfully Booked!",
+  //       text: "Your session has been scheduled. We'll reach out soon!",
+  //       confirmButtonColor: "#1976d2",
+  //     });
+
+  //     setFormData({
+  //       fullName: "",
+  //       email: "",
+  //       phone: "",
+  //       state: "",
+  //       city: "",
+  //       organization: "",
+  //       topics: {
+  //         computerBasics: false,
+  //         webDesigning: false,
+  //         tally: false,
+  //         cyberSecurity: false,
+  //       },
+  //       agreement: false,
+  //     });
+
+  //     if (onSuccess) onSuccess();
+  //     if (onClose) onClose();
+  //   } catch (err) {
+  //     setIsSubmitting(false);
+  //     console.error(err);
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops!",
+  //       text: err.response?.data?.message || "Something went wrong!",
+  //       confirmButtonColor: "#d33",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //     setLoading(false);
+  //   }
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validate()) return;
+
+  //   setIsSubmitting(true);
+
+  //   try {
+  //     await axios.post(`${BASE_URL}/book-session`, formData);
+
+  //     // Close modal FIRST
+  //     if (onClose) onClose();
+
+  //     // Show alert independently
+  //     await Swal.fire({
+  //       icon: "success",
+  //       title: "Successfully Booked!",
+  //       text: "Your session has been scheduled. We'll reach out soon!",
+  //       confirmButtonColor: "#1976d2",
+  //     });
+
+  //     if (onSuccess) onSuccess();
+  //   } catch (err) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops!",
+  //       text: err.response?.data?.message || "Something went wrong!",
+  //       confirmButtonColor: "#d33",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  e.preventDefault();
+  if (!validate()) return;
 
-    // setLoading(true);
-    setIsSubmitting(true);
-    try {
-      await axios.post("https://example.com/api/book-session", formData);
+  setIsSubmitting(true);
 
-      setIsSubmitting(false);
+  try {
+    await axios.post(`${BASE_URL}/book-session`, formData);
 
-      await Swal.fire({
-        icon: "success",
-        title: "Successfully Booked!",
-        text: "Your session has been scheduled. We'll reach out soon!",
-        confirmButtonColor: "#1976d2",
-      });
-
+    // ✅ MODAL FLOW
+    if (onClose) {
+      onClose(); // unmounts component → overlay disappears
+    } else {
+      // ✅ PAGE FLOW
+      setIsSubmitting(false); // explicitly stop loader
       setFormData({
         fullName: "",
         email: "",
@@ -135,26 +218,30 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
           webDesigning: false,
           tally: false,
           cyberSecurity: false,
-        },
-        agreement: false,
+        }
       });
-
-      if (onSuccess) onSuccess();
-      if (onClose) onClose();
-    } catch (err) {
-      setIsSubmitting(false);
-      console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Oops!",
-        text: err.response?.data?.message || "Something went wrong!",
-        confirmButtonColor: "#d33",
-      });
-    } finally {
-      setIsSubmitting(false);
-      setLoading(false);
     }
-  };
+
+    await Swal.fire({
+      icon: "success",
+      title: "Successfully Booked!",
+      text: "Your session has been scheduled. We'll reach out soon!",
+      confirmButtonColor: "#1976d2",
+    });
+
+    if (onSuccess) onSuccess();
+  } catch (err) {
+    setIsSubmitting(false);
+
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: err.response?.data?.message || "Something went wrong!",
+      confirmButtonColor: "#d33",
+    });
+  }
+};
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -303,6 +390,15 @@ const BookSessionForm = ({ onSuccess, onClose }) => {
               onChange={handleChange}
             />
             Cyber Security
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="other"
+              checked={formData.topics.other}
+              onChange={handleChange}
+            />
+            Any other topic
           </label>
         </div>
         {errors.topics && <p className="error-text">{errors.topics}</p>}
