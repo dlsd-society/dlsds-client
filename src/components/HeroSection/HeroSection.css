@@ -160,4 +160,10 @@
   .hero-text h1 {
     font-size: 32px;
   }
+
+  /* ADD THIS */
+  .hero-buttons {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 }

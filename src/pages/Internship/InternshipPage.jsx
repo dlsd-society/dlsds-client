@@ -76,6 +76,21 @@ const ApplyButton = styled.a`
   }
 `;
 
+// const StyledLink = styled(Link)`
+//   display: inline-block;
+//   margin-top: 2rem;
+//   padding: 0.75rem 1.5rem;
+//   background-color: #2980b9;
+//   color: white;
+//   text-decoration: none;
+//   font-weight: bold;
+//   border-radius: 5px;
+
+//   &:hover {
+//     background-color: #1f6392;
+//   }
+// `;
+
 const StyledLink = styled(Link)`
   display: inline-block;
   margin-top: 2rem;
@@ -89,19 +104,47 @@ const StyledLink = styled(Link)`
   &:hover {
     background-color: #1f6392;
   }
+
+  @media (max-width: 768px) {
+    margin-top: 0.5rem;
+  }
+`;
+
+const HeaderRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;     /* center horizontally */
+    text-align: center;
+    gap: 0.5rem;             /* balanced vertical spacing */
+  }
+`;
+
+const HeaderButton = styled(StyledLink)`
+  margin-top: 0;
+
+  @media (max-width: 768px) {
+    margin-top: 0.25rem;
+  }
+`;
+
+const CenteredCTA = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 `;
 
 const InternshipPage = () => {
   return (
     <Container>
       <PageContainer>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <HeaderRow>
           <Title>Internships & Trainings</Title>
           {/* <ApplyButton
             style={{ marginTop: '0', display: 'none' }}
@@ -110,10 +153,12 @@ const InternshipPage = () => {
           >
             Apply Now
           </ApplyButton> */}
-          <StyledLink to="/internship-registration">
+          
+          <HeaderButton to="/internship-registration">
             Register Now
-          </StyledLink>
-        </div>
+          </HeaderButton>
+
+        </HeaderRow>
 
         <Section>
           <SubTitle>
@@ -190,9 +235,11 @@ const InternshipPage = () => {
             Apply Now
           </ApplyButton> */}
 
-          <StyledLink to="/internship-registration">
-            Register Now
-          </StyledLink>
+          <CenteredCTA>
+            <HeaderButton to="/internship-registration">
+              Register Now
+            </HeaderButton>
+          </CenteredCTA>
 
         </Section>
       </PageContainer>
