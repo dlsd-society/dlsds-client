@@ -45,6 +45,11 @@ const AdminDashboardPage = () => {
             </Link>
           </li>
           <li>
+            <Link to="/admin-dashboard/internships">
+              View / Manage Interns
+            </Link>
+          </li>  
+          <li>
             <Link to="/admin-dashboard/issue-certificates">
               Issue Certificates
             </Link>

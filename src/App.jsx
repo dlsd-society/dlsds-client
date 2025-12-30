@@ -48,6 +48,7 @@ import InternshipPage from './pages/Internship/InternshipPage';
 import InternshipLanding from './pages/Internship/InternshipLanding';
 import OtherInternshipRegistrationPage from './pages/Internship/OtherInternshipRegistrationPage';
 import AdminSignupPage from './admin/AdminSignupPage';
+import ManageInternshipsPage from './admin/ManageInternshipsPage';
 
 function App() {
 
@@ -167,6 +168,14 @@ function App() {
             element={
               <RequireAdminAuth>
                 <UploadAnnualReportForm />
+              </RequireAdminAuth>
+            }
+          />
+          <Route
+            path="/admin-dashboard/internships"
+            element={
+              <RequireAdminAuth>
+                <ManageInternshipsPage />
               </RequireAdminAuth>
             }
           />
