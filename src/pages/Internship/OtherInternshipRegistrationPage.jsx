@@ -207,7 +207,7 @@ const OtherInternshipRegistrationPage = () => {
 
           {/* phone */}
           <div style={fieldWrapper}>
-            <label style={floatingLabel}>Phone Number</label>
+            <label style={floatingLabel}>Phone / WhatsApp</label>
             <input
               type="text"
               name="phone"
@@ -220,7 +220,7 @@ const OtherInternshipRegistrationPage = () => {
 
           {/* city */}
           <div style={fieldWrapper}>
-            <label style={floatingLabel}>City/State</label>
+            <label style={floatingLabel}>City / State</label>
             <input
               type="text"
               name="cityState"
@@ -233,7 +233,7 @@ const OtherInternshipRegistrationPage = () => {
 
           {/* institution */}
           <div style={fieldWrapper}>
-            <label style={floatingLabel}>Institution</label>
+            <label style={floatingLabel}>College / University</label>
             <input
               type="text"
               name="institution"

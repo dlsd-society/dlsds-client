@@ -92,7 +92,7 @@ const InternshipRegistrationPage = () => {
       setIsSubmitting(false);
 
       Swal.fire({
-        title: "✅ Registration Successful!",
+        title: "Registration Successful!",
         text: "Your internship registration has been submitted successfully.",
         icon: "success",
         confirmButtonColor: "#3085d6",
@@ -171,7 +171,7 @@ const InternshipRegistrationPage = () => {
         <div className="loading-overlay">
           <div className="loading-modal">
             <h3>Registering your details</h3>
-            <p>Please wait…</p>
+            <p>Please wait..</p>
 
             <div className="progress-bar">
               <div className="progress-fill"></div>
@@ -245,7 +245,7 @@ const InternshipRegistrationPage = () => {
           </div>
 
           <div style={fieldWrapper}>
-            <label style={floatingLabel}>Contact Number (WhatsApp preferred)</label>
+            <label style={floatingLabel}>Phone / WhatsApp</label>
             <input
               type="text"
               name="phone"
@@ -271,7 +271,7 @@ const InternshipRegistrationPage = () => {
           </div>
 
           <div style={fieldWrapper}>
-            <label style={floatingLabel}>College/University</label>
+            <label style={floatingLabel}>College / University</label>
             <input
               type="text"
               name="institution"
