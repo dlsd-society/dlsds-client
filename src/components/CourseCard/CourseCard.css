@@ -1,0 +1,31 @@
+.course-card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.badge {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 12px;
+  border: 1px solid #007bff;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.description {
+  color: #555;
+  font-size: 14px;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+}

@@ -1,0 +1,10 @@
+.courses-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.courses-content {
+  flex: 1;
+  padding: 20px 30px;
+}

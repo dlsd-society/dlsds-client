@@ -1,0 +1,11 @@
+.partners-page {
+  position: relative; /* anchor for absolute positioning */
+  padding: 40px 20px;
+}
+
+/* Top-right action button */
+.partner-action {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}

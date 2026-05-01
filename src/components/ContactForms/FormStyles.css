@@ -1,0 +1,45 @@
+.form-section {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+}
+
+/* Apply gray color when the placeholder is visible */
+.placeholder-select {
+  color: #888;
+}
+
+/* Reset color when user has selected a valid option */
+select:not(.placeholder-select) {
+  color: #000;
+}
+
+.submit-btn {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.checkbox-row {
+  margin-bottom: 1rem;
+}

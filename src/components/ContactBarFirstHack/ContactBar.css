@@ -1,0 +1,113 @@
+/* .contact-bar {
+  background-color: white;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.contact-left {
+  color: #333;
+}
+
+.contact-right {
+  display: flex;
+  gap: 10px;
+}
+
+.cta-button {
+  background-color: #00a76f;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #007b53;
+}
+
+.social-icons a {
+  margin-left: 10px;
+  color: gray;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f0c040;
+} */
+
+.contact-bar {
+  background: white;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Left side */
+.contact-left {
+  color: #333;
+}
+
+/* Right side CTA buttons */
+.back-btn {
+  display: flex;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #6a82fb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  color: #fc5c7d;
+}
+
+/* Social icons */
+.social-icons a {
+  margin-left: 10px;
+  color: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #f0c040;
+}
+
+/* 🔽 Tablet view (768px and up) */
+@media (max-width: 1024px) {
+  .contact-bar {
+    font-size: 12px;
+    padding: 6px 15px;
+  }
+
+  .cta-button {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+
+  .social-icons a {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+}
+
+/* 🔽 Mobile view (below 768px) — hide the contact bar */
+@media (max-width: 767px) {
+  .contact-bar {
+    display: none;
+  }
+}

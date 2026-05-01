@@ -1,0 +1,98 @@
+.spotlight-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.spotlight-title {
+  font-size: 40px;
+  color: #005a9c;
+  margin-bottom: 10px;
+}
+
+.spotlight-subtitle {
+  font-size: 18px;
+  color: #444;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.spotlight-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.spotlight-card {
+  position: relative;
+  flex: 1 1 calc(50% - 30px); /* Two per row with gap */
+  max-width: calc(50% - 180px);
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-5px);
+}
+
+.spotlight-overlay {
+  width: 85%;
+  margin: 0 auto 20px auto;
+  background: rgba(255, 255, 255, 0.68);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.spotlight-overlay h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+
+.spotlight-overlay p {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Tablet View (Still two cards per row) */
+@media (max-width: 1024px) {
+  .spotlight-card {
+    flex: 1 1 48%;
+    max-width: 45%;
+  }
+}
+
+/* Mobile View (One card per row) */
+@media (max-width: 600px) {
+  .spotlight-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 240px;
+  }
+
+  .spotlight-overlay {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .spotlight-title {
+    font-size: 32px;
+  }
+
+  .spotlight-subtitle {
+    font-size: 16px;
+  }
+}

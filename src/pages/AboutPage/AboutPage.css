@@ -1,0 +1,133 @@
+/* Root Layout */
+.about-page {
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
+  color: #222;
+  line-height: 1.7;
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 42px;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+/* Section Styling */
+.about-section,
+.about-intro {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-title {
+  font-size: 32px;
+  color: #005596;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Intro Content */
+.intro-tagline,
+.intro-description {
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 40px;
+  text-align: justify;
+}
+
+/* Pillars */
+.intro-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.pillar {
+  flex: 1 1 280px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: left;
+  transition: transform 0.3s ease;
+  min-width: 320px;
+  max-width: 300px;
+}
+
+.pillar:hover {
+  transform: translateY(-5px);
+}
+
+.pillar h3 {
+  font-size: 16px;
+  color: #005a9c;
+  margin-bottom: 12px;
+  white-space: nowrap; /* Prevent breaking */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pillar p {
+  font-size: 13.9px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Mission & Values List */
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.about-list li span {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  line-height: 1.6;
+}
+
+.about-list-text {
+  max-width: 100%;
+}
+
+.about-list-text strong {
+  white-space: nowrap; /* Prevents breaking between bold text and description */
+}
+
+
+/* Member Body */
+.about-section p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  text-align: justify;
+}

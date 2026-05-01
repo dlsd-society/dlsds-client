@@ -1,0 +1,75 @@
+.contact-bar {
+  background-color: white;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Left side */
+.contact-left {
+  color: #333;
+}
+
+/* Right side CTA buttons */
+.contact-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Green CTA button styling */
+.cta-button {
+  background-color: #00a76f;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #007b53;
+}
+
+/* 🔹 Blue Auth buttons (Sign In / Sign Up) */
+.auth-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+/* 🔽 Tablet view (768px and up) */
+@media (max-width: 1024px) {
+  .contact-bar {
+    font-size: 12px;
+    padding: 6px 15px;
+  }
+
+  .cta-button,
+  .auth-button {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+  
+}
+
+/* 🔽 Mobile view (below 768px) — hide the contact bar */
+@media (max-width: 767px) {
+  .contact-bar {
+    display: none;
+  }
+}
