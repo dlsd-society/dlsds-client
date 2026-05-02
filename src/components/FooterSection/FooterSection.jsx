@@ -1,7 +1,7 @@
-import React from "react";
-import "./FooterSection.css";
-import { Link } from "react-router-dom";
-import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import React from 'react';
+import './FooterSection.css';
+import { Link } from 'react-router-dom';
+import { FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 const FooterSection = () => {
   return (
@@ -9,21 +9,37 @@ const FooterSection = () => {
       <div className="footer-top">
         <div className="footer-column">
           <h3>Quick Links</h3>
-          <ul>                        
-            <li><Link to="/courses">Courses</Link></li> 
-            <li><Link to="/hackathon">Hackathons</Link></li> 
-            <li><Link to="/internship">Internships & Trainings</Link></li> 
-            <li><Link to="#">Seminars & Webinars</Link></li> 
+          <ul>
+            <li>
+              <Link to="/courses">Courses</Link>
+            </li>
+            <li>
+              <Link to="/hackathon">Hackathons</Link>
+            </li>
+            <li>
+              <Link to="/internship">Internships & Trainings</Link>
+            </li>
+            <li>
+              <Link to="#">Seminars & Webinars</Link>
+            </li>
           </ul>
         </div>
 
         <div className="footer-column">
           <h3>Important Links</h3>
-          <ul>                                    
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="#">Career</Link></li>
-            <li><Link to="/donation">Donation</Link></li>           
-            <li><Link to="/contact">Partners & Volunteers</Link></li>            
+          <ul>
+            <li>
+              <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <Link to="#">Career</Link>
+            </li>
+            <li>
+              <Link to="/donation">Donation</Link>
+            </li>
+            <li>
+              <Link to="/contact">Partners & Volunteers</Link>
+            </li>
           </ul>
         </div>
 
@@ -39,8 +55,8 @@ const FooterSection = () => {
 
         <div className="footer-column">
           <h3>Get In Touch</h3>
-          <p>DLSD Society</p>          
-          <p>Guwahati, Assam -781028</p>                    
+          <p>DLSD Society</p>
+          <p>Guwahati, Assam -781028</p>
           <p>Email: contact@dlsdsociety.org</p>
 
           {/* 🔹 Social icons */}
@@ -48,7 +64,10 @@ const FooterSection = () => {
             <a target="_blank" href="https://www.facebook.com/dlsdsociety">
               <FaFacebookF />
             </a>
-            <a target="_blank" href="https://www.linkedin.com/company/dlsdsociety">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/dlsdsociety"
+            >
               <FaLinkedinIn />
             </a>
             <a target="_blank" href="#">
@@ -56,11 +75,10 @@ const FooterSection = () => {
             </a>
           </div>
         </div>
-        
       </div>
 
       <div className="footer-bottom">
-        <p>© Copyright 2025 DLSD Society.</p>
+        <p>© Copyright {new Date().getFullYear()} DLSD Society.</p>
       </div>
     </footer>
   );

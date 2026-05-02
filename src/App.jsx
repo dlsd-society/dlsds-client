@@ -51,7 +51,6 @@ import AdminSignupPage from './admin/AdminSignupPage';
 import ManageInternshipsPage from './admin/ManageInternshipsPage';
 
 function App() {
-
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
 
@@ -65,8 +64,8 @@ function App() {
             path="/*"
             element={
               <>
-                <ContactBar 
-                  onLoginClick={() => setLoginOpen(true)} 
+                <ContactBar
+                  onLoginClick={() => setLoginOpen(true)}
                   onSignupClick={() => setSignupOpen(true)}
                 />
                 <Navbar />
@@ -75,17 +74,32 @@ function App() {
                   <Route path="/about" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/donation" element={<DonationPage />} />
-                  <Route path="/courses" element={<CoursesAndCertifications />} />
+                  <Route
+                    path="/courses"
+                    element={<CoursesAndCertifications />}
+                  />
                   <Route path="/resources" element={<ResourcesPage />} />
                   <Route path="/programs" element={<ProgramsPage />} />
                   <Route path="/partners" element={<PartnersPage />} />
-                  <Route path="/hackathon" element={<HackathonPage />} /> 
-                  <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />  
-                  <Route path="/internship" element={<InternshipLanding />} />                 
-                  <Route path="/internship/software-development" element={<InternshipPage />} /> 
-                  <Route path="/internship-registration" element={<InternshipRegistrationPage />} />   
-                  <Route path="/internship-registration-others" element={<OtherInternshipRegistrationPage />} />
-                  <Route path="/book-session" element={<BookSessionPage />} />                
+                  <Route path="/hackathon" element={<HackathonPage />} />
+                  <Route
+                    path="/hackathon-registration"
+                    element={<HackathonRegistrationPage />}
+                  />
+                  <Route path="/internship" element={<InternshipLanding />} />
+                  <Route
+                    path="/internship/software-development"
+                    element={<InternshipPage />}
+                  />
+                  <Route
+                    path="/internship-registration"
+                    element={<InternshipRegistrationPage />}
+                  />
+                  <Route
+                    path="/internship-registration-others"
+                    element={<OtherInternshipRegistrationPage />}
+                  />
+                  <Route path="/book-session" element={<BookSessionPage />} />
                 </Routes>
                 <FooterSection />
               </>
@@ -179,17 +193,13 @@ function App() {
               </RequireAdminAuth>
             }
           />
-          <Route 
-            path="/admin-dashboard/issue-certificates" 
-            element={
-              <IssueCertificatesPage />
-            } 
-          />          
-          <Route 
-            path="/admin-dashboard/issue-badges" 
-            element={
-              <IssueBadgesPage />
-            } 
+          <Route
+            path="/admin-dashboard/issue-certificates"
+            element={<IssueCertificatesPage />}
+          />
+          <Route
+            path="/admin-dashboard/issue-badges"
+            element={<IssueBadgesPage />}
           />
 
           {/* Firsthack */}
@@ -276,10 +286,12 @@ function App() {
         {/* Signup Modal */}
         {signupOpen && (
           <ModalWrapper>
-            <UserSignupPage onClose={() => setSignupOpen(false)} />
+            <UserSignupPage
+              onClose={() => setSignupOpen(false)}
+              onLoginClick={() => setLoginOpen(true)}
+            />
           </ModalWrapper>
         )}
-
       </UserAuthProvider>
     </AdminAuthProvider>
   );

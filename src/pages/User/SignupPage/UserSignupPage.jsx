@@ -1,9 +1,8 @@
 // pages/User/SignupPage/UserSignupPage.jsx
-import React, { useState } from "react";
-import axios from "axios";
-import BASE_URL from "../../../config/config";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import axios from 'axios';
+import BASE_URL from '../../../config/config';
+import styled from 'styled-components';
 
 const Modal = styled.div`
   background: #fff;
@@ -21,7 +20,7 @@ const CloseButton = styled.button`
   right: 12px;
   border: none;
   background: transparent;
-  font-size: 28px;   /* medium size */
+  font-size: 28px; /* medium size */
   cursor: pointer;
   color: #666;
   line-height: 1;
@@ -73,14 +72,13 @@ const Button = styled.button`
   }
 `;
 
-const UserSignupPage = ({ onClose }) => {
+const UserSignupPage = ({ onClose, onLoginClick }) => {
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -90,11 +88,11 @@ const UserSignupPage = ({ onClose }) => {
     e.preventDefault();
     try {
       await axios.post(`${BASE_URL}/user/signup`, form);
-      alert("Signup successful, please login.");
+      alert('Signup successful, please login.');
       onClose(); // close the modal after signup
-      navigate("/user/dashboard");
+      onLoginClick(); //open the login modal
     } catch (err) {
-      alert(err.response?.data?.message || "Signup failed");
+      alert(err.response?.data?.message || 'Signup failed');
     }
   };
 
@@ -137,7 +135,6 @@ const UserSignupPage = ({ onClose }) => {
         />
         <Button type="submit">Signup</Button>
       </Form>
-      
     </Modal>
   );
 };

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
-import BASE_URL from "../../../config/config";
-import { useUserAuth } from "../../../context/UserAuthContext";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import ModalWrapper from "../../../components/ModalWrapper/ModalWrapper"; // adjust import path
+import React, { useState } from 'react';
+import axios from 'axios';
+import BASE_URL from '../../../config/config';
+import { useUserAuth } from '../../../context/UserAuthContext';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import ModalWrapper from '../../../components/ModalWrapper/ModalWrapper'; // adjust import path
 
 const Modal = styled.div`
   background: #fff;
@@ -22,7 +22,7 @@ const CloseButton = styled.button`
   right: 12px;
   border: none;
   background: transparent;
-  font-size: 28px;   /* medium size */
+  font-size: 28px; /* medium size */
   cursor: pointer;
   color: #666;
   line-height: 1;
@@ -94,19 +94,24 @@ const GoogleLogo = styled.img`
 `;
 
 const UserLoginPage = ({ onClose }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { login } = useUserAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${BASE_URL}/user/login`, { email, password });
+      const res = await axios.post(`${BASE_URL}/user/login`, {
+        email,
+        password,
+      });
       login(res.data.token, res.data.user);
-      navigate("/user/dashboard");
+
+      navigate('/user/dashboard');
+      onClose();
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      alert(err.response?.data?.message || 'Login failed');
     }
   };
 
@@ -134,10 +139,13 @@ const UserLoginPage = ({ onClose }) => {
           <Button type="submit">Login</Button>
         </Form>
 
-        <GoogleButton href={`${BASE_URL}/user/auth/google`}>
-          <GoogleLogo src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
+        {/* <GoogleButton href={`${BASE_URL}/user/auth/google`}>
+          <GoogleLogo
+            src="https://www.svgrepo.com/show/355037/google.svg"
+            alt="Google"
+          />
           Login with Google
-        </GoogleButton>
+        </GoogleButton> */}
       </Modal>
     </ModalWrapper>
   );

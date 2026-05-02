@@ -4,7 +4,6 @@ import axios from 'axios';
 import BASE_URL from '../config/config';
 import { useAdminAuth } from '../context/AdminAuthContext';
 
-
 const IssueCertificatesPage = () => {
   const { adminToken } = useAdminAuth();
   const [internships, setInternships] = useState([]);
@@ -18,6 +17,7 @@ const IssueCertificatesPage = () => {
         const res = await axios.get(`${BASE_URL}/admin/internships`, {
           headers: { Authorization: `Bearer ${adminToken}` },
         });
+        console.log(res.data[0]);
         setInternships(res.data);
       } catch (err) {
         console.error(err);
@@ -40,12 +40,13 @@ const IssueCertificatesPage = () => {
           internshipId: selected.id,
           fileUrl,
         },
-        { headers: { Authorization: `Bearer ${adminToken}` } }
+        { headers: { Authorization: `Bearer ${adminToken}` } },
       );
       setMessage(res.data.message || 'Certificate issued successfully ✅');
       setFileUrl('');
     } catch (err) {
       setMessage('Error issuing certificate ❌');
+      console.log(err);
     }
   };
 
@@ -55,7 +56,17 @@ const IssueCertificatesPage = () => {
       <ul>
         {internships.map((i) => (
           <li key={i.id}>
-            {i.fullName} ({i.email}) — <button onClick={() => setSelected(i)}>Select</button>
+            {i.fullName} ({i.email}) —{' '}
+            <button
+              onClick={() => setSelected(i)}
+              disabled={!i.isRegistered} // ✅ disable if not registered
+              style={{
+                opacity: !i.isRegistered ? 0.5 : 1,
+                cursor: !i.isRegistered ? 'not-allowed' : 'pointer',
+              }}
+            >
+              {i.isRegistered ? 'Select' : 'Not Registered'}
+            </button>
           </li>
         ))}
       </ul>

@@ -11,7 +11,7 @@ export const UserAuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // 👈 new
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("userToken");
+    const storedToken = localStorage.getItem('userToken');
 
     if (storedToken) {
       setUserToken(storedToken);
@@ -24,7 +24,7 @@ export const UserAuthProvider = ({ children }) => {
           if (data.user) {
             setUser(data.user);
             setIsUserLoggedIn(true);
-            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem('user', JSON.stringify(data.user));
           } else {
             logout();
           }
@@ -37,19 +37,19 @@ export const UserAuthProvider = ({ children }) => {
   }, []);
 
   const login = (token, userData) => {
-    localStorage.setItem("userToken", token);
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem('userToken', token);
+    localStorage.setItem('user', JSON.stringify(userData));
     setUserToken(token);
     setUser(userData);
     setIsUserLoggedIn(true);
   };
 
   const logout = () => {
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("user");
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('user');
     setUserToken(null);
     setUser(null);
-    setIsUserLoggedIn(false);    
+    setIsUserLoggedIn(false);
   };
 
   return (
