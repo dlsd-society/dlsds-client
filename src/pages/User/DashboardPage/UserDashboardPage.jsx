@@ -27,6 +27,27 @@ const UserDashboardPage = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false); // default closed
 
+  useEffect(() => {
+    setOriginalProfile(profile);
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      const updatedProfile = {
+        name: user.name || '',
+        email: user.email || '',
+        role: user.role || 'Learner',
+        image: user.profilePic || defaultAvatar,
+        linkedIn: user.linkedIn || '',
+        website: user.website || '',
+        about: user.about || '',
+      };
+
+      setProfile(updatedProfile);
+      setOriginalProfile(updatedProfile);
+    }
+  }, [user]);
+
   // === Fetch Achievements (latest 3) ===
   useEffect(() => {
     const fetchAchievements = async () => {
@@ -161,7 +182,7 @@ const UserDashboardPage = () => {
           {/* === User Info Section === */}
           <div className="user-info">
             {/* <h3>User Profile</h3> */}
-            <div className="info-fields">
+            {/* <div className="info-fields">
               <div className="info-field">
                 <label>Name</label>
                 <p>{profile.name}</p>
@@ -185,6 +206,83 @@ const UserDashboardPage = () => {
               <div className="info-field">
                 <label>About Me</label>
                 <p>{profile.about || 'No bio yet'}</p>
+              </div>
+            </div> */}
+
+            <div className="info-fields">
+              {/* Name */}
+              <div className="info-field">
+                <label>Name</label>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    name="name"
+                    value={profile.name}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{profile.name}</p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div className="info-field">
+                <label>Email</label>
+                {isEditing ? (
+                  <input
+                    type="email"
+                    name="email"
+                    value={profile.email}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{profile.email}</p>
+                )}
+              </div>
+
+              {/* LinkedIn */}
+              <div className="info-field">
+                <label>LinkedIn</label>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    name="linkedIn"
+                    value={profile.linkedIn}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{profile.linkedIn || 'Not provided'}</p>
+                )}
+              </div>
+
+              {/* Website */}
+              <div className="info-field">
+                <label>Website / Other Profile</label>
+                {isEditing ? (
+                  <input
+                    type="text"
+                    name="website"
+                    value={profile.website}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{profile.website || 'Not provided'}</p>
+                )}
+              </div>
+
+              {/* About */}
+              <div className="info-field">
+                <label>About Me</label>
+                {isEditing ? (
+                  <textarea
+                    rows="3"
+                    name="about"
+                    value={profile.about}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <p>{profile.about || 'No bio yet'}</p>
+                )}
               </div>
             </div>
 

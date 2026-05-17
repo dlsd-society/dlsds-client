@@ -187,7 +187,7 @@ const UserProfilePage = () => {
     email: "",
     bio: "",
     profilePic: "",
-    linkedin: "",
+    linkedIn: "",
     otherLink: "",
   });
 
@@ -206,8 +206,8 @@ const UserProfilePage = () => {
             email: userData.email || "",
             bio: userData.bio || "",
             profilePic: userData.profilePic || "",
-            linkedin: userData.linkedin || "",
-            otherLink: userData.otherLink || "",
+            linkedIn: userData.linkedIn || "",
+            otherLink: userData.website || "",
           });
         })
         .catch((err) => console.error("Profile fetch error:", err));
@@ -282,7 +282,7 @@ const UserProfilePage = () => {
           <Input
             type="url"
             name="linkedin"
-            value={formData.linkedin}
+            value={formData.linkedIn}
             onChange={handleChange}
             placeholder="LinkedIn URL"
           />

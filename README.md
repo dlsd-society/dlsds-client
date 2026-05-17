@@ -1,13 +1,15 @@
-## CREDENTIALS
+## MONGO-DB
+
+## LOGIN CREDENTIALS
 
 Admin login:
 ------------
-"name": "Jd Admin",
-"email": "jyotirmoydas12@gmail.com",
-"password": "Abc@12345" 
+"name": "admin",
+"email": "admin@gmail.com",
+"password": "testtest" 
 
 User login:
 ------------
-"name": "Umesh Sharma",
-"email": "umesh@gmail.com",
-"password": "Abc@12345" 
+"name": "Test User",
+"email": "test@test.com",
+"password": "testtest"
