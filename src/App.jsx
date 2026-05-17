@@ -298,3 +298,230 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import { Routes, Route } from 'react-router-dom';
+
+// import ContactBar from './components/ContactBar/ContactBar';
+// import Navbar from './components/Navbar/Navbar';
+// import FooterSection from './components/FooterSection/FooterSection';
+// import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+// import ModalWrapper from './components/ModalWrapper/ModalWrapper';
+
+// import { AdminAuthProvider } from './context/AdminAuthContext';
+// import { UserAuthProvider } from './context/UserAuthContext';
+
+// import HomePage from './pages/HomePage/HomePage';
+// import AboutPage from './pages/AboutPage/AboutPage';
+// import ContactPage from './pages/ContactPage/ContactPage';
+// import DonationPage from './pages/DonationPage/DonationPage';
+// import CoursesAndCertifications from './pages/CoursesAndCertifications/CoursesAndCertifications';
+// import ResourcesPage from './pages/ResourcesPage/ResourcesPage';
+// import ProgramsPage from './pages/ProgramsPage/ProgramsPage';
+// import PartnersPage from './pages/PartnersPage/PartnersPage';
+// import HackathonPage from './pages/HackathonPage/HackathonPage';
+// import HackathonRegistrationPage from './pages/HackathonRegistrationPage/HackathonRegistrationPage';
+// import BookSessionPage from './pages/BookSessionPage/BookSessionPage';
+// import InternshipLanding from './pages/Internship/InternshipLanding';
+// import InternshipPage from './pages/Internship/InternshipPage';
+// import InternshipRegistrationPage from './pages/Internship/InternshipRegistrationPage';
+// import OtherInternshipRegistrationPage from './pages/Internship/OtherInternshipRegistrationPage';
+// import VerifyPage from './pages/VerifyPage/VerifyPage';
+
+// import UserDashboardPage from './pages/User/DashboardPage/UserDashboardPage';
+// import UserProfilePage from './pages/User/ProfilePage/UserProfilePage';
+// import MyPurchasesPage from './pages/User/PurchasesPage/MyPurchasesPage';
+// import MyAchievementsPage from './pages/User/AchievementsPage/MyAchievementsPage';
+// import GoogleSuccess from './pages/User/GoogleSuccess/GoogleSuccess';
+
+// import RequireUserAuth from './user/RequireUserAuth';
+
+// import AdminLoginPage from './admin/AdminLoginPage';
+// import AdminSignupPage from './admin/AdminSignupPage';
+// import AdminDashboardPage from './admin/AdminDashboardPage';
+// import ManageReportsPage from './admin/ManageReportsPage';
+// import UploadActivityForm from './admin/UploadActivityForm';
+// import UploadAuditReportForm from './admin/UploadAuditReportForm';
+// import UploadAnnualReportForm from './admin/UploadAnnualReportForm';
+// import ManageInternshipsPage from './admin/ManageInternshipsPage';
+// import IssueCertificatesPage from './admin/IssueCertificatesPage';
+// import IssueBadgesPage from './admin/IssueBadgesPage';
+
+// import RequireAdminAuth from './admin/adminRoutes';
+
+// import UserLoginPage from './pages/User/LoginPage/UserLoginPage';
+// import UserSignupPage from './pages/User/SignupPage/UserSignupPage';
+
+// function App() {
+//   const [loginOpen, setLoginOpen] = useState(false);
+//   const [signupOpen, setSignupOpen] = useState(false);
+
+//   return (
+//     <AdminAuthProvider>
+//       <UserAuthProvider>
+//         <ScrollToTop />
+
+//         {/* ✅ GLOBAL HEADER */}
+//         <ContactBar
+//           onLoginClick={() => setLoginOpen(true)}
+//           onSignupClick={() => setSignupOpen(true)}
+//         />
+//         <Navbar />
+
+//         {/* ✅ ROUTES */}
+//         <Routes>
+
+//           {/* Public Pages */}
+//           <Route path="/" element={<HomePage />} />
+//           <Route path="/about" element={<AboutPage />} />
+//           <Route path="/contact" element={<ContactPage />} />
+//           <Route path="/donation" element={<DonationPage />} />
+//           <Route path="/courses" element={<CoursesAndCertifications />} />
+//           <Route path="/resources" element={<ResourcesPage />} />
+//           <Route path="/programs" element={<ProgramsPage />} />
+//           <Route path="/partners" element={<PartnersPage />} />
+//           <Route path="/hackathon" element={<HackathonPage />} />
+//           <Route path="/hackathon-registration" element={<HackathonRegistrationPage />} />
+//           <Route path="/book-session" element={<BookSessionPage />} />
+
+//           {/* Internship */}
+//           <Route path="/internship" element={<InternshipLanding />} />
+//           <Route path="/internship/software-development" element={<InternshipPage />} />
+//           <Route path="/internship-registration" element={<InternshipRegistrationPage />} />
+//           <Route path="/internship-registration-others" element={<OtherInternshipRegistrationPage />} />
+
+//           {/* Verify */}
+//           <Route path="/verify/:code" element={<VerifyPage />} />
+
+//           {/* ✅ Google OAuth (IMPORTANT: must be standalone) */}
+//           <Route path="/user/google-success" element={<GoogleSuccess />} />
+
+//           {/* ✅ User Protected Routes */}
+//           <Route
+//             path="/user/dashboard"
+//             element={
+//               <RequireUserAuth>
+//                 <UserDashboardPage />
+//               </RequireUserAuth>
+//             }
+//           />
+//           <Route
+//             path="/user/profile"
+//             element={
+//               <RequireUserAuth>
+//                 <UserProfilePage />
+//               </RequireUserAuth>
+//             }
+//           />
+//           <Route
+//             path="/user/purchases"
+//             element={
+//               <RequireUserAuth>
+//                 <MyPurchasesPage />
+//               </RequireUserAuth>
+//             }
+//           />
+//           <Route
+//             path="/user/achievements"
+//             element={
+//               <RequireUserAuth>
+//                 <MyAchievementsPage />
+//               </RequireUserAuth>
+//             }
+//           />
+
+//           {/* Admin */}
+//           <Route path="/admin-login" element={<AdminLoginPage />} />
+//           <Route path="/admin-signup" element={<AdminSignupPage />} />
+
+//           <Route
+//             path="/admin-dashboard"
+//             element={
+//               <RequireAdminAuth>
+//                 <AdminDashboardPage />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/manage-reports"
+//             element={
+//               <RequireAdminAuth>
+//                 <ManageReportsPage />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/manage-reports/activity"
+//             element={
+//               <RequireAdminAuth>
+//                 <UploadActivityForm />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/manage-reports/audit"
+//             element={
+//               <RequireAdminAuth>
+//                 <UploadAuditReportForm />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/manage-reports/annual"
+//             element={
+//               <RequireAdminAuth>
+//                 <UploadAnnualReportForm />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/internships"
+//             element={
+//               <RequireAdminAuth>
+//                 <ManageInternshipsPage />
+//               </RequireAdminAuth>
+//             }
+//           />
+//           <Route
+//             path="/admin-dashboard/issue-certificates"
+//             element={<IssueCertificatesPage />}
+//           />
+//           <Route
+//             path="/admin-dashboard/issue-badges"
+//             element={<IssueBadgesPage />}
+//           />
+
+//         </Routes>
+
+//         {/* ✅ GLOBAL FOOTER */}
+//         <FooterSection />
+
+//         {/* ✅ Login Modal */}
+//         {loginOpen && (
+//           <ModalWrapper>
+//             <UserLoginPage onClose={() => setLoginOpen(false)} />
+//           </ModalWrapper>
+//         )}
+
+//         {/* ✅ Signup Modal */}
+//         {signupOpen && (
+//           <ModalWrapper>
+//             <UserSignupPage
+//               onClose={() => setSignupOpen(false)}
+//               onLoginClick={() => setLoginOpen(true)}
+//             />
+//           </ModalWrapper>
+//         )}
+//       </UserAuthProvider>
+//     </AdminAuthProvider>
+//   );
+// }
+
+// export default App;

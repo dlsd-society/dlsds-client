@@ -17,9 +17,19 @@ const GoogleSuccess = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
+        // .then((data) => {
+        //   if (data.user) {
+        //     // login(token, data.user);
+        //     login(token, data); 
+        //     navigate("/user/dashboard");
+        //   } else {
+        //     navigate("/user/login");
+        //   }
+        // })
         .then((data) => {
-          if (data.user) {
-            login(token, data.user);
+          console.log("GOOGLE PROFILE RESPONSE:", data);
+          if (data && data.user) {
+            login(token, data);
             navigate("/user/dashboard");
           } else {
             navigate("/user/login");

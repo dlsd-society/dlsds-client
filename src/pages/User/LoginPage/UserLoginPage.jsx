@@ -139,13 +139,13 @@ const UserLoginPage = ({ onClose }) => {
           <Button type="submit">Login</Button>
         </Form>
 
-        {/* <GoogleButton href={`${BASE_URL}/user/auth/google`}>
+        <GoogleButton href={`${BASE_URL}/user/auth/google`}>
           <GoogleLogo
             src="https://www.svgrepo.com/show/355037/google.svg"
             alt="Google"
           />
           Login with Google
-        </GoogleButton> */}
+        </GoogleButton>
       </Modal>
     </ModalWrapper>
   );
