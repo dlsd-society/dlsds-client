@@ -3,6 +3,6 @@
 
 // const BASE_URL = "https://dlsds-server.onrender.com/api";
 
-const BASE_URL = "https://dlsdsociety.org";
+const BASE_URL = "https://dlsds-server.onrender.com/api";
 
 export default BASE_URL;
