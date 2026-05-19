@@ -146,17 +146,17 @@ const InternshipPage = () => {
       <PageContainer>
         <HeaderRow>
           <Title>Internships & Trainings</Title>
-          {/* <ApplyButton
-            style={{ marginTop: '0', display: 'none' }}
-            href="https://forms.gle/NLrnkRVYnZgGgJNN8"
+          <ApplyButton
+            style={{ marginTop: '0' }}
+            href="https://forms.gle/DmAp754CVcoHpbcb7"
             target="_blank"
           >
             Apply Now
-          </ApplyButton> */}
+          </ApplyButton>
           
-          <HeaderButton to="/internship-registration">
+          {/* <HeaderButton to="/internship-registration">
             Register Now
-          </HeaderButton>
+          </HeaderButton> */}
 
         </HeaderRow>
 
@@ -228,18 +228,18 @@ const InternshipPage = () => {
             Internships are limited and offered on a rolling basis. Early
             applicants have a better chance of selection.
           </Paragraph>
-          {/* <ApplyButton
-            href="https://forms.gle/NLrnkRVYnZgGgJNN8"
+          <ApplyButton
+            href="https://forms.gle/DmAp754CVcoHpbcb7"
             target="_blank"
           >
             Apply Now
-          </ApplyButton> */}
+          </ApplyButton>
 
-          <CenteredCTA>
+          {/* <CenteredCTA>
             <HeaderButton to="/internship-registration">
               Register Now
             </HeaderButton>
-          </CenteredCTA>
+          </CenteredCTA> */}
 
         </Section>
       </PageContainer>

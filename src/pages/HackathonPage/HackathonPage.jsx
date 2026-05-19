@@ -44,7 +44,7 @@ const HackathonPage = () => {
 
             {showPopover && (
               <Popover>
-                Registration opens from January 2026
+                Registration opens from June 2026
               </Popover>
             )}
           </PopoverWrapper>
@@ -173,7 +173,7 @@ const HackathonPage = () => {
 
             {showPopover && (
               <Popover>
-                Registration opens from January 2026
+                Registration opens from June 2026
               </Popover>
             )}
           </PopoverWrapper>
