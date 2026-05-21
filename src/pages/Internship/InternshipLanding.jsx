@@ -46,9 +46,13 @@ const InternshipLanding = () => {
       </LinkBox>
 
       <LinkBox>
-        <Link to="/internship-registration-others">
+        {/* <Link to="/internship-registration-others">
           Other Internships
-        </Link>
+        </Link> */}
+
+        <Link to="https://forms.gle/YfAb5H1kfTcaMjm39">
+          Other Internships
+        </Link>        
       </LinkBox>
     </Container>
   );
