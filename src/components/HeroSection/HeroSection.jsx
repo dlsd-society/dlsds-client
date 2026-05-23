@@ -49,6 +49,25 @@
 
 import "./HeroSection.css";
 import logo from "../../assets/logo.png";
+import styled from "styled-components";
+
+const GeneralButton = styled.a`
+  display: inline-block;
+  margin-top: 16px;
+  margin-right: 12px;
+  background-color: #005a9c;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #00477a;
+  }`
 
 const HeroSection = ({ onBookSession }) => {
   return (
@@ -61,10 +80,19 @@ const HeroSection = ({ onBookSession }) => {
             <h1>Bridging Skills, Building Futures.</h1>
 
             <div className="hero-buttons">
-              <button onClick={onBookSession}>
+              {/* <button onClick={onBookSession}>
                 Book A Free Session
-              </button>
-            </div>
+              </button> */}
+
+              <GeneralButton
+                href="https://forms.gle/nPNeRtxYXtF19xNi7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book A Session
+              </GeneralButton>  
+              
+            </div>             
           </div>
 
           <div className="hero-image">

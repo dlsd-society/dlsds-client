@@ -1,7 +1,26 @@
 import React, { useState } from "react";
 import NoContent from "../../components/NoContent/NoContent";
 import PartnershipForm from "../../components/ContactForms/PartnershipForm";
+import styled from 'styled-components';
 import "./PartnersPage.css";
+
+const GeneralButton = styled.a`
+  display: inline-block;
+  margin-top: 16px;
+  margin-right: 12px;
+  background-color: #005a9c;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #00477a;
+  }`
 
 const PartnersPage = () => {
   const [showPartnershipModal, setShowPartnershipModal] = useState(false);
@@ -14,12 +33,20 @@ const PartnersPage = () => {
 
       {/* Partner Button */}
       <div className="partner-action">
-        <button
+        {/* <button
           className="action-btn"
           onClick={() => setShowPartnershipModal(true)}
         >
           Partner with us
-        </button>
+        </button> */}
+
+        <GeneralButton
+          href="https://forms.gle/2yF1bGfSZ2zZamkd7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Partner with us (Organisations)
+        </GeneralButton>
       </div>
 
       {/* Partnership Modal (same as ContactPage) */}

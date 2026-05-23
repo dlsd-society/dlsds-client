@@ -50,9 +50,16 @@ const InternshipLanding = () => {
           Other Internships
         </Link> */}
 
-        <Link to="https://forms.gle/YfAb5H1kfTcaMjm39">
+        {/* <Link to="https://forms.gle/YfAb5H1kfTcaMjm39">
           Other Internships
-        </Link>        
+        </Link> */}
+        <a
+          href="https://forms.gle/YfAb5H1kfTcaMjm39"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Other Internships
+        </a>
       </LinkBox>
     </Container>
   );

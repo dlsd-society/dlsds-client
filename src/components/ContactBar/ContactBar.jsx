@@ -23,7 +23,7 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
         </button>
 
         {/* 🔹 Conditional rendering based on login */}
-        {!isUserLoggedIn ? (
+        {/* {!isUserLoggedIn ? (
           <>
             <button className="auth-button" onClick={onLoginClick}>
               Sign In
@@ -39,11 +39,23 @@ const ContactBar = ({ onLoginClick, onSignupClick }) => {
           >
             User Dashboard
           </button>
-        )}   
+        )} */}
 
-        <button className="cta-button" onClick={() => navigate("/book-session")}>
+        {/* <button className="cta-button" onClick={() => navigate("/book-session")}>
           Book A Free Session
-        </button>    
+        </button> */}
+
+        <button
+          className="cta-button"
+          onClick={() =>
+            window.open(
+              "https://forms.gle/nPNeRtxYXtF19xNi7",
+              "_blank"
+            )
+          }
+        >
+          Book A Free Session
+        </button>       
 
       </div>
     </div>

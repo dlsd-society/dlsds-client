@@ -1,7 +1,26 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import './ContactPage.css';
 import PartnershipForm from '../../components/ContactForms/PartnershipForm';
 import VolunteerForm from '../../components/ContactForms/VolunteerForm';
+
+const GeneralButton = styled.a`
+  display: inline-block;
+  margin-top: 16px;
+  margin-right: 12px;
+  background-color: #005a9c;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #00477a;
+  }`
 
 const ContactPage = () => {
   const [showPartnershipModal, setShowPartnershipModal] = useState(false);
@@ -18,12 +37,29 @@ const ContactPage = () => {
         <div className="contact-action-links">
           <h2>Join Us</h2>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <button onClick={() => setShowPartnershipModal(true)} className="action-btn">
+            {/* <button onClick={() => setShowPartnershipModal(true)} className="action-btn">
               Partner with us (Organisations)
-            </button>
-            <button onClick={() => setShowVolunteerModal(true)} className="action-btn">
+            </button> */}
+
+            {/* <button onClick={() => setShowVolunteerModal(true)} className="action-btn">
               Become a Volunteer (Individuals)
-            </button>
+            </button> */}
+
+            <GeneralButton
+              href="https://forms.gle/2yF1bGfSZ2zZamkd7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Partner with us (Organisations)
+            </GeneralButton>
+
+            <GeneralButton
+              href="https://forms.gle/TZreZRGprzUXrd7n7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Be a Volunteer (Individuals)
+            </GeneralButton>            
           </div>          
         </div>
 
