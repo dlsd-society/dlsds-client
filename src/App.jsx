@@ -49,6 +49,7 @@ import InternshipLanding from './pages/Internship/InternshipLanding';
 import OtherInternshipRegistrationPage from './pages/Internship/OtherInternshipRegistrationPage';
 import AdminSignupPage from './admin/AdminSignupPage';
 import ManageInternshipsPage from './admin/ManageInternshipsPage';
+import VerifyCertificatePage from './components/VerifyCertificatePage/VerifyCertificatePage';
 
 function App() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -59,6 +60,7 @@ function App() {
       <UserAuthProvider>
         <ScrollToTop />
         <Routes>
+          <Route path="/verify/:id" element={<VerifyCertificatePage />} />
           {/* Public layout */}
           <Route
             path="/*"
@@ -273,7 +275,8 @@ function App() {
               </>
             }
           />
-          <Route path="/verify/:code" element={<VerifyPage />} />
+          {/* <Route path="/verify/:code" element={<VerifyPage />} /> */}
+          
         </Routes>
 
         {/* Login Modal */}
